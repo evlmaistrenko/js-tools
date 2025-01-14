@@ -1,0 +1,31 @@
+{
+	"name": "@evlmaistrenko/tools-mongomq",
+	"version": "1.0.0",
+	"description": "Simple MQ using MongoDB",
+	"main": "dist/index.js",
+	"scripts": {
+		"build": "tsc",
+		"docs": "typedoc",
+		"pretest": "npm run build",
+		"test": "node --test"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/evlmaistrenko/js-tools.git",
+		"directory": "./packages/mongomq/"
+	},
+	"keywords": ["mq", "mongomq"],
+	"author": "evlmaistrenko <evlmaistrenko@gmail.com>",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/evlmaistrenko/js-tools/issues"
+	},
+	"homepage": "https://github.com/evlmaistrenko/js-tools/blob/master/packages/mongomq/README.md",
+	"type": "module",
+	"peerDependencies": {
+		"mongodb": "^6.11.0"
+	},
+	"engines": {
+		"node": ">=15.0.0"
+	}
+}

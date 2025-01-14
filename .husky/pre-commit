@@ -1,0 +1,4 @@
+npm run docs
+git add ./packages/*/docs
+npx --no -- lint-staged
+npm test

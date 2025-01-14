@@ -1,0 +1,14 @@
+.github/
+.husky/
+.prettierignore
+.release-please-manifest.json
+commitlint.config.js
+eslint.config.js
+lint-staged.config.js
+prettier.config.js
+release-please-config.json
+
+packages/*/src/
+packages/*/test/
+packages/*/tsconfig.json
+packages/*/typedoc.json
