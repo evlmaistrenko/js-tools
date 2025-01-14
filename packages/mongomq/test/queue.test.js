@@ -8,11 +8,6 @@ import { Queue } from "@evlmaistrenko/tools-mongomq"
 import _ from "lodash"
 import { MongoClient } from "mongodb"
 
-const client = new MongoClient(process.env.MONGODB_URL ?? "")
-await client.connect()
-
-const db = client.db(`mongomqTest_${+new Date()}`)
-
 describe("#Queue", () => {
 	/**
 	 * @type {import("mongodb").Collection<
@@ -22,8 +17,18 @@ describe("#Queue", () => {
 	let collection
 	/** @type {import("@evlmaistrenko/tools-mongomq").Queue<{ uid: number }>} */
 	let queue
+	/** @type {import("mongodb").MongoClient} */
+	let client
+	/** @type {import("mongodb").Db} */
+	let db
 
-	beforeEach((test) => {
+	beforeEach(async (test) => {
+		if (!client) {
+			client = new MongoClient(process.env.MONGODB_URL ?? "")
+			await client.connect()
+
+			db = client.db(`mongomqTest_${+new Date()}`)
+		}
 		collection = db.collection(
 			_.camelCase(test.name.replace(/ /g, "_")).replace(/\W/g, ""),
 		)
