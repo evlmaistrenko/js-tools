@@ -14,7 +14,10 @@
 		"url": "git+https://github.com/evlmaistrenko/js-tools.git",
 		"directory": "./packages/mongomq/"
 	},
-	"keywords": ["mq", "mongomq"],
+	"keywords": [
+		"mq",
+		"mongomq"
+	],
 	"author": "evlmaistrenko <evlmaistrenko@gmail.com>",
 	"license": "MIT",
 	"bugs": {
