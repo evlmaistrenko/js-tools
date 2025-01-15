@@ -9,6 +9,9 @@
 		},
 		"packages/mongomq": {
 			"release-type": "node"
+		},
+		"packages/steam-api-client": {
+			"release-type": "node"
 		}
 	},
 	"plugins": [

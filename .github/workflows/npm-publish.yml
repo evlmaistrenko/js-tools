@@ -12,6 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       MONGODB_URL: ${{secrets.MONGODB_URL}}
+      STEAM_API_CLIENT_KEY: ${{secrets.STEAM_API_CLIENT_KEY}}
+      STEAM_API_CLIENT_STEAMID: ${{secrets.STEAM_API_CLIENT_STEAMID}}
       HUSKY: 0
     steps:
       - uses: actions/checkout@v4
@@ -28,6 +30,8 @@ jobs:
     env:
       MONGODB_URL: ${{secrets.MONGODB_URL}}
       NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      STEAM_API_CLIENT_KEY: ${{secrets.STEAM_API_CLIENT_KEY}}
+      STEAM_API_CLIENT_STEAMID: ${{secrets.STEAM_API_CLIENT_STEAMID}}
       HUSKY: 0
     steps:
       - uses: actions/checkout@v4
@@ -48,3 +52,6 @@ jobs:
       - name: Publish mongomq
         continue-on-error: true
         run: npm publish -w packages/mongomq --access=public
+      - name: Publish steam-api-client
+        continue-on-error: true
+        run: npm publish -w packages/steam-api-client --access=public
