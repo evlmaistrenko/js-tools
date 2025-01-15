@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.1.0...tools-v1.1.1) (2025-01-15)
+
+
+### Bug Fixes
+
+* **mongomq:** got rid of max listeners warning ([5cd60f9](https://github.com/evlmaistrenko/js-tools/commit/5cd60f92eb3e3d422cdbcfa2e623aa35f752f2ad))
+
 ## [1.1.0](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.0.0...tools-v1.1.0) (2025-01-15)
 
 
