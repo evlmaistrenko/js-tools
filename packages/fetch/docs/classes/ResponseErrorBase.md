@@ -88,7 +88,7 @@ Parses response body
 
 ### check()
 
-> `static` **check**(`response`, `parse`): `Promise`\<`void`\>
+> `static` **check**(`response`, `parse`): `Promise`\<`Response`\>
 
 Checks response for errors
 
@@ -108,7 +108,9 @@ Whether to parse response body
 
 #### Returns
 
-`Promise`\<`void`\>
+`Promise`\<`Response`\>
+
+Response
 
 #### Example
 

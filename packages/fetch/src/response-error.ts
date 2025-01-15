@@ -15,9 +15,10 @@ export abstract class ResponseErrorBase<TParsed> extends Error {
 	 *
 	 * @param response Response to check
 	 * @param parse Whether to parse response body
+	 * @returns Response
 	 */
-	static async check(response: Response, parse = true): Promise<void> {
-		if (response.ok) return
+	static async check(response: Response, parse = true): Promise<Response> {
+		if (response.ok) return response
 		// @ts-ignore
 		const error = new this(response)
 		if (parse) {
