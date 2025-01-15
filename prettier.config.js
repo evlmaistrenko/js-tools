@@ -3,7 +3,7 @@
  * 	files: string[]
  * 	options: import("prettier").Config &
  * 		import("@trivago/prettier-plugin-sort-imports").PluginConfig &
- * 		Partial<import("prettier-plugin-jsdoc").AllOptions>
+ * 		Partial<import("prettier-plugin-jsdoc").Options>
  * }}
  */
 const jsConfig = {
