@@ -77,15 +77,6 @@ export class Queue<TPayload = any> {
 					ReturnType<typeof this.collection.findOneAndUpdate>
 				> = null
 				do {
-					if (concurrentCount >= concurrency) {
-						if (message) {
-							await this.collection.updateOne(
-								{ _id: message._id },
-								{ $unset: { receivedAt: true } },
-							)
-						}
-						break
-					}
 					if (message) {
 						concurrentCount++
 						yield ((message) => async (callback) => {
@@ -100,6 +91,7 @@ export class Queue<TPayload = any> {
 							}
 						})(message)
 					}
+					if (concurrentCount >= concurrency) break
 				} while (
 					(message = await this.collection.findOneAndUpdate(
 						{
