@@ -1,0 +1,28 @@
+{
+	"name": "@evlmaistrenko/tools-steam-api-client",
+	"version": "1.0.0",
+	"description": "Steam API Javascript client",
+	"main": "dist/index.js",
+	"scripts": {
+		"build": "tsc",
+		"docs": "typedoc",
+		"pretest": "npm run build",
+		"test": "node --test"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/evlmaistrenko/js-tools.git",
+		"directory": "./packages/steam-api-client/"
+	},
+	"keywords": ["steam", "api", "steam-api-client"],
+	"author": "evlmaistrenko <evlmaistrenko@gmail.com>",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/evlmaistrenko/js-tools/issues"
+	},
+	"homepage": "https://github.com/evlmaistrenko/js-tools/blob/master/packages/steam-api-client/README.md",
+	"type": "module",
+	"dependencies": {
+		"@evlmaistrenko/tools-fetch": "^1.1.0"
+	}
+}
