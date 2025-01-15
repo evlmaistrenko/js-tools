@@ -23,6 +23,6 @@
 	"homepage": "https://github.com/evlmaistrenko/js-tools/blob/master/packages/steam-api-client/README.md",
 	"type": "module",
 	"dependencies": {
-		"@evlmaistrenko/tools-fetch": "^1.0.0"
+		"@evlmaistrenko/tools-fetch": "^1.1.0"
 	}
 }

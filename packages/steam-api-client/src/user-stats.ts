@@ -16,12 +16,10 @@ export class UserStats {
 			achievements: { name: string; achieved: 0 | 1 }[]
 		}
 	}> {
-		return (
-			fetch(
-				`https://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=${appid}&key=${this.client.key}&steamid=${steamid}`,
-			)
-				// .then(ResponseError.check)
-				.then((response) => response.json())
+		return fetch(
+			`https://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=${appid}&key=${this.client.key}&steamid=${steamid}`,
 		)
+			.then((response) => ResponseError.check(response))
+			.then((response) => response.json())
 	}
 }
