@@ -24,11 +24,11 @@ const queue = new Queue(collection);
 
 ### new Queue()
 
-> **new Queue**\<`TPayload`\>(`collection`): [`Queue`](Queue.md)\<`TPayload`\>
+> **new Queue**\<`TPayload`\>(`messagesCollection`): [`Queue`](Queue.md)\<`TPayload`\>
 
 #### Parameters
 
-##### collection
+##### messagesCollection
 
 `Collection`\<[`MessageDocument`](../type-aliases/MessageDocument.md)\<`TPayload`\>\>
 
@@ -38,11 +38,115 @@ const queue = new Queue(collection);
 
 ## Properties
 
-### collection
+### messagesCollection
 
-> `protected` `readonly` **collection**: `Collection`\<[`MessageDocument`](../type-aliases/MessageDocument.md)\<`TPayload`\>\>
+> `protected` `readonly` **messagesCollection**: `Collection`\<[`MessageDocument`](../type-aliases/MessageDocument.md)\<`TPayload`\>\>
+
+---
+
+### messagesStream?
+
+> `protected` `optional` **messagesStream**: `ChangeStream`\<[`MessageDocument`](../type-aliases/MessageDocument.md)\<`TPayload`\>, `ChangeStreamDocument`\<[`MessageDocument`](../type-aliases/MessageDocument.md)\<`TPayload`\>\>\>
+
+ChangeStream of `messagesCollection`
+
+#### Since
+
+1.1.1
+
+---
+
+### messagesStreamConsumersCount
+
+> `protected` **messagesStreamConsumersCount**: `number` = `0`
+
+How many `messages` generator iterating at this time
+
+#### Since
+
+1.1.1
+
+---
+
+### messagesStreamTriggers
+
+> `protected` **messagesStreamTriggers**: `PromiseWithResolvers`\<`void`\>[] = `[]`
+
+Promises with resolvers for `messagesStream` events
+
+#### Since
+
+1.1.1
+
+## Accessors
+
+### delayedMessagesTrigger
+
+#### Get Signature
+
+> **get** `protected` **delayedMessagesTrigger**(): `Promise`\<`void`\>
+
+Promise that resolves when closest delayed message is ready to consume
+
+##### Since
+
+1.1.1
+
+##### Returns
+
+`Promise`\<`void`\>
+
+---
+
+### messagesTrigger
+
+#### Get Signature
+
+> **get** `protected` **messagesTrigger**(): `Promise`\<`void`\>
+
+Promise that resolves when `change` event fired
+
+##### Since
+
+1.1.1
+
+##### Returns
+
+`Promise`\<`void`\>
 
 ## Methods
+
+### closeMessagesStream()
+
+> `protected` **closeMessagesStream**(): `Promise`\<`void`\>
+
+Closes `messagesStream` if there is no `messages` generators iterating
+
+#### Returns
+
+`Promise`\<`void`\>
+
+#### Since
+
+1.1.1
+
+---
+
+### createMessagesIndexes()
+
+> `protected` **createMessagesIndexes**(): `Promise`\<`void`\>
+
+Creates indexes for `messagesCollection`
+
+#### Returns
+
+`Promise`\<`void`\>
+
+#### Since
+
+1.1.1
+
+---
 
 ### messages()
 

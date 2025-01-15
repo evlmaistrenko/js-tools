@@ -10,4 +10,5 @@
 
 ## Type Aliases
 
+- [ConsumeCallback](type-aliases/ConsumeCallback.md)
 - [MessageDocument](type-aliases/MessageDocument.md)
