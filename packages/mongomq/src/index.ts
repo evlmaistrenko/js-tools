@@ -1,6 +1,6 @@
 import * as timers from "node:timers/promises"
 
-import { Collection, WithId } from "mongodb"
+import { ChangeStream, Collection, WithId } from "mongodb"
 
 /** Message */
 export type MessageDocument<TPayload> = {
@@ -17,6 +17,16 @@ export type MessageDocument<TPayload> = {
 }
 
 /**
+ * Callback passing to `consume` function
+ *
+ * @since 1.1.1
+ */
+export type ConsumeCallback<TPayload> = (
+	/** Message-document */
+	message: WithId<MessageDocument<TPayload>>,
+) => Promise<void> | void
+
+/**
  * Queue of messages
  *
  * @example
@@ -26,8 +36,107 @@ export type MessageDocument<TPayload> = {
  */
 export class Queue<TPayload = any> {
 	constructor(
-		protected readonly collection: Collection<MessageDocument<TPayload>>,
+		protected readonly messagesCollection: Collection<
+			MessageDocument<TPayload>
+		>,
 	) {}
+
+	/**
+	 * ChangeStream of `messagesCollection`
+	 *
+	 * @since 1.1.1
+	 */
+	protected messagesStream?: ChangeStream<MessageDocument<TPayload>>
+	/**
+	 * Promises with resolvers for `messagesStream` events
+	 *
+	 * @since 1.1.1
+	 */
+	protected messagesStreamTriggers: PromiseWithResolvers<void>[] = []
+	/**
+	 * How many `messages` generator iterating at this time
+	 *
+	 * @since 1.1.1
+	 */
+	protected messagesStreamConsumersCount = 0
+
+	/**
+	 * Closes `messagesStream` if there is no `messages` generators iterating
+	 *
+	 * @since 1.1.1
+	 */
+	protected async closeMessagesStream() {
+		if (this.messagesStreamConsumersCount > 0) return
+		await this.messagesStream?.close()
+	}
+
+	/**
+	 * Promise that resolves when `change` event fired
+	 *
+	 * @since 1.1.1
+	 */
+	protected get messagesTrigger(): Promise<void> {
+		if (!this.messagesStream || this.messagesStream.closed) {
+			this.messagesStream = this.messagesCollection.watch()
+			const listener = (error?: Error) => {
+				let trigger: ReturnType<typeof this.messagesStreamTriggers.shift>
+				while ((trigger = this.messagesStreamTriggers.shift())) {
+					if (error) trigger.reject(error)
+					else trigger.resolve()
+				}
+			}
+			this.messagesStream
+				.on("change", () => listener())
+				.on("error", listener)
+				.on("closed", () =>
+					listener(new Error("`messagesStream` unexpectedly closed")),
+				)
+				.on("end", () =>
+					listener(new Error("`messagesStream` unexpectedly end")),
+				)
+		}
+		const result = Promise.withResolvers<void>()
+		this.messagesStreamTriggers.push(result)
+		return result.promise
+	}
+
+	/**
+	 * Promise that resolves when closest delayed message is ready to consume
+	 *
+	 * @since 1.1.1
+	 */
+	protected get delayedMessagesTrigger(): Promise<void> {
+		const result = Promise.withResolvers<void>()
+		this.messagesCollection
+			.findOne(
+				{
+					delayedTo: { $exists: true },
+					receivedAt: { $exists: false },
+				},
+				{ sort: { delayedTo: 1 } },
+			)
+			.then((message) => {
+				if (message?.delayedTo)
+					timers
+						.setTimeout(+new Date() - +message.delayedTo)
+						.then(() => result.resolve())
+			})
+			.catch(result.reject)
+		return result.promise
+	}
+
+	/**
+	 * Creates indexes for `messagesCollection`
+	 *
+	 * @since 1.1.1
+	 */
+	protected async createMessagesIndexes() {
+		await Promise.all([
+			this.messagesCollection.createIndex({ delayedTo: 1, receivedAt: 1 }),
+			this.messagesCollection.createIndex({ publishedAt: 1 }),
+			this.messagesCollection.createIndex({ delayedTo: 1 }),
+		])
+	}
 
 	/**
 	 * Publishes massage to queue
@@ -39,7 +148,7 @@ export class Queue<TPayload = any> {
 	 * @param delayedTo If you need to defer receiving to some date
 	 */
 	async publish(payload: TPayload, delayedTo?: Date): Promise<void> {
-		await this.collection.insertOne({
+		await this.messagesCollection.insertOne({
 			payload,
 			...(delayedTo && { delayedTo }),
 			publishedAt: new Date(),
@@ -61,20 +170,14 @@ export class Queue<TPayload = any> {
 	 */
 	async *messages(
 		concurrency = Infinity,
-	): AsyncGenerator<
-		(
-			callback: (
-				message: WithId<MessageDocument<TPayload>>,
-			) => Promise<void> | void,
-		) => Promise<void>
-	> {
-		const stream = this.collection.watch()
+	): AsyncGenerator<(callback: ConsumeCallback<TPayload>) => Promise<void>> {
+		await this.createMessagesIndexes()
+		this.messagesStreamConsumersCount++
+		let concurrentCount = 0
 		try {
-			let concurrentCount = 0
-
 			do {
 				let message: Awaited<
-					ReturnType<typeof this.collection.findOneAndUpdate>
+					ReturnType<typeof this.messagesCollection.findOneAndUpdate>
 				> = null
 				do {
 					if (message) {
@@ -84,7 +187,7 @@ export class Queue<TPayload = any> {
 								await callback(message)
 							} finally {
 								concurrentCount--
-								await this.collection.updateOne(
+								await this.messagesCollection.updateOne(
 									{ _id: message._id },
 									{ $set: { consumedAt: new Date() } },
 								)
@@ -93,7 +196,7 @@ export class Queue<TPayload = any> {
 					}
 					if (concurrentCount >= concurrency) break
 				} while (
-					(message = await this.collection.findOneAndUpdate(
+					(message = await this.messagesCollection.findOneAndUpdate(
 						{
 							receivedAt: { $exists: false },
 							$or: [
@@ -111,50 +214,11 @@ export class Queue<TPayload = any> {
 						},
 					))
 				)
-
-				const streamTrigger = Promise.withResolvers<void>()
-				if (stream.closed) throw new Error("ChangeStream unexpectedly closed")
-				const streamListeners = {
-					change: () => streamTrigger.resolve(),
-					error: streamTrigger.reject,
-					closed: () =>
-						streamTrigger.reject(new Error("ChangeStream unexpectedly closed")),
-					end: () =>
-						streamTrigger.reject(new Error("ChangeStream unexpectedly end")),
-				}
-				stream
-					.once("change", streamListeners.change)
-					.once("error", streamListeners.error)
-					.once("closed", streamListeners.closed)
-					.once("end", streamListeners.end)
-
-				const delayedTrigger = Promise.withResolvers<void>()
-				const { delayedTo } =
-					(await this.collection.findOne(
-						{
-							receivedAt: { $exists: false },
-						},
-						{ sort: { delayedTo: 1 } },
-					)) ?? {}
-				if (delayedTo) {
-					timers
-						.setTimeout(+new Date() - +delayedTo)
-						.then(() => delayedTrigger.resolve())
-				}
-
-				await Promise.race([
-					streamTrigger.promise,
-					delayedTrigger.promise,
-				]).finally(() => {
-					stream
-						.off("change", streamListeners.change)
-						.off("error", streamListeners.error)
-						.off("closed", streamListeners.closed)
-						.off("end", streamListeners.end)
-				})
+				await Promise.race([this.messagesTrigger, this.delayedMessagesTrigger])
 			} while (true)
 		} finally {
-			await stream.close()
+			this.messagesStreamConsumersCount--
+			await this.closeMessagesStream()
 		}
 	}
 }
