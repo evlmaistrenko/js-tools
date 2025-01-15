@@ -1,4 +1,4 @@
-# @evlmaistrenko/tools-fetch
+# @evlmaistrenko/tools-steam-api-client
 
 [![NPM Version](https://img.shields.io/npm/v/%40evlmaistrenko%2Ftools-steam-api-client)](https://www.npmjs.com/package/@evlmaistrenko/tools-steam-api-client)
 
