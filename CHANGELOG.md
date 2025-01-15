@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.2.0...tools-v1.3.0) (2025-01-15)
+
+
+### Features
+
+* added steam-api-client package ([13f7269](https://github.com/evlmaistrenko/js-tools/commit/13f7269380b31f0078655d44740406805ad305b0))
+
 ## [1.2.0](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.1.1...tools-v1.2.0) (2025-01-15)
 
 
