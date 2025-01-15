@@ -19,7 +19,7 @@ const client = new SteamApiClient("<your Steam API key>");
 await client.ISteamUserStats.GetUserStatsForGame(440, "<users SteamID>");
 
 // Get statistics in Dead by Daylight:
-await client.deadByDaylight.userStats("<users SteamID>");
+await client.deadByDaylight.getUserStats("<users SteamID>");
 ```
 
 ## Api docs
