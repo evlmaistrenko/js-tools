@@ -1,6 +1,6 @@
 {
 	"name": "@evlmaistrenko/tools",
-	"version": "1.3.0",
+	"version": "1.4.0",
 	"description": "Javascript tools for better life",
 	"exports": {
 		"./fetch": "./packages/fetch/dist/index.js",
