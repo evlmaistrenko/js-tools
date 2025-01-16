@@ -6,6 +6,12 @@
 
 # Class: SteamApiClient
 
+Typed Steam API client
+
+## See
+
+[Steam API](https://steamcommunity.com/dev)
+
 ## Constructors
 
 ### new SteamApiClient()
@@ -34,11 +40,13 @@
 
 #### Get Signature
 
-> **get** **deadByDaylight**(): [`DeadByDaylight`](../namespaces/DeadByDaylight/classes/DeadByDaylight.md)
+> **get** **deadByDaylight**(): [`DeadByDaylight`](../namespaces/deadByDaylight/classes/DeadByDaylight.md)
+
+Shorthands for [Dead by Daylight](https://deadbydaylight.com/)
 
 ##### Returns
 
-[`DeadByDaylight`](../namespaces/DeadByDaylight/classes/DeadByDaylight.md)
+[`DeadByDaylight`](../namespaces/deadByDaylight/classes/DeadByDaylight.md)
 
 ---
 
@@ -46,8 +54,28 @@
 
 #### Get Signature
 
-> **get** **ISteamUserStats**(): [`UserStats`](UserStats.md)
+> **get** **ISteamUserStats**(): [`UserStats`](../namespaces/userStats/classes/UserStats.md)
+
+Users statistics
 
 ##### Returns
 
-[`UserStats`](UserStats.md)
+[`UserStats`](../namespaces/userStats/classes/UserStats.md)
+
+---
+
+### user
+
+#### Get Signature
+
+> **get** **user**(): [`User`](../namespaces/user/classes/User.md)
+
+Information about user
+
+##### Since
+
+1.1.0
+
+##### Returns
+
+[`User`](../namespaces/user/classes/User.md)

@@ -2,7 +2,7 @@
 
 [![NPM Version](https://img.shields.io/npm/v/%40evlmaistrenko%2Ftools-steam-api-client)](https://www.npmjs.com/package/@evlmaistrenko/tools-steam-api-client)
 
-[Steam API](https://steamcommunity.com/dev) client for Javascript.
+Nicely typed [Steam API](https://steamcommunity.com/dev) client for Javascript.
 
 ## Usage
 

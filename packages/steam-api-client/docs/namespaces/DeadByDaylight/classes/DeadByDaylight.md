@@ -2,7 +2,7 @@
 
 ---
 
-[@evlmaistrenko/tools-steam-api-client](../../../README.md) / [DeadByDaylight](../README.md) / DeadByDaylight
+[@evlmaistrenko/tools-steam-api-client](../../../README.md) / [deadByDaylight](../README.md) / DeadByDaylight
 
 # Class: DeadByDaylight
 
@@ -32,7 +32,9 @@
 
 ### getUserStats()
 
-> **getUserStats**(`steamid`): `Promise`\<\{ `achievements`: [`UserStatsAchievements`](../type-aliases/UserStatsAchievements.md); `stats`: [`UserStats`](../type-aliases/UserStats.md); \}\>
+> **getUserStats**(`steamid`): `Promise`\<[`UserStatsAndAchievements`](../type-aliases/UserStatsAndAchievements.md)\>
+
+Reduces statistics
 
 #### Parameters
 
@@ -40,6 +42,10 @@
 
 `string`
 
+64bit SteamID of the user
+
 #### Returns
 
-`Promise`\<\{ `achievements`: [`UserStatsAchievements`](../type-aliases/UserStatsAchievements.md); `stats`: [`UserStats`](../type-aliases/UserStats.md); \}\>
+`Promise`\<[`UserStatsAndAchievements`](../type-aliases/UserStatsAndAchievements.md)\>
+
+Reduced statistics and achievements
