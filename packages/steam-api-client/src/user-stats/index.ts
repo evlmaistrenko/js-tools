@@ -1,6 +1,7 @@
 import { ResponseError } from "@evlmaistrenko/tools-fetch"
 
-import type { SteamApiClient } from "./index.js"
+import type { SteamApiClient } from "../index.js"
+import { UserStatsForGame } from "./user-stats-for-game.js"
 
 export class UserStats {
 	constructor(private readonly client: SteamApiClient) {}
@@ -8,18 +9,16 @@ export class UserStats {
 	GetUserStatsForGame(
 		appid: number,
 		steamid: string,
+		version = "v0002",
 	): Promise<{
-		playerstats: {
-			steamID: string
-			gameName: string
-			stats: { name: string; value: number }[]
-			achievements: { name: string; achieved: 0 | 1 }[]
-		}
+		playerstats: UserStatsForGame
 	}> {
 		return fetch(
-			`https://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=${appid}&key=${this.client.key}&steamid=${steamid}`,
+			`https://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/${version}/?appid=${appid}&key=${this.client.key}&steamid=${steamid}`,
 		)
 			.then((response) => ResponseError.check(response))
 			.then((response) => response.json())
 	}
 }
+
+export { UserStatsForGame }

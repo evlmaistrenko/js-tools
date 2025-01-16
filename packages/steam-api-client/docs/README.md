@@ -6,9 +6,10 @@
 
 ## Namespaces
 
-- [DeadByDaylight](namespaces/DeadByDaylight/README.md)
+- [deadByDaylight](namespaces/deadByDaylight/README.md)
+- [user](namespaces/user/README.md)
+- [userStats](namespaces/userStats/README.md)
 
 ## Classes
 
 - [SteamApiClient](classes/SteamApiClient.md)
-- [UserStats](classes/UserStats.md)

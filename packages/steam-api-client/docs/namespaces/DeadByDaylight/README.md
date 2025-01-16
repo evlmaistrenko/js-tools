@@ -2,9 +2,9 @@
 
 ---
 
-[@evlmaistrenko/tools-steam-api-client](../../README.md) / DeadByDaylight
+[@evlmaistrenko/tools-steam-api-client](../../README.md) / deadByDaylight
 
-# DeadByDaylight
+# deadByDaylight
 
 ## Classes
 
@@ -14,3 +14,4 @@
 
 - [UserStats](type-aliases/UserStats.md)
 - [UserStatsAchievements](type-aliases/UserStatsAchievements.md)
+- [UserStatsAndAchievements](type-aliases/UserStatsAndAchievements.md)

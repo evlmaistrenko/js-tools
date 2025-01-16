@@ -2,7 +2,7 @@
 
 ---
 
-[@evlmaistrenko/tools-steam-api-client](../../../README.md) / [DeadByDaylight](../README.md) / UserStatsAchievements
+[@evlmaistrenko/tools-steam-api-client](../../../README.md) / [deadByDaylight](../README.md) / UserStatsAchievements
 
 # Type Alias: UserStatsAchievements
 
