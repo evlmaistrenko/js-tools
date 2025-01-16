@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.4.0...tools-v1.5.0) (2025-01-16)
+
+
+### Features
+
+* **steam-api-client:** aliases for ISteamUserStats and ISteamUsers added ([930291e](https://github.com/evlmaistrenko/js-tools/commit/930291ef64c845cc5ae18d15b5452950345bfb52))
+
 ## [1.4.0](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.3.0...tools-v1.4.0) (2025-01-16)
 
 
