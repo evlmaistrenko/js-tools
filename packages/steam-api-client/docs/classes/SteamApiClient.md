@@ -50,6 +50,24 @@ Shorthands for [Dead by Daylight](https://deadbydaylight.com/)
 
 ---
 
+### ISteamUser
+
+#### Get Signature
+
+> **get** **ISteamUser**(): [`User`](../namespaces/user/classes/User.md)
+
+Information about user
+
+##### Since
+
+1.2.0
+
+##### Returns
+
+[`User`](../namespaces/user/classes/User.md)
+
+---
+
 ### ISteamUserStats
 
 #### Get Signature
@@ -70,7 +88,7 @@ Users statistics
 
 > **get** **user**(): [`User`](../namespaces/user/classes/User.md)
 
-Information about user
+Alias for `ISteamUser`
 
 ##### Since
 
@@ -79,3 +97,21 @@ Information about user
 ##### Returns
 
 [`User`](../namespaces/user/classes/User.md)
+
+---
+
+### userStats
+
+#### Get Signature
+
+> **get** **userStats**(): [`UserStats`](../namespaces/userStats/classes/UserStats.md)
+
+Alias for `ISteamUserStats`
+
+##### Since
+
+1.1.0
+
+##### Returns
+
+[`UserStats`](../namespaces/userStats/classes/UserStats.md)

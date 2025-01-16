@@ -13,15 +13,33 @@ export class SteamApiClient {
 	/**
 	 * Information about user
 	 *
+	 * @since 1.2.0
+	 */
+	get ISteamUser(): User {
+		return new User(this)
+	}
+
+	/**
+	 * Alias for `ISteamUser`
+	 *
 	 * @since 1.1.0
 	 */
 	get user(): User {
-		return new User(this)
+		return this.ISteamUser
 	}
 
 	/** Users statistics */
 	get ISteamUserStats(): UserStats {
 		return new UserStats(this)
+	}
+
+	/**
+	 * Alias for `ISteamUserStats`
+	 *
+	 * @since 1.1.0
+	 */
+	get userStats(): UserStats {
+		return this.ISteamUserStats
 	}
 
 	/** Shorthands for [Dead by Daylight](https://deadbydaylight.com/) */
