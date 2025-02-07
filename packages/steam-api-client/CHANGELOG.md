@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/evlmaistrenko/js-tools/compare/tools-steam-api-client-v1.2.0...tools-steam-api-client-v1.3.0) (2025-02-07)
+
+
+### Features
+
+* **steam-api-client:** added utilities to Steam OpenID ([20e7e5c](https://github.com/evlmaistrenko/js-tools/commit/20e7e5cd00e8328a78f31d88f6fd479cb228fb59))
+
 ## [1.2.0](https://github.com/evlmaistrenko/js-tools/compare/tools-steam-api-client-v1.1.0...tools-steam-api-client-v1.2.0) (2025-01-16)
 
 
