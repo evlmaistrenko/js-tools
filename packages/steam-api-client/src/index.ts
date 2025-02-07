@@ -3,7 +3,7 @@ import { UserStats } from "./user-stats/index.js"
 import { User } from "./user/index.js"
 
 /**
- * Typed Steam API client
+ * Steam API client
  *
  * @see [Steam API](https://steamcommunity.com/dev)
  */
@@ -49,5 +49,6 @@ export class SteamApiClient {
 }
 
 export * as deadByDaylight from "./dead-by-daylight/index.js"
+export * as openId from "./open-id.js"
 export * as user from "./user/index.js"
 export * as userStats from "./user-stats/index.js"

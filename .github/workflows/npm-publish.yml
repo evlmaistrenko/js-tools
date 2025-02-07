@@ -13,7 +13,7 @@ jobs:
     env:
       MONGODB_URL: ${{secrets.MONGODB_URL}}
       STEAM_API_CLIENT_KEY: ${{secrets.STEAM_API_CLIENT_KEY}}
-      STEAM_API_CLIENT_STEAMID: ${{secrets.STEAM_API_CLIENT_STEAMID}}
+      STEAM_API_CLIENT_SIGNED_URL: ${{secrets.STEAM_API_CLIENT_SIGNED_URL}}
       HUSKY: 0
     steps:
       - uses: actions/checkout@v4
@@ -31,7 +31,7 @@ jobs:
       MONGODB_URL: ${{secrets.MONGODB_URL}}
       NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
       STEAM_API_CLIENT_KEY: ${{secrets.STEAM_API_CLIENT_KEY}}
-      STEAM_API_CLIENT_STEAMID: ${{secrets.STEAM_API_CLIENT_STEAMID}}
+      STEAM_API_CLIENT_SIGNED_URL: ${{secrets.STEAM_API_CLIENT_SIGNED_URL}}
       HUSKY: 0
     steps:
       - uses: actions/checkout@v4

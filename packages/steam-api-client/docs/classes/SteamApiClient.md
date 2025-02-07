@@ -6,7 +6,7 @@
 
 # Class: SteamApiClient
 
-Typed Steam API client
+Steam API client
 
 ## See
 

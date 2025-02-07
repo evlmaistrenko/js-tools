@@ -7,6 +7,7 @@
 ## Namespaces
 
 - [deadByDaylight](namespaces/deadByDaylight/README.md)
+- [openId](namespaces/openId/README.md)
 - [user](namespaces/user/README.md)
 - [userStats](namespaces/userStats/README.md)
 
