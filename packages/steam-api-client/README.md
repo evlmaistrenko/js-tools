@@ -11,7 +11,7 @@ npm i @evlmaistrenko/tools-steam-api-client
 ```
 
 ```javascript
-import { SteamApiClient } from "@evlmaistrenko/tools-steam-api-client";
+import { SteamApiClient, openId } from "@evlmaistrenko/tools-steam-api-client";
 
 const client = new SteamApiClient("<your Steam API key>");
 
@@ -20,6 +20,12 @@ await client.ISteamUserStats.GetUserStatsForGame(440, "<users SteamID>");
 
 // Get statistics in Dead by Daylight:
 await client.deadByDaylight.getUserStats("<users SteamID>");
+
+// Get url to sign via Steam OpenID:
+const url = openid.getUrl("http://localhost:3000");
+
+// Verify OpenID signature and get SteamID:
+const steamId = await openId.getSteamUrl("<return url>");
 ```
 
 ## Api docs
