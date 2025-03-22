@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.0](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.6.0...tools-v1.7.0) (2025-03-22)
+
+
+### Features
+
+* added `dom` package ([52ccf70](https://github.com/evlmaistrenko/js-tools/commit/52ccf708617f68a58a138cb88419cda850383291))
+
 ## [1.6.0](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.5.0...tools-v1.6.0) (2025-02-07)
 
 
