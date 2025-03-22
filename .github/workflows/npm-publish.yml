@@ -55,3 +55,6 @@ jobs:
       - name: Publish steam-api-client
         continue-on-error: true
         run: npm publish -w packages/steam-api-client --access=public
+      - name: Publish dom
+        continue-on-error: true
+        run: npm publish -w packages/dom --access=public

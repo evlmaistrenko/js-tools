@@ -10,5 +10,6 @@ release-please-config.json
 
 packages/*/src/
 packages/*/test/
+packages/*/dist/test/
 packages/*/tsconfig.json
 packages/*/typedoc.json

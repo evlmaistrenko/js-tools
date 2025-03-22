@@ -12,6 +12,9 @@
 		},
 		"packages/steam-api-client": {
 			"release-type": "node"
+		},
+		"packages/dom": {
+			"release-type": "node"
 		}
 	},
 	"plugins": [
