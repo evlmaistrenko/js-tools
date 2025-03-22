@@ -1,0 +1,29 @@
+{
+	"name": "@evlmaistrenko/tools-dom",
+	"version": "1.0.0",
+	"description": "Utilities for DOM.",
+	"main": "dist/index.js",
+	"scripts": {
+		"build": "tsc",
+		"docs": "typedoc",
+		"pretest": "npm run build",
+		"test": "node --test ./dist/**/*/*.test.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/evlmaistrenko/js-tools.git",
+		"directory": "./packages/dom/"
+	},
+	"keywords": ["dom", "change"],
+	"author": "evlmaistrenko <evlmaistrenko@gmail.com>",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/evlmaistrenko/js-tools/issues"
+	},
+	"homepage": "https://github.com/evlmaistrenko/js-tools/blob/master/packages/dom/README.md",
+	"type": "module",
+	"devDependencies": {
+		"@types/jsdom": "^21.1.7",
+		"jsdom": "^26.0.0"
+	}
+}

@@ -1,0 +1,5 @@
+!dist/
+src/
+dist/test/
+tsconfig.json
+typedoc.json
