@@ -13,6 +13,7 @@
 		"docs": "npm run docs --ws --if-present",
 		"lint": "npx --no -- eslint",
 		"build": "npm run build --ws --if-present",
+		"predocs": "npm run build",
 		"pretest": "npm run build",
 		"test": "npm run test --ws --if-present",
 		"prepare": "husky || true"
@@ -41,9 +42,7 @@
 	},
 	"homepage": "https://github.com/evlmaistrenko/js-tools#readme",
 	"type": "module",
-	"workspaces": [
-		"packages/*"
-	],
+	"workspaces": ["packages/*"],
 	"peerDependencies": {
 		"mongodb": "^6.11.0",
 		"react": "^19.1.0",
