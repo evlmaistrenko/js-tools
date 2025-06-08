@@ -1,7 +1,7 @@
 {
 	"name": "@evlmaistrenko/tools-steam-api-client",
 	"type": "module",
-	"version": "1.4.0",
+	"version": "1.4.1",
 	"description": "Steam API Javascript client",
 	"main": "dist/index.js",
 	"scripts": {
@@ -27,6 +27,6 @@
 	},
 	"homepage": "https://github.com/evlmaistrenko/js-tools/blob/master/packages/steam-api-client/README.md",
 	"dependencies": {
-		"@evlmaistrenko/tools-fetch": "^1.2.0"
+		"@evlmaistrenko/tools-fetch": "^1.2.1"
 	}
 }
