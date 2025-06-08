@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.3](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.8.2...tools-v1.8.3) (2025-06-08)
+
+
+### Bug Fixes
+
+* trying to fix dependencies ([58087ab](https://github.com/evlmaistrenko/js-tools/commit/58087ab4e9890eeb8ea2cd92af9d3b7bf8c6d919))
+
 ## [1.8.2](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.8.1...tools-v1.8.2) (2025-06-08)
 
 

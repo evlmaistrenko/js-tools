@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.2](https://github.com/evlmaistrenko/js-tools/compare/tools-steam-api-client-v1.4.1...tools-steam-api-client-v1.4.2) (2025-06-08)
+
+
+### Bug Fixes
+
+* trying to fix dependencies ([58087ab](https://github.com/evlmaistrenko/js-tools/commit/58087ab4e9890eeb8ea2cd92af9d3b7bf8c6d919))
+
 ## [1.4.1](https://github.com/evlmaistrenko/js-tools/compare/tools-steam-api-client-v1.4.0...tools-steam-api-client-v1.4.1) (2025-06-08)
 
 
