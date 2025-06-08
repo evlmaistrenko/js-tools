@@ -20,7 +20,10 @@
 		"url": "git+https://github.com/evlmaistrenko/js-tools.git",
 		"directory": "./packages/react/"
 	},
-	"keywords": ["react", "react-components"],
+	"keywords": [
+		"react",
+		"react-components"
+	],
 	"author": "evlmaistrenko <evlmaistrenko@gmail.com>",
 	"license": "MIT",
 	"bugs": {
@@ -35,6 +38,8 @@
 		"react-dom": "^19.1.0"
 	},
 	"eslintConfig": {
-		"extends": ["plugin:storybook/recommended"]
+		"extends": [
+			"plugin:storybook/recommended"
+		]
 	}
 }

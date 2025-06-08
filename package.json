@@ -1,6 +1,6 @@
 {
 	"name": "@evlmaistrenko/tools",
-	"version": "1.7.0",
+	"version": "1.8.0",
 	"description": "Javascript tools, utilities and react-components library.",
 	"exports": {
 		"./dom": "./packages/dom/dist/index.js",
@@ -41,7 +41,9 @@
 	},
 	"homepage": "https://github.com/evlmaistrenko/js-tools#readme",
 	"type": "module",
-	"workspaces": ["packages/*"],
+	"workspaces": [
+		"packages/*"
+	],
 	"peerDependencies": {
 		"mongodb": "^6.11.0",
 		"react": "^19.1.0",

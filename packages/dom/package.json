@@ -1,7 +1,7 @@
 {
 	"name": "@evlmaistrenko/tools-dom",
 	"type": "module",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "Utilities for DOM.",
 	"main": "dist/index.js",
 	"scripts": {
@@ -15,7 +15,10 @@
 		"url": "git+https://github.com/evlmaistrenko/js-tools.git",
 		"directory": "./packages/dom/"
 	},
-	"keywords": ["dom", "change"],
+	"keywords": [
+		"dom",
+		"change"
+	],
 	"author": "evlmaistrenko <evlmaistrenko@gmail.com>",
 	"license": "MIT",
 	"bugs": {
