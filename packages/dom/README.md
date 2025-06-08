@@ -23,4 +23,4 @@ domTools.change(input, "new value");
 
 ## Api docs
 
-See [here](./docs/README.md).
+- [Typedoc](https://evlmaistrenko.github.io/js-tools/dom/typedoc/)

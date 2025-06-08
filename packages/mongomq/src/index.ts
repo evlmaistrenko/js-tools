@@ -34,7 +34,10 @@ export type ConsumeCallback<TPayload> = (
  *
  * 	const queue = new Queue(collection)
  */
-export class Queue<TPayload = any> {
+export class Queue<
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	TPayload = any,
+> {
 	constructor(
 		protected readonly messagesCollection: Collection<
 			MessageDocument<TPayload>

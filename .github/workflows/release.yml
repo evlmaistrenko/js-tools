@@ -1,0 +1,81 @@
+name: release
+
+on:
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.52.0-noble
+    env:
+      HUSKY: 0
+      MONGODB_URL: ${{secrets.MONGODB_URL}}
+      STEAM_API_CLIENT_KEY: ${{secrets.STEAM_API_CLIENT_KEY}}
+      STEAM_API_CLIENT_SIGNED_URL: ${{secrets.STEAM_API_CLIENT_SIGNED_URL}}
+      REACT_STORYBOOK_URL: https://evlmaistrenko.github.io/js-lib-sandbox/${{ github.sha }}/react/storybook
+    steps:
+      - name: Get pull request
+        id: pr
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const commitSha = context.sha;
+            const associatedPRs = await github.rest.repos.listPullRequestsAssociatedWithCommit({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              commit_sha: commitSha,
+            });
+            const pr = associatedPRs.data.find(pr => pr.merged_at);
+            if (pr) {
+              const hasReleaseLabel = pr.labels.some(label => label.name === 'release');
+              core.setOutput('skip', hasReleaseLabel ? 'true': 'false');
+            } else {
+              core.setOutput('skip', 'false');
+            }
+      - uses: actions/checkout@v4
+        if: steps.pr.outputs.skip != 'true'
+      - uses: actions/setup-node@v4
+        if: steps.pr.outputs.skip != 'true'
+        with:
+          node-version: latest
+          registry-url: https://registry.npmjs.org/
+          cache: "npm"
+      - name: Install dependencies
+        if: steps.pr.outputs.skip != 'true'
+        run: |
+          npm ci
+          npm i -D @rollup/rollup-linux-x64-gnu
+      - name: Generate test documentation
+        if: steps.pr.outputs.skip != 'true'
+        run: npm run test:docs --ws --if-present
+      - name: Deploy test documentation to GitHub Pages
+        if: steps.pr.outputs.skip != 'true'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.RELEASE_TOKEN }}
+          publish_dir: ./docs/test
+          destination_dir: ${{ github.sha }}
+          keep_files: true
+      - name: Wait for Storybook and run tests
+        if: steps.pr.outputs.skip != 'true'
+        run: |
+          npm run lint
+          npx -y wait-on https://evlmaistrenko.github.io/js-lib-sandbox/${{ github.sha }}/react/storybook --timeout 300000 --log
+          npm test
+  release-please:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: googleapis/release-please-action@v4
+        id: release
+        with:
+          token: ${{ secrets.RELEASE_TOKEN }}
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json

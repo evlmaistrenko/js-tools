@@ -64,4 +64,4 @@ for await (let consume of queue.messages(5))
 
 ## Api docs
 
-See [here](./docs/README.md).
+- [Typedoc](https://evlmaistrenko.github.io/js-tools/mongomq/typedoc/)

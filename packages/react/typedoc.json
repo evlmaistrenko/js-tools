@@ -1,0 +1,6 @@
+{
+	"out": "../../docs/react/typedoc",
+	"readme": "./README.md",
+	"entryPoints": ["./src/index.ts"],
+	"excludeExternals": true
+}

@@ -8,6 +8,7 @@ try {
 	defaultRealm.hash = ""
 	defaultRealm.username = ""
 	defaultRealm.password = ""
+	// eslint-disable-next-line no-empty
 } catch {}
 
 /**
