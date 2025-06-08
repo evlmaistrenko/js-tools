@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.4.0](https://github.com/evlmaistrenko/js-tools/compare/tools-steam-api-client-v1.3.0...tools-steam-api-client-v1.4.0) (2025-06-08)
+
+
+### Features
+
+* docs refactored and react package added ([c772a62](https://github.com/evlmaistrenko/js-tools/commit/c772a620d891e125d2292e0c2a54eea202ccacb8))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @evlmaistrenko/tools-fetch bumped from ^1.1.0 to ^1.2.0
+
 ## [1.3.0](https://github.com/evlmaistrenko/js-tools/compare/tools-steam-api-client-v1.2.0...tools-steam-api-client-v1.3.0) (2025-02-07)
 
 

@@ -1,7 +1,7 @@
 {
 	"name": "@evlmaistrenko/tools-fetch",
 	"type": "module",
-	"version": "1.1.0",
+	"version": "1.2.0",
 	"description": "Utilities for FetchAPI",
 	"main": "dist/index.js",
 	"scripts": {
@@ -15,7 +15,12 @@
 		"url": "git+https://github.com/evlmaistrenko/js-tools.git",
 		"directory": "./packages/fetch/"
 	},
-	"keywords": ["fetch", "fetchApi", "fetch-error", "response-error"],
+	"keywords": [
+		"fetch",
+		"fetchApi",
+		"fetch-error",
+		"response-error"
+	],
 	"author": "evlmaistrenko <evlmaistrenko@gmail.com>",
 	"license": "MIT",
 	"bugs": {
