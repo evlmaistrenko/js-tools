@@ -8,7 +8,7 @@
 		"build": "tsc",
 		"docs": "typedoc",
 		"pretest": "npm run build",
-		"test.backup": "node --test"
+		"test": "node --test"
 	},
 	"repository": {
 		"type": "git",

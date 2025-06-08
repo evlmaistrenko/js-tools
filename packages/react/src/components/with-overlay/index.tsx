@@ -39,5 +39,3 @@ export const WithOverlay: FC<WithOverlayProps> = ({
 		</div>
 	)
 }
-
-export function foo() {}
