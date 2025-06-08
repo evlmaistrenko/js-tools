@@ -1,6 +1,6 @@
 {
 	"name": "@evlmaistrenko/tools",
-	"version": "1.8.1",
+	"version": "1.8.2",
 	"description": "Javascript tools, utilities and react-components library.",
 	"exports": {
 		"./dom": "./packages/dom/dist/index.js",
