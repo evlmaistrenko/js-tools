@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.0](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.8.3...tools-v1.9.0) (2025-06-08)
+
+
+### Features
+
+* add exports for packages and update dependencies in package.json ([f60a26f](https://github.com/evlmaistrenko/js-tools/commit/f60a26fd2a55a0a422cf8f150e89cf099c852707))
+
 ## [1.8.3](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.8.2...tools-v1.8.3) (2025-06-08)
 
 

@@ -1,6 +1,6 @@
 {
 	"name": "@evlmaistrenko/tools",
-	"version": "1.8.3",
+	"version": "1.9.0",
 	"description": "Javascript tools, utilities and react-components library.",
 	"exports": {
 		"./dom": "./exports/dom.js",
@@ -42,7 +42,9 @@
 	},
 	"homepage": "https://github.com/evlmaistrenko/js-tools#readme",
 	"type": "module",
-	"workspaces": ["packages/*"],
+	"workspaces": [
+		"packages/*"
+	],
 	"dependencies": {
 		"@evlmaistrenko/tools-fetch": "workspace:*",
 		"@evlmaistrenko/tools-mongomq": "workspace:*",
