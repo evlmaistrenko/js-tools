@@ -49,13 +49,6 @@ jobs:
           npm i -D @rollup/rollup-linux-x64-gnu
       - name: Build packages
         run: npm run build
-      # - name: Generate shrinkwrap.json
-      #   run: |
-      #     rm -rf node_modules/
-      #     rm package-lock.json
-      #     npm shrinkwrap --omit=dev
-      - name: Publish tools package
-        run: npm publish --access=public
       - name: Publish fetch package
         continue-on-error: true
         run: npm publish -w packages/fetch --access=public
@@ -71,3 +64,5 @@ jobs:
       - name: Publish react package
         continue-on-error: true
         run: npm publish -w packages/react --access=public
+      - name: Publish tools package
+        run: npm publish --access=public
