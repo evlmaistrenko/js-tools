@@ -1,7 +1,7 @@
 {
 	"name": "@evlmaistrenko/tools-mongomq",
 	"type": "module",
-	"version": "1.2.0",
+	"version": "1.2.1",
 	"engines": {
 		"node": ">=15.0.0"
 	},
