@@ -51,6 +51,7 @@ jobs:
         run: npm run build
       - name: Generate shrinkwrap.json
         run: |
+          rm -rf node_modules/
           rm package-lock.json
           npm shrinkwrap --omit=dev
       - name: Publish tools package
