@@ -15,6 +15,9 @@
 		},
 		"packages/dom": {
 			"release-type": "node"
+		},
+		"packages/react": {
+			"release-type": "node"
 		}
 	},
 	"plugins": [

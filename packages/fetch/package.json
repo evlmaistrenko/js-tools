@@ -1,5 +1,6 @@
 {
 	"name": "@evlmaistrenko/tools-fetch",
+	"type": "module",
 	"version": "1.1.0",
 	"description": "Utilities for FetchAPI",
 	"main": "dist/index.js",
@@ -14,17 +15,11 @@
 		"url": "git+https://github.com/evlmaistrenko/js-tools.git",
 		"directory": "./packages/fetch/"
 	},
-	"keywords": [
-		"fetch",
-		"fetchApi",
-		"fetch-error",
-		"response-error"
-	],
+	"keywords": ["fetch", "fetchApi", "fetch-error", "response-error"],
 	"author": "evlmaistrenko <evlmaistrenko@gmail.com>",
 	"license": "MIT",
 	"bugs": {
 		"url": "https://github.com/evlmaistrenko/js-tools/issues"
 	},
-	"homepage": "https://github.com/evlmaistrenko/js-tools/blob/master/packages/fetch/README.md",
-	"type": "module"
+	"homepage": "https://github.com/evlmaistrenko/js-tools/blob/master/packages/fetch/README.md"
 }

@@ -1,0 +1,72 @@
+name: publish
+
+on:
+  pull_request:
+    branches:
+      - master
+    types: [closed]
+
+jobs:
+  docs:
+    if: github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'release')
+    runs-on: ubuntu-latest
+    env:
+      HUSKY: 0
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: latest
+          registry-url: https://registry.npmjs.org/
+          cache: "npm"
+      - name: Install dependencies
+        run: |
+          npm ci
+          npm i -D @rollup/rollup-linux-x64-gnu
+      - name: Generate documentation
+        run: npm run docs
+      - name: Publish to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.RELEASE_TOKEN }}
+          publish_dir: ./docs
+  npm:
+    if: github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'release')
+    runs-on: ubuntu-latest
+    env:
+      HUSKY: 0
+      NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: latest
+          registry-url: https://registry.npmjs.org/
+          cache: "npm"
+      - name: Install dependencies
+        run: |
+          npm ci
+          npm i -D @rollup/rollup-linux-x64-gnu
+      - name: Build packages
+        run: npm run build
+      - name: Generate shrinkwrap.json
+        run: |
+          rm package-lock.json
+          npm shrinkwrap --omit=dev
+      - name: Publish tools package
+        run: npm publish --access=public
+      - name: Publish fetch package
+        continue-on-error: true
+        run: npm publish -w packages/fetch --access=public
+      - name: Publish mongomq package
+        continue-on-error: true
+        run: npm publish -w packages/mongomq --access=public
+      - name: Publish steam-api-client package
+        continue-on-error: true
+        run: npm publish -w packages/steam-api-client --access=public
+      - name: Publish dom package
+        continue-on-error: true
+        run: npm publish -w packages/dom --access=public
+      - name: Publish react package
+        continue-on-error: true
+        run: npm publish -w packages/react --access=public

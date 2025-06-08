@@ -19,11 +19,10 @@ export abstract class ResponseErrorBase<TParsed> extends Error {
 	 */
 	static async check(response: Response, parse = true): Promise<Response> {
 		if (response.ok) return response
-		// @ts-ignore
+		// @ts-expect-error Use `this` to allow extending this class
 		const error = new this(response)
 		if (parse) {
-			// @ts-ignore
-			await error.parse()
+			await (error.parse as () => Promise<void>)()
 		}
 		throw error
 	}

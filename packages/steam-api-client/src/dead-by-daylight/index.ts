@@ -24,13 +24,13 @@ export class DeadByDaylight {
 			steamid,
 		)
 		const stats = raw.playerstats.stats.reduce((stats, { name, value }) => {
-			// @ts-ignore
+			// @ts-expect-error TypeScript doesn't know the shape of stats
 			stats[name] = value
 			return stats
 		}, {}) as UserStats
 		const achievements = raw.playerstats.achievements.reduce(
 			(achievements, { name, achieved }) => {
-				// @ts-ignore
+				// @ts-expect-error TypeScript doesn't know the shape of achievements
 				achievements[name] = !!achieved
 				return achievements
 			},

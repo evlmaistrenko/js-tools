@@ -2,7 +2,7 @@
 
 [![NPM Version](https://img.shields.io/npm/v/%40evlmaistrenko%2Ftools-steam-api-client)](https://www.npmjs.com/package/@evlmaistrenko/tools-steam-api-client)
 
-Nicely typed [Steam API](https://steamcommunity.com/dev) client for Javascript.
+[Steam API](https://steamcommunity.com/dev) client for Javascript.
 
 ## Usage
 
@@ -30,4 +30,4 @@ const steamId = await openId.getSteamUrl("<return url>");
 
 ## Api docs
 
-See [here](./docs/README.md).
+- [Typedoc](https://evlmaistrenko.github.io/js-tools/steam-api-client/typedoc/).
