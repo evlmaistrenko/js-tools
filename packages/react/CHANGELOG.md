@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/evlmaistrenko/js-tools/compare/tools-react-v1.0.2...tools-react-v1.1.0) (2025-06-11)
+
+
+### Features
+
+* add @evlmaistrenko/tools-antd package with initial components and Storybook setup ([0707b1d](https://github.com/evlmaistrenko/js-tools/commit/0707b1db7ad7e915efeb75d2a41fdd0030e595b5))
+
 ## [1.0.2](https://github.com/evlmaistrenko/js-tools/compare/tools-react-v1.0.1...tools-react-v1.0.2) (2025-06-11)
 
 
