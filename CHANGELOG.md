@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.11.0](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.10.0...tools-v1.11.0) (2025-06-11)
+
+
+### Features
+
+* add @evlmaistrenko/tools-antd package with initial components and Storybook setup ([0707b1d](https://github.com/evlmaistrenko/js-tools/commit/0707b1db7ad7e915efeb75d2a41fdd0030e595b5))
+
+
+### Bug Fixes
+
+* update icon rendering logic in IconGallery for consistent key usage ([8a7b126](https://github.com/evlmaistrenko/js-tools/commit/8a7b12601486cf9aec43b33e8bada9fa75c52328))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @evlmaistrenko/tools-react bumped from 1.0.2 to 1.1.0
+
 ## [1.10.0](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.9.1...tools-v1.10.0) (2025-06-11)
 
 
