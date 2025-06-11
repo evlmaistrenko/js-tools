@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.9.1](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.9.0...tools-v1.9.1) (2025-06-11)
+
+
+### Bug Fixes
+
+* dependencies added to root package ([da3f26a](https://github.com/evlmaistrenko/js-tools/commit/da3f26a55170ff529f0d97d428a6cdc3a89e6096))
+* update Playwright image version to v1.53.0 ([ad00df3](https://github.com/evlmaistrenko/js-tools/commit/ad00df3c51a0b0ce2be1f7d96e1c60a342caf75d))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @evlmaistrenko/tools-fetch bumped from 1.2.1 to 1.2.2
+    * @evlmaistrenko/tools-mongomq bumped from 1.2.1 to 1.2.2
+    * @evlmaistrenko/tools-steam-api-client bumped from 1.4.2 to 1.4.3
+    * @evlmaistrenko/tools-dom bumped from 1.1.1 to 1.1.2
+    * @evlmaistrenko/tools-react bumped from 1.0.1 to 1.0.2
+
 ## [1.9.0](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.8.3...tools-v1.9.0) (2025-06-08)
 
 

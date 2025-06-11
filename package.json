@@ -1,6 +1,6 @@
 {
 	"name": "@evlmaistrenko/tools",
-	"version": "1.9.0",
+	"version": "1.9.1",
 	"description": "Javascript tools, utilities and react-components library.",
 	"exports": {
 		"./dom": "./exports/dom.js",
@@ -42,13 +42,15 @@
 	},
 	"homepage": "https://github.com/evlmaistrenko/js-tools#readme",
 	"type": "module",
-	"workspaces": ["packages/*"],
+	"workspaces": [
+		"packages/*"
+	],
 	"dependencies": {
-		"@evlmaistrenko/tools-fetch": "1.2.1",
-		"@evlmaistrenko/tools-mongomq": "1.2.1",
-		"@evlmaistrenko/tools-steam-api-client": "1.4.2",
-		"@evlmaistrenko/tools-dom": "1.1.1",
-		"@evlmaistrenko/tools-react": "1.0.1"
+		"@evlmaistrenko/tools-fetch": "1.2.2",
+		"@evlmaistrenko/tools-mongomq": "1.2.2",
+		"@evlmaistrenko/tools-steam-api-client": "1.4.3",
+		"@evlmaistrenko/tools-dom": "1.1.2",
+		"@evlmaistrenko/tools-react": "1.0.2"
 	},
 	"peerDependencies": {
 		"mongodb": "^6.11.0",
