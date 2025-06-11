@@ -7,6 +7,7 @@
 	"scripts": {
 		"build": "tsc",
 		"docs": "typedoc",
+		"prepack": "node ../../utils/cp.js ../../.npmignore .",
 		"pretest": "npm run build",
 		"test": "node --test"
 	},
@@ -15,12 +16,7 @@
 		"url": "git+https://github.com/evlmaistrenko/js-tools.git",
 		"directory": "./packages/fetch/"
 	},
-	"keywords": [
-		"fetch",
-		"fetchApi",
-		"fetch-error",
-		"response-error"
-	],
+	"keywords": ["fetch", "fetchApi", "fetch-error", "response-error"],
 	"author": "evlmaistrenko <evlmaistrenko@gmail.com>",
 	"license": "MIT",
 	"bugs": {

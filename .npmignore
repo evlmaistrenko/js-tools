@@ -2,6 +2,8 @@
 .husky/
 docs/
 node_modules/
+packages/
+utils/
 .prettierignore
 .release-please-manifest.json
 commitlint.config.js
@@ -9,7 +11,6 @@ eslint.config.js
 lint-staged.config.js
 prettier.config.js
 release-please-config.json
-
 .storybook/
 .env
 !dist/
