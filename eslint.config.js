@@ -25,7 +25,7 @@ export default tseslint.config(
 	},
 	{
 		extends: [js.configs.recommended, ...tseslint.configs.recommended],
-		files: ["./packages/react/**/*.{ts,tsx}"],
+		files: ["./packages/antd/**/*.{ts,tsx}", "./packages/react/**/*.{ts,tsx}"],
 		languageOptions: {
 			ecmaVersion: 2025,
 			globals: globals.browser,
