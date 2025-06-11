@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.11.1](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.11.0...tools-v1.11.1) (2025-06-11)
+
+
+### Bug Fixes
+
+* update CHANGELOG.md links in Introduction.mdx files for antd and react packages ([968ba18](https://github.com/evlmaistrenko/js-tools/commit/968ba184d7ad2b190f6644595fedbeeabc5c019d))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @evlmaistrenko/tools-antd bumped from 1.0.0 to 1.0.1
+    * @evlmaistrenko/tools-react bumped from 1.1.0 to 1.1.1
+
 ## [1.11.0](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.10.0...tools-v1.11.0) (2025-06-11)
 
 
