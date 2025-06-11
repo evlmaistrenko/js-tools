@@ -1,41 +1,46 @@
 {
-	"name": "@evlmaistrenko/tools-react",
+	"name": "@evlmaistrenko/tools-antd",
 	"type": "module",
-	"version": "1.0.2",
-	"description": "Useful react-components.",
+	"version": "1.0.0",
+	"description": "React-components based on Ant Design.",
 	"main": "dist/index.js",
 	"scripts": {
 		"build": "tsc -b && vite build",
 		"dev:tcm": "tcm -w src",
-		"dev:storybook": "storybook dev -p 6007",
+		"dev:storybook": "storybook dev -p 6006",
 		"dev": "concurrently npm:dev:*",
 		"docs": "concurrently npm:docs:*",
-		"docs:storybook": "storybook build -o ../../docs/react/storybook",
+		"docs:storybook": "storybook build -o ../../docs/antd/storybook",
 		"docs:typedoc": "typedoc",
 		"prepack": "node ../../utils/cp.js ../../.npmignore .",
-		"test": "vitest --run",
-		"test:docs": "storybook build -o ../../docs/test/react/storybook"
+		"test.backup": "vitest --run",
+		"test:docs": "storybook build -o ../../docs/test/antd/storybook"
 	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/evlmaistrenko/js-tools.git",
-		"directory": "./packages/react/"
+		"directory": "./packages/antd/"
 	},
-	"keywords": ["react", "react-components"],
+	"keywords": ["antd", "react-components"],
 	"author": "evlmaistrenko <evlmaistrenko@gmail.com>",
 	"license": "MIT",
 	"bugs": {
 		"url": "https://github.com/evlmaistrenko/js-tools/issues"
 	},
-	"homepage": "https://github.com/evlmaistrenko/js-tools/blob/master/packages/react/README.md",
+	"homepage": "https://github.com/evlmaistrenko/js-tools/blob/master/packages/antd/README.md",
 	"dependencies": {
 		"classnames": "^2.5.1"
 	},
 	"peerDependencies": {
+		"@ant-design/icons": "^6.0.0",
+		"antd": "^5.26.0",
 		"react": "^19.1.0",
 		"react-dom": "^19.1.0"
 	},
 	"eslintConfig": {
 		"extends": ["plugin:storybook/recommended"]
+	},
+	"devDependencies": {
+		"@ant-design/v5-patch-for-react-19": "^1.0.3"
 	}
 }

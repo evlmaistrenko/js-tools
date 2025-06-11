@@ -19,6 +19,7 @@ jobs:
       MONGODB_URL: ${{secrets.MONGODB_URL}}
       STEAM_API_CLIENT_KEY: ${{secrets.STEAM_API_CLIENT_KEY}}
       STEAM_API_CLIENT_SIGNED_URL: ${{secrets.STEAM_API_CLIENT_SIGNED_URL}}
+      ANTD_STORYBOOK_URL: https://evlmaistrenko.github.io/js-tools/${{ github.sha }}/antd/storybook
       REACT_STORYBOOK_URL: https://evlmaistrenko.github.io/js-tools/${{ github.sha }}/react/storybook
     steps:
       - name: Get pull request
@@ -67,6 +68,7 @@ jobs:
         if: steps.pr.outputs.skip != 'true'
         run: |
           npm run lint
+          npx -y wait-on https://evlmaistrenko.github.io/js-tools/${{ github.sha }}/antd/storybook --timeout 300000 --log
           npx -y wait-on https://evlmaistrenko.github.io/js-tools/${{ github.sha }}/react/storybook --timeout 300000 --log
           npm test
   release-please:

@@ -1,0 +1,44 @@
+import {
+  Meta,
+  IconGallery,
+  IconItem,
+  CodeOrSourceMdx,
+} from "@storybook/addon-docs/blocks";
+
+import * as icons from ".";
+import { Typography } from "antd";
+
+<Meta title="Icons" />
+
+# Icons.
+
+Some icons witch Ant Design does not have yet.
+
+## Usage.
+
+```javascript
+import { TelegramFilled } from "@evlmaistrenko/js-tools-antd/icons";
+import { Button } from "antd";
+
+// Anywhere you want:
+<TelegramFilled />;
+
+// Or i.e. in Button:
+<Button icon={<TelegramFilled />} />;
+```
+
+## Variants.
+
+<IconGallery>
+  {Object.values(icons).map((Icon) => (
+    <div style={{ textAlign: "center", margin: "1em" }}>
+      <div style={{ fontSize: "1.8em", marginBottom: "0.2em" }}>
+        <Icon />
+      </div>
+      <Typography.Paragraph
+        code
+        copyable
+      >{`<${Icon.name} />`}</Typography.Paragraph>
+    </div>
+  ))}
+</IconGallery>

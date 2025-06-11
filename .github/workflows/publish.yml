@@ -64,5 +64,8 @@ jobs:
       - name: Publish react package
         continue-on-error: true
         run: npm publish -w packages/react --access=public
+      - name: Publish antd package
+        continue-on-error: true
+        run: npm publish -w packages/antd --access=public
       - name: Publish tools package
         run: npm publish --access=public

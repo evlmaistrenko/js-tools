@@ -19,8 +19,7 @@ export default defineWorkspace([
 			// See options at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon#storybooktest
 			storybookTest({
 				configDir: path.join(dirname, ".storybook"),
-				storybookUrl:
-					process.env.REACT_STORYBOOK_URL ?? "http://localhost:6007",
+				storybookUrl: process.env.ANTD_STORYBOOK_URL ?? "http://localhost:6006",
 			}),
 		],
 		test: {

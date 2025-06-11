@@ -18,6 +18,9 @@
 		},
 		"packages/react": {
 			"release-type": "node"
+		},
+		"packages/antd": {
+			"release-type": "node"
 		}
 	},
 	"plugins": [
