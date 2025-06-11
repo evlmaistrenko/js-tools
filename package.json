@@ -1,6 +1,6 @@
 {
 	"name": "@evlmaistrenko/tools",
-	"version": "1.11.0",
+	"version": "1.11.1",
 	"description": "Javascript tools, utilities and react-components library.",
 	"exports": {
 		"./antd": "./exports/antd.js",
@@ -47,12 +47,12 @@
 		"packages/*"
 	],
 	"dependencies": {
-		"@evlmaistrenko/tools-antd": "1.0.0",
+		"@evlmaistrenko/tools-antd": "1.0.1",
 		"@evlmaistrenko/tools-fetch": "1.2.2",
 		"@evlmaistrenko/tools-mongomq": "1.2.2",
 		"@evlmaistrenko/tools-steam-api-client": "1.5.0",
 		"@evlmaistrenko/tools-dom": "1.1.2",
-		"@evlmaistrenko/tools-react": "1.1.0"
+		"@evlmaistrenko/tools-react": "1.1.1"
 	},
 	"peerDependencies": {
 		"@ant-design/icons": "^6.0.0",
