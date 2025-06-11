@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.2](https://github.com/evlmaistrenko/js-tools/compare/tools-dom-v1.1.1...tools-dom-v1.1.2) (2025-06-11)
+
+
+### Bug Fixes
+
+* dependencies added to root package ([da3f26a](https://github.com/evlmaistrenko/js-tools/commit/da3f26a55170ff529f0d97d428a6cdc3a89e6096))
+
 ## [1.1.1](https://github.com/evlmaistrenko/js-tools/compare/tools-dom-v1.1.0...tools-dom-v1.1.1) (2025-06-08)
 
 

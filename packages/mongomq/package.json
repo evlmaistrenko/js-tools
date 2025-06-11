@@ -1,7 +1,7 @@
 {
 	"name": "@evlmaistrenko/tools-mongomq",
 	"type": "module",
-	"version": "1.2.1",
+	"version": "1.2.2",
 	"engines": {
 		"node": ">=15.0.0"
 	},
@@ -19,7 +19,10 @@
 		"url": "git+https://github.com/evlmaistrenko/js-tools.git",
 		"directory": "./packages/mongomq/"
 	},
-	"keywords": ["mq", "mongomq"],
+	"keywords": [
+		"mq",
+		"mongomq"
+	],
 	"author": "evlmaistrenko <evlmaistrenko@gmail.com>",
 	"license": "MIT",
 	"bugs": {
