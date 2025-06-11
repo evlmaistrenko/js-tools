@@ -24,3 +24,4 @@ domTools.change(input, "new value");
 ## Api docs
 
 - [Typedoc](https://evlmaistrenko.github.io/js-tools/dom/typedoc/)
+- [CHANGELOG.md](./CHANGELOG.md)

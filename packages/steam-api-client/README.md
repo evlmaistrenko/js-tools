@@ -30,4 +30,5 @@ const steamId = await openId.getSteamUrl("<return url>");
 
 ## Api docs
 
-- [Typedoc](https://evlmaistrenko.github.io/js-tools/steam-api-client/typedoc/).
+- [Typedoc](https://evlmaistrenko.github.io/js-tools/steam-api-client/typedoc/)
+- [CHANGELOG.md](./CHANGELOG.md)

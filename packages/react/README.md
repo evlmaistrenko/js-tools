@@ -20,3 +20,4 @@ const withOverlay = <WithOverlay />;
 
 - [Typedoc](https://evlmaistrenko.github.io/js-tools/react/typedoc/)
 - [Storybook](https://evlmaistrenko.github.io/js-tools/react/storybook/)
+- [CHANGELOG.md](./CHANGELOG.md)

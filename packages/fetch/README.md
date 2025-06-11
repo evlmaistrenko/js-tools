@@ -45,3 +45,4 @@ class MyResponseError extends fetchTools.ResponseErrorBase<{
 ## Api docs
 
 - [Typedoc](https://evlmaistrenko.github.io/js-tools/fetch/typedoc/)
+- [CHANGELOG.md](./CHANGELOG.md)

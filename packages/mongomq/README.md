@@ -65,3 +65,4 @@ for await (let consume of queue.messages(5))
 ## Api docs
 
 - [Typedoc](https://evlmaistrenko.github.io/js-tools/mongomq/typedoc/)
+- [CHANGELOG.md](./CHANGELOG.md)

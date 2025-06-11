@@ -20,3 +20,4 @@ const telegramOutlined = <TelegramOutlined />;
 
 - [Typedoc](https://evlmaistrenko.github.io/js-tools/antd/typedoc/)
 - [Storybook](https://evlmaistrenko.github.io/js-tools/antd/storybook/)
+- [CHANGELOG.md](./CHANGELOG.md)
