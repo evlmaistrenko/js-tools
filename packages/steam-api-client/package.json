@@ -9,18 +9,14 @@
 		"docs": "typedoc",
 		"prepack": "node ../../utils/cp.js ../../.npmignore .",
 		"pretest": "npm run build",
-		"test.backup": "node --test"
+		"test": "node --test"
 	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/evlmaistrenko/js-tools.git",
 		"directory": "./packages/steam-api-client/"
 	},
-	"keywords": [
-		"steam",
-		"api",
-		"steam-api-client"
-	],
+	"keywords": ["steam", "api", "steam-api-client"],
 	"author": "evlmaistrenko <evlmaistrenko@gmail.com>",
 	"license": "MIT",
 	"bugs": {
