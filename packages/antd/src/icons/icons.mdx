@@ -30,15 +30,14 @@ import { Button } from "antd";
 ## Variants.
 
 <IconGallery>
-  {Object.values(icons).map((Icon) => (
-    <div style={{ textAlign: "center", margin: "1em" }}>
+  {Object.entries(icons).map(([iconName, Icon]) => (
+    <div key={iconName} style={{ textAlign: "center", margin: "1em" }}>
       <div style={{ fontSize: "1.8em", marginBottom: "0.2em" }}>
         <Icon />
       </div>
-      <Typography.Paragraph
-        code
-        copyable
-      >{`<${Icon.name} />`}</Typography.Paragraph>
+      <Typography.Paragraph code copyable>
+        {`<${iconName} />`}
+      </Typography.Paragraph>
     </div>
   ))}
 </IconGallery>
