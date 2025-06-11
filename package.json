@@ -1,6 +1,6 @@
 {
 	"name": "@evlmaistrenko/tools",
-	"version": "1.9.1",
+	"version": "1.10.0",
 	"description": "Javascript tools, utilities and react-components library.",
 	"exports": {
 		"./dom": "./exports/dom.js",
@@ -48,7 +48,7 @@
 	"dependencies": {
 		"@evlmaistrenko/tools-fetch": "1.2.2",
 		"@evlmaistrenko/tools-mongomq": "1.2.2",
-		"@evlmaistrenko/tools-steam-api-client": "1.4.3",
+		"@evlmaistrenko/tools-steam-api-client": "1.5.0",
 		"@evlmaistrenko/tools-dom": "1.1.2",
 		"@evlmaistrenko/tools-react": "1.0.2"
 	},

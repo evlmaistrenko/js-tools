@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://github.com/evlmaistrenko/js-tools/compare/tools-steam-api-client-v1.4.3...tools-steam-api-client-v1.5.0) (2025-06-11)
+
+
+### Features
+
+* add retry logic for API calls in tests and clean up package.json ([9bf5ae5](https://github.com/evlmaistrenko/js-tools/commit/9bf5ae555eee80b9ba70560e4da861282dae4eab))
+
 ## [1.4.3](https://github.com/evlmaistrenko/js-tools/compare/tools-steam-api-client-v1.4.2...tools-steam-api-client-v1.4.3) (2025-06-11)
 
 
