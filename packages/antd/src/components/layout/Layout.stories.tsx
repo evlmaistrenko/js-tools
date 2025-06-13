@@ -140,7 +140,7 @@ export const WithOnlyPage: Story = {
 		mainChildren: (
 			<Page
 				header={pageHeader}
-				centered
+				centered="content-only"
 			/>
 		),
 	}),
