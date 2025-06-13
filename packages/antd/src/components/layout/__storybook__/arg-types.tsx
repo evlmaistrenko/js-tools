@@ -57,4 +57,7 @@ export const argTypes: Partial<ArgTypes<LayoutProps>> = {
 			},
 		},
 	},
+	onSidebarsOverlayClick: {
+		control: false,
+	},
 }

@@ -1,10 +1,12 @@
+import type { WithOverlayProps } from "@evlmaistrenko/tools-react"
 import type {
 	ElementType,
 	ForwardRefExoticComponent,
 	HTMLAttributes,
+	MouseEventHandler,
 	RefAttributes,
 } from "react"
-import { forwardRef, useCallback, useEffect, useState } from "react"
+import { forwardRef, useCallback, useEffect, useMemo, useState } from "react"
 
 import { Layout as AntdLayout, FloatButton } from "antd"
 import classNames from "classnames"
@@ -30,6 +32,7 @@ export interface LayoutProps
 	scrollParent?: HTMLElement
 	/** Whether to render `FloatBButton.BackTop`. */
 	backTop?: boolean
+	onSidebarsOverlayClick?: MouseEventHandler<HTMLDivElement>
 }
 
 export type LayoutComponent = ForwardRefExoticComponent<
@@ -63,6 +66,7 @@ export const Layout: LayoutComponent = forwardRef<HTMLElement, LayoutProps>(
 			direction = "ltr",
 			scrollParent,
 			backTop = true,
+			onSidebarsOverlayClick,
 			...props
 		},
 		ref,
@@ -121,6 +125,11 @@ export const Layout: LayoutComponent = forwardRef<HTMLElement, LayoutProps>(
 			overflowedSidebar,
 		])
 
+		const sidebarsOverlayProps: WithOverlayProps["overlayProps"] = useMemo(
+			() => ({ onClick: onSidebarsOverlayClick }),
+			[onSidebarsOverlayClick],
+		)
+
 		return (
 			<AntdLayout
 				ref={ref}
@@ -142,7 +151,10 @@ export const Layout: LayoutComponent = forwardRef<HTMLElement, LayoutProps>(
 						<Sidebar
 							{...primarySidebar}
 							sticky={primarySidebarSticky}
-							overlaid={overflowedSidebar === "secondary"}
+							withOverlayProps={{
+								overlaid: overflowedSidebar === "secondary",
+								overlayProps: sidebarsOverlayProps,
+							}}
 							setOverflowed={setPrimarySidebarOverflowed}
 							containerProps={{
 								...primarySidebar.containerProps,
@@ -157,6 +169,7 @@ export const Layout: LayoutComponent = forwardRef<HTMLElement, LayoutProps>(
 					<WithOverlay
 						overlaid={overflowedSidebars.length > 0}
 						className={classNames(classes.main)}
+						overlayProps={sidebarsOverlayProps}
 					>
 						<AntdLayout className={classes.mainLayout}>
 							<MainComponent
@@ -169,7 +182,10 @@ export const Layout: LayoutComponent = forwardRef<HTMLElement, LayoutProps>(
 						<Sidebar
 							{...secondarySidebar}
 							sticky={secondarySidebarSticky}
-							overlaid={overflowedSidebar === "primary"}
+							withOverlayProps={{
+								overlaid: overflowedSidebar === "primary",
+								overlayProps: sidebarsOverlayProps,
+							}}
 							setOverflowed={setSecondarySidebarOverflowed}
 							containerProps={{
 								...secondarySidebar.containerProps,

@@ -1,3 +1,4 @@
+import type { WithOverlayProps } from "@evlmaistrenko/tools-react"
 import type { ComponentProps, FC } from "react"
 import { useEffect, useRef } from "react"
 
@@ -14,9 +15,9 @@ export interface LayoutSidebarProps extends ComponentProps<"aside"> {
 export const Sidebar: FC<
 	LayoutSidebarProps & {
 		setOverflowed?: (overflowed: boolean) => void
-		overlaid?: boolean
+		withOverlayProps?: WithOverlayProps
 	}
-> = ({ sticky, containerProps, setOverflowed, overlaid, ...props }) => {
+> = ({ sticky, containerProps, setOverflowed, withOverlayProps, ...props }) => {
 	const ref = useRef<HTMLDivElement>(null)
 
 	useEffect(() => {
@@ -51,13 +52,13 @@ export const Sidebar: FC<
 				classes.sidebar,
 				{
 					[classes.sticky]: sticky,
-					[classes.overlaid]: overlaid,
+					[classes.overlaid]: withOverlayProps?.overlaid,
 				},
 				containerProps?.className,
 			)}
 		>
 			<aside {...props}>
-				<WithOverlay overlaid={overlaid}>
+				<WithOverlay {...withOverlayProps}>
 					<div>{props.children}</div>
 				</WithOverlay>
 			</aside>

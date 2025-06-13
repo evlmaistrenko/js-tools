@@ -27,12 +27,17 @@ const meta = {
 			control: false,
 			table: {
 				type: {
-					summary: '"true" | "content-only"',
+					summary: 'true | "content-only"',
 				},
 			},
 		},
 		component: {
 			control: false,
+			table: {
+				type: {
+					summary: "React.ElementType",
+				},
+			},
 		},
 	},
 	decorators: [

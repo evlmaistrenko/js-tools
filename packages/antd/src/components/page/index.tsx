@@ -1,33 +1,38 @@
-import React from "react"
+import {
+	type ElementType,
+	type HTMLAttributes,
+	type ReactNode,
+	useMemo,
+} from "react"
 
 import { Empty } from "antd"
 import classNames from "classnames"
 
 import classes from "./styles.module.css"
 
-export interface LayoutPageProps extends React.HTMLAttributes<HTMLElement> {
+export interface PageProps extends HTMLAttributes<HTMLElement> {
 	/** Structured header or custom `ReactNode`. */
 	header?:
-		| { title: React.ReactNode; breadcrumbs?: React.ReactNode }
-		| { title?: React.ReactNode; breadcrumbs: React.ReactNode }
+		| { title: ReactNode; breadcrumbs?: ReactNode }
+		| { title?: ReactNode; breadcrumbs: ReactNode }
 		| React.ReactNode
 	/** Whether to center content. */
 	centered?: boolean | "content-only"
 	/** Custom root element. */
-	component?: React.ElementType
+	component?: ElementType
 }
 
 /**
  * Page container with title, breadcrumbs or custom header. Content could be centered i.e. for page with
  * login form.
  */
-export const Page: React.FC<LayoutPageProps> = ({
+export const Page: React.FC<PageProps> = ({
 	header,
 	centered,
 	component: Component = "section",
 	...props
 }) => {
-	const headerNode = React.useMemo(() => {
+	const headerNode = useMemo(() => {
 		if (
 			typeof header === "object" &&
 			header !== null &&
@@ -69,5 +74,3 @@ export const Page: React.FC<LayoutPageProps> = ({
 		</Component>
 	)
 }
-
-Page.displayName = "Layout.Page"
