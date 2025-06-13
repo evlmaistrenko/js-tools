@@ -21,10 +21,7 @@
 		"url": "git+https://github.com/evlmaistrenko/js-tools.git",
 		"directory": "./packages/antd/"
 	},
-	"keywords": [
-		"antd",
-		"react-components"
-	],
+	"keywords": ["antd", "react-components"],
 	"author": "evlmaistrenko <evlmaistrenko@gmail.com>",
 	"license": "MIT",
 	"bugs": {
@@ -32,6 +29,7 @@
 	},
 	"homepage": "https://github.com/evlmaistrenko/js-tools/blob/master/packages/antd/README.md",
 	"dependencies": {
+		"@evlmaistrenko/tools-react": "^1.1.1",
 		"classnames": "^2.5.1"
 	},
 	"peerDependencies": {
@@ -41,9 +39,7 @@
 		"react-dom": "^19.1.0"
 	},
 	"eslintConfig": {
-		"extends": [
-			"plugin:storybook/recommended"
-		]
+		"extends": ["plugin:storybook/recommended"]
 	},
 	"devDependencies": {
 		"@ant-design/v5-patch-for-react-19": "^1.0.3"

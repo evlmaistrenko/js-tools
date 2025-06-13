@@ -1,0 +1,124 @@
+.layout,
+.layout * {
+  scrollbar-width: thin;
+  scrollbar-color: var(--ant-layout-body-bg) var(--ant-color-bg-container);
+}
+.layout {
+  min-width: 300px;
+  min-height: var(--evlmaistrenko-tools-antd--layout-height, 100vh);
+  --evlmaistrenko-tools-antd--layout-padding-horizontal: var(--ant-padding-xs);
+  --evlmaistrenko-tools-antd--layout-padding-vertical: var(--ant-padding-xs);
+}
+
+.header {
+  background: var(--ant-color-bg-container);
+  padding-left: var(--evlmaistrenko-tools-antd--layout-padding-horizontal);
+  padding-right: var(--evlmaistrenko-tools-antd--layout-padding-horizontal);
+  position: relative;
+  top: 0;
+  z-index: 3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header.sticky {
+  position: sticky;
+}
+
+.body {
+  position: relative;
+  flex-direction: row;
+}
+.body.rtl {
+  direction: rtl;
+}
+
+.sidebar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  background: var(--ant-color-bg-container);
+  overflow: visible;
+}
+.sidebar > aside {
+  width: 100%;
+  height: 100%;
+  background: var(--ant-color-bg-container);
+  transition: width 200ms ease-in-out;
+}
+.sidebar > aside > div {
+  height: 100%;
+}
+.sidebar > aside > div > div {
+  height: 100%;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+}
+.sidebar.overlaid > aside > div > div {
+  overflow-y: hidden;
+}
+.sidebar.sticky {
+  position: sticky;
+  top: 0;
+  max-height: var(--evlmaistrenko-tools-antd--layout-height, 100vh);
+}
+.header.sticky + .body > .sidebar.sticky {
+  top: var(--ant-layout-header-height);
+  max-height: calc(
+    var(--evlmaistrenko-tools-antd--layout-height, 100vh) -
+      var(--ant-layout-header-height)
+  );
+}
+.sidebarPrimary {
+  max-width: 20%;
+}
+.sidebarPrimary > aside > div {
+  padding-top: var(--evlmaistrenko-tools-antd--layout-padding-vertical);
+  padding-bottom: var(--evlmaistrenko-tools-antd--layout-padding-vertical);
+}
+.sidebarPrimary.ltr > aside {
+  align-self: flex-start;
+}
+.sidebarPrimary.rtl > aside {
+  align-self: flex-end;
+}
+.sidebarSecondary {
+  max-width: 30%;
+}
+.sidebarSecondary.ltr > aside {
+  align-self: flex-end;
+}
+.sidebarSecondary.rtl > aside {
+  align-self: flex-start;
+}
+.sidebarSecondary > aside > div {
+  padding: var(--evlmaistrenko-tools-antd--layout-padding-vertical)
+    var(--evlmaistrenko-tools-antd--layout-padding-horizontal);
+}
+.sidebar :global(.ant-menu.ant-menu-root) {
+  width: auto;
+  border-inline-end: none;
+}
+
+.main {
+  padding: var(--evlmaistrenko-tools-antd--layout-padding-vertical)
+    var(--evlmaistrenko-tools-antd--layout-padding-horizontal);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+}
+.mainLayout {
+  width: 100%;
+}
+.mainLayoutInner {
+  display: flex;
+  flex-grow: 1;
+}
+
+.footer {
+  background: var(--ant-color-bg-container);
+  padding: var(--evlmaistrenko-tools-antd--layout-padding-vertical)
+    var(--evlmaistrenko-tools-antd--layout-padding-horizontal);
+}

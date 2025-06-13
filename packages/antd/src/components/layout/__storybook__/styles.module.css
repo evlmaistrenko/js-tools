@@ -1,0 +1,8 @@
+.scrollParent {
+  scrollbar-width: thin;
+  scrollbar-color: var(--ant-layout-body-bg) var(--ant-color-bg-container);
+  height: 600px;
+  overflow: auto;
+  --evlmaistrenko-tools-antd--layout-height: 600px;
+  display: block;
+}
