@@ -30,7 +30,7 @@ export interface LayoutProps
 	direction?: "ltr" | "rtl"
 	/** Using for disable scrolling when sidebars overflowed horizontally and for `FloatBButton.BackTop`. */
 	scrollParent?: HTMLElement
-	/** Whether to render `FloatBButton.BackTop`. */
+	/** Whether to render `FloatButton.BackTop`. */
 	backTop?: boolean
 	onSidebarsOverlayClick?: MouseEventHandler<HTMLDivElement>
 }

@@ -75,6 +75,8 @@ export const primarySidebarCompact = {
 						"0 var(--evlmaistrenko-tools-antd--layout-padding-horizontal)",
 					textAlign: "center",
 				}}
+				title="Primary sidebar"
+				ellipsis
 			>
 				Primary sidebar
 			</Typography.Title>

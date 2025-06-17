@@ -6,7 +6,7 @@ export const argTypes: Partial<ArgTypes<LayoutProps>> = {
 	header: {
 		table: {
 			type: {
-				summary: "HTMLAttributes<HTMLElement> & { sticky?: boolean }",
+				summary: "React.HTMLAttributes<HTMLElement> & { sticky?: boolean }",
 			},
 			defaultValue: {
 				summary: "undefined",
@@ -15,6 +15,9 @@ export const argTypes: Partial<ArgTypes<LayoutProps>> = {
 	},
 	primarySidebar: {
 		table: {
+			type: {
+				summary: "React.HTMLAttributes<HTMLElement> & { sticky?: boolean }",
+			},
 			defaultValue: {
 				summary: "undefined",
 			},
@@ -22,6 +25,9 @@ export const argTypes: Partial<ArgTypes<LayoutProps>> = {
 	},
 	secondarySidebar: {
 		table: {
+			type: {
+				summary: "React.HTMLAttributes<HTMLElement> & { sticky?: boolean }",
+			},
 			defaultValue: {
 				summary: "undefined",
 			},
@@ -52,6 +58,9 @@ export const argTypes: Partial<ArgTypes<LayoutProps>> = {
 	scrollParent: {
 		control: false,
 		table: {
+			type: {
+				summary: "HTMLElement",
+			},
 			defaultValue: {
 				summary: "document.documentElement",
 			},

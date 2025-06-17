@@ -10,6 +10,8 @@ export const secondarySidebar = {
 				style={{
 					textAlign: "center",
 				}}
+				title="Secondary sidebar"
+				ellipsis
 			>
 				Secondary sidebar
 			</Typography.Title>

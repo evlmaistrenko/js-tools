@@ -30,7 +30,8 @@
 	"homepage": "https://github.com/evlmaistrenko/js-tools/blob/master/packages/antd/README.md",
 	"dependencies": {
 		"@evlmaistrenko/tools-react": "^1.1.1",
-		"classnames": "^2.5.1"
+		"classnames": "^2.5.1",
+		"lodash": "^4.17.21"
 	},
 	"peerDependencies": {
 		"@ant-design/icons": "^6.0.0",

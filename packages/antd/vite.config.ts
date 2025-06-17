@@ -32,6 +32,7 @@ export default defineConfig({
 				"antd",
 				"@ant-design/icons",
 				"@ant-design/icons/lib/components/Icon",
+				"lodash",
 			],
 		},
 	},
