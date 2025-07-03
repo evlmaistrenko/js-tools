@@ -7,7 +7,7 @@ import {
 
 import { type Breakpoint, type ConfigProviderProps } from "antd"
 
-import type { I18nLocale } from "../../i18n"
+import type { I18nLocales } from "../../i18n"
 import type { LayoutRef } from "../layout"
 
 export interface ApplicationConfigProviderProps extends ConfigProviderProps {
@@ -29,7 +29,7 @@ export interface ApplicationConfigBase {
 }
 
 export interface ApplicationConfig extends ApplicationConfigBase {
-	locale: I18nLocale
+	locale: I18nLocales
 }
 
 export type ApplicationState<

@@ -11,7 +11,9 @@ export const ConfigPage: FC<PageProps> = ({ children, ...props }) => {
 
 	return (
 		<Page
-			header={{ title: <Typography.Title> {t("Settings")}</Typography.Title> }}
+			header={{
+				title: <Typography.Title>{t("Settings")}</Typography.Title>,
+			}}
 			{...props}
 		>
 			<ConfigForm>{children}</ConfigForm>

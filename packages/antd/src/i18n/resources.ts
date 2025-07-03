@@ -1,6 +1,6 @@
-{
+export const i18nResources = {
 	"en-US": {
-		"application": {
+		application: {
 			"Expand menu": "Expand menu",
 			"Collapse menu": "Collapse menu",
 			"Open settings": "Open settings",
@@ -14,11 +14,11 @@
 			"Compact": "Compact",
 			"Dark": "Dark",
 			"Device": "Device",
-			"Light": "Light"
-		}
+			"Light": "Light",
+		},
 	},
 	"kk-KZ": {
-		"application": {
+		application: {
 			"Expand menu": "Мәзірді кеңейту",
 			"Collapse menu": "Мәзірді бүктеу",
 			"Open settings": "Баптауларды ашу",
@@ -32,11 +32,11 @@
 			"Compact": "Ықшам",
 			"Dark": "Қараңғы",
 			"Device": "Құрылғыға сәйкес",
-			"Light": "Жарық"
-		}
+			"Light": "Жарық",
+		},
 	},
 	"ru-RU": {
-		"application": {
+		application: {
 			"Expand menu": "Развернуть меню",
 			"Collapse menu": "Свернуть меню",
 			"Open settings": "Открыть настройки",
@@ -50,7 +50,10 @@
 			"Compact": "Компактная",
 			"Dark": "Тёмная",
 			"Device": "Как на устройстве",
-			"Light": "Светлая"
-		}
-	}
-}
+			"Light": "Светлая",
+		},
+	},
+} as const
+
+export const ns = ["application"]
+export type I18nLocales = keyof typeof i18nResources

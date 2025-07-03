@@ -22,4 +22,3 @@ tsconfig.*.json
 typedoc.json
 vite.config.ts
 vitest.shims.d.ts
-vitest.workspace.ts
