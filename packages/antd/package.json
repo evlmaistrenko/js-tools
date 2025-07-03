@@ -13,7 +13,7 @@
 		"docs:storybook": "storybook build -o ../../docs/antd/storybook",
 		"docs:typedoc": "typedoc",
 		"prepack": "node ../../utils/cp.js ../../.npmignore .",
-		"test.backup": "vitest --run",
+		"test": "vitest --run",
 		"test:docs": "storybook build -o ../../docs/test/antd/storybook"
 	},
 	"repository": {
