@@ -1,34 +1,22 @@
-import type { ArgTypes, Meta, StoryObj } from "@storybook/react-vite"
+import type { Meta, StoryObj } from "@storybook/react-vite"
 
-import { Application, type ApplicationProps } from "."
-import { argTypes as layoutArgTypes } from "../layout/__storybook__/arg-types"
-import { scrollParent } from "../layout/__storybook__/scroll-parent"
+import { Application } from "."
+import { scrollParentDecorator } from "../layout/__storybook__/scroll-parent-decorator"
 import { render } from "./__storybook__/render"
 
-const argTypes: Partial<ArgTypes<ApplicationProps>> = {
-	...layoutArgTypes,
-	initialLayoutSize: {
-		control: false,
-		table: {
-			type: {
-				summary: '"xs" | "sm" | "md" | "lg" | "xl" | "xxl"',
-			},
-		},
-	},
-	initialState: {
-		control: false,
-		table: {
-			type: {
-				summary:
-					'Record<"xs" | "sm" | "md" | "lg" | "xl" | "xxl", { primarySidebarCollapsed: boolean; secondarySidebarCollapsed: boolean }>',
-			},
-		},
-	},
-}
-// @ts-expect-error Not needed
-delete argTypes.onSidebarsOverlayClick
-// @ts-expect-error Not needed
-delete argTypes.direction
+// const argTypes: Partial<ArgTypes<ApplicationProps>> = {
+// 	...layoutArgTypes,
+// 	initialBreakpoint: {
+// 		control: false,
+// 	},
+// 	initialState: {
+// 		control: false,
+// 	},
+// }
+// // @ts-expect-error Not needed
+// delete argTypes.onSidebarsOverlayClick
+// // @ts-expect-error Not needed
+// delete argTypes.direction
 
 const meta = {
 	title: "Components/Application",
@@ -37,9 +25,7 @@ const meta = {
 		layout: "fullscreen",
 	},
 	tags: ["autodocs"],
-	argTypes,
-	render: render(),
-	decorators: [scrollParent],
+	decorators: [scrollParentDecorator],
 } satisfies Meta<typeof Application>
 
 export default meta
@@ -55,5 +41,19 @@ export const Default: Story = {
 		secondarySidebar: { sticky: true },
 		main: { component: "div" },
 	},
+	//@ts-expect-error foobar
 	render: render({ compactMain: false }),
+}
+
+export const ConfigPage: Story = {
+	args: {
+		header: {
+			sticky: true,
+		},
+		primarySidebar: { sticky: true },
+		secondarySidebar: { sticky: true },
+		main: { component: "div" },
+	},
+	//@ts-expect-error foobar
+	render: render({ mainChildren: <Application.ConfigPage /> }),
 }

@@ -8,7 +8,7 @@ import { Page } from "../page"
 import { header as pageHeader } from "../page/__storybook__/args/header"
 import { argTypes } from "./__storybook__/arg-types"
 import { render } from "./__storybook__/render"
-import { scrollParent } from "./__storybook__/scroll-parent"
+import { scrollParentDecorator } from "./__storybook__/scroll-parent-decorator"
 
 const meta = {
 	title: "Components/Layout",
@@ -19,7 +19,7 @@ const meta = {
 	tags: ["autodocs"],
 	argTypes,
 	render: render(),
-	decorators: [scrollParent],
+	decorators: [scrollParentDecorator],
 } satisfies Meta<typeof Layout>
 
 export default meta

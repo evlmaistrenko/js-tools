@@ -55,17 +55,6 @@ export const argTypes: Partial<ArgTypes<LayoutProps>> = {
 			},
 		},
 	},
-	scrollParent: {
-		control: false,
-		table: {
-			type: {
-				summary: "HTMLElement",
-			},
-			defaultValue: {
-				summary: "document.documentElement",
-			},
-		},
-	},
 	onSidebarsOverlayClick: {
 		control: false,
 	},

@@ -1,4 +1,5 @@
 import type { WithOverlayProps } from "@evlmaistrenko/tools-react"
+import { useScrollParent } from "@evlmaistrenko/tools-react"
 import type {
 	ElementType,
 	ForwardRefExoticComponent,
@@ -6,9 +7,16 @@ import type {
 	MouseEventHandler,
 	RefAttributes,
 } from "react"
-import { forwardRef, useCallback, useEffect, useMemo, useState } from "react"
+import {
+	forwardRef,
+	useCallback,
+	useEffect,
+	useMemo,
+	useRef,
+	useState,
+} from "react"
 
-import { Layout as AntdLayout, FloatButton } from "antd"
+import { Layout as AntdLayout, FloatButton, theme } from "antd"
 import classNames from "classnames"
 
 import { WithOverlay } from "../with-overlay"
@@ -28,15 +36,19 @@ export interface LayoutProps
 	secondarySidebar?: LayoutSidebarProps
 	footer?: React.HTMLAttributes<HTMLElement>
 	direction?: "ltr" | "rtl"
-	/** Using for disable scrolling when sidebars overflowed horizontally and for `FloatBButton.BackTop`. */
-	scrollParent?: HTMLElement
 	/** Whether to render `FloatButton.BackTop`. */
 	backTop?: boolean
 	onSidebarsOverlayClick?: MouseEventHandler<HTMLDivElement>
 }
 
+export type LayoutRef = {
+	element: HTMLDivElement | null
+	primarySidebar: { overflowed: boolean }
+	secondarySidebar: { overflowed: boolean }
+}
+
 export type LayoutComponent = ForwardRefExoticComponent<
-	LayoutProps & RefAttributes<HTMLDivElement>
+	LayoutProps & RefAttributes<LayoutRef>
 >
 
 /**
@@ -44,7 +56,7 @@ export type LayoutComponent = ForwardRefExoticComponent<
  *
  * ⚠️ To properly work must be in `ConfigProvider` context with `theme.cssVar: true`.
  */
-export const Layout: LayoutComponent = forwardRef<HTMLElement, LayoutProps>(
+export const Layout: LayoutComponent = forwardRef<LayoutRef, LayoutProps>(
 	(
 		{
 			header,
@@ -64,12 +76,11 @@ export const Layout: LayoutComponent = forwardRef<HTMLElement, LayoutProps>(
 			secondarySidebar: { sticky: secondarySidebarSticky = true } = {},
 			footer,
 			direction = "ltr",
-			scrollParent,
 			backTop = true,
 			onSidebarsOverlayClick,
 			...props
 		},
-		ref,
+		forwardedRef,
 	) => {
 		const [overflowedSidebars, setOverflowedSidebars] = useState<
 			("primary" | "secondary")[]
@@ -102,39 +113,76 @@ export const Layout: LayoutComponent = forwardRef<HTMLElement, LayoutProps>(
 		)
 
 		const overflowedSidebar = overflowedSidebars[overflowedSidebars.length - 1]
-		useEffect(() => {
-			const container = scrollParent ?? document.documentElement
-			if (overflowedSidebar === "primary" && !primarySidebarSticky) return
-			if (overflowedSidebar === "secondary" && !secondarySidebarSticky) return
-			const clean = () => {
-				container.style.setProperty("overflow", "")
-				container.style.setProperty("scrollbar-gutter", "")
-			}
-			if (overflowedSidebars.length > 0) {
-				container.style.setProperty("overflow", "hidden")
-				container.style.setProperty("scrollbar-gutter", "stable")
-			} else {
-				clean()
-			}
-			return clean
-		}, [
-			overflowedSidebars,
-			scrollParent,
-			primarySidebarSticky,
-			secondarySidebarSticky,
-			overflowedSidebar,
-		])
 
 		const sidebarsOverlayProps: WithOverlayProps["overlayProps"] = useMemo(
 			() => ({ onClick: onSidebarsOverlayClick }),
 			[onSidebarsOverlayClick],
 		)
 
+		const [element, setElement] = useState<HTMLElement | null>(null)
+		const wrappedForwardedRef = useRef(forwardedRef)
+		wrappedForwardedRef.current = forwardedRef
+		useEffect(() => {
+			const value: LayoutRef = {
+				element: element as HTMLDivElement | null,
+				primarySidebar: { overflowed: overflowedSidebars.includes("primary") },
+				secondarySidebar: {
+					overflowed: overflowedSidebars.includes("secondary"),
+				},
+			}
+			const ref = wrappedForwardedRef.current
+			if (typeof ref === "function") {
+				ref(value)
+			} else if (ref) {
+				ref.current = value
+			}
+		}, [element, overflowedSidebars])
+
+		const {
+			element: scrollParent,
+			lockScroll,
+			unlockScroll,
+		} = useScrollParent(element, "vertical")
+		const { token } = theme.useToken()
+		useEffect(() => {
+			if (!scrollParent) return
+			const element = scrollParent as HTMLElement
+			if (!element.classList.contains(classes.scrollParent))
+				element.classList.add(classes.scrollParent)
+			element.style.setProperty("--ant-layout-body-bg", token.colorBgLayout)
+			element.style.setProperty(
+				"--ant-color-bg-container",
+				token.colorBgContainer,
+			)
+		})
+
+		useEffect(() => {
+			if (overflowedSidebar === "primary" && !primarySidebarSticky) return
+			if (overflowedSidebar === "secondary" && !secondarySidebarSticky) return
+			if (overflowedSidebars.length > 0) {
+				lockScroll()
+			} else {
+				unlockScroll()
+			}
+			return unlockScroll
+		}, [
+			overflowedSidebars,
+			primarySidebarSticky,
+			secondarySidebarSticky,
+			overflowedSidebar,
+			lockScroll,
+			unlockScroll,
+		])
+
 		return (
 			<AntdLayout
-				ref={ref}
+				ref={setElement}
 				{...props}
-				className={classNames(classes.layout, props.className)}
+				className={classNames(
+					classes.layout,
+					classes[direction],
+					props.className,
+				)}
 			>
 				{!!header && (
 					<AntdLayout.Header
@@ -160,7 +208,6 @@ export const Layout: LayoutComponent = forwardRef<HTMLElement, LayoutProps>(
 								...primarySidebar.containerProps,
 								className: classNames(
 									classes.sidebarPrimary,
-									classes[direction],
 									primarySidebar.containerProps?.className,
 								),
 							}}
@@ -191,7 +238,6 @@ export const Layout: LayoutComponent = forwardRef<HTMLElement, LayoutProps>(
 								...secondarySidebar.containerProps,
 								className: classNames(
 									classes.sidebarSecondary,
-									classes[direction],
 									secondarySidebar.containerProps?.className,
 								),
 							}}
@@ -205,7 +251,13 @@ export const Layout: LayoutComponent = forwardRef<HTMLElement, LayoutProps>(
 					/>
 				)}
 				{!!backTop && !overflowedSidebar && (
-					<FloatButton.BackTop target={() => scrollParent ?? window} />
+					<FloatButton.BackTop
+						target={() =>
+							(scrollParent !== document.documentElement
+								? (scrollParent as HTMLElement)
+								: null) ?? window
+						}
+					/>
 				)}
 			</AntdLayout>
 		)

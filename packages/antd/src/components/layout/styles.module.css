@@ -1,19 +1,31 @@
-.layout,
-.layout * {
+.scrollParent:not(html):not(body),
+.scrollParent * {
   scrollbar-width: thin;
   scrollbar-color: var(--ant-layout-body-bg) var(--ant-color-bg-container);
 }
+html body.scrollParent,
+html.scrollParent body {
+  width: auto;
+}
+.scrollParent :global(.ant-drawer-content-wrapper) {
+  max-width: 70%;
+}
 .layout {
-  min-width: 300px;
-  min-height: var(--evlmaistrenko-tools-antd--layout-height, 100vh);
-  --evlmaistrenko-tools-antd--layout-padding-horizontal: var(--ant-padding-xs);
-  --evlmaistrenko-tools-antd--layout-padding-vertical: var(--ant-padding-xs);
+  min-height: var(--evlta-layout-height, 100vh);
+  --evlta-layout-padding-horizontal: var(--ant-padding-xs);
+  --evlta-layout-padding-vertical: var(--ant-padding-xs);
+}
+.layout.ltr {
+  direction: ltr;
+}
+.layout.rtl {
+  direction: rtl;
 }
 
 .header {
   background: var(--ant-color-bg-container);
-  padding-left: var(--evlmaistrenko-tools-antd--layout-padding-horizontal);
-  padding-right: var(--evlmaistrenko-tools-antd--layout-padding-horizontal);
+  padding-left: var(--evlta-layout-padding-horizontal);
+  padding-right: var(--evlta-layout-padding-horizontal);
   position: relative;
   top: 0;
   z-index: 3;
@@ -45,7 +57,8 @@
   width: 100%;
   height: 100%;
   background: var(--ant-color-bg-container);
-  transition: width 200ms ease-in-out;
+  transition: width var(--ant-motion-duration-slow);
+  overflow: hidden;
 }
 .sidebar > aside > div {
   height: 100%;
@@ -61,40 +74,29 @@
 .sidebar.sticky {
   position: sticky;
   top: 0;
-  max-height: var(--evlmaistrenko-tools-antd--layout-height, 100vh);
+  max-height: var(--evlta-layout-height, 100vh);
 }
 .header.sticky + .body > .sidebar.sticky {
   top: var(--ant-layout-header-height);
   max-height: calc(
-    var(--evlmaistrenko-tools-antd--layout-height, 100vh) -
-      var(--ant-layout-header-height)
+    var(--evlta-layout-height, 100vh) - var(--ant-layout-header-height)
   );
 }
 .sidebarPrimary {
   max-width: 20%;
 }
-.sidebarPrimary > aside > div {
-  padding-top: var(--evlmaistrenko-tools-antd--layout-padding-vertical);
-  padding-bottom: var(--evlmaistrenko-tools-antd--layout-padding-vertical);
-}
-.sidebarPrimary.ltr > aside {
+.sidebarPrimary > aside {
   align-self: flex-start;
 }
-.sidebarPrimary.rtl > aside {
+.sidebarSecondary > aside {
   align-self: flex-end;
 }
 .sidebarSecondary {
   max-width: 30%;
 }
-.sidebarSecondary.ltr > aside {
-  align-self: flex-end;
-}
-.sidebarSecondary.rtl > aside {
-  align-self: flex-start;
-}
-.sidebarSecondary > aside > div {
-  padding: var(--evlmaistrenko-tools-antd--layout-padding-vertical)
-    var(--evlmaistrenko-tools-antd--layout-padding-horizontal);
+.sidebarSecondary > aside > div > div {
+  padding: var(--evlta-layout-padding-vertical)
+    var(--evlta-layout-padding-horizontal);
 }
 .sidebar :global(.ant-menu.ant-menu-root) {
   width: auto;
@@ -102,8 +104,8 @@
 }
 
 .main {
-  padding: var(--evlmaistrenko-tools-antd--layout-padding-vertical)
-    var(--evlmaistrenko-tools-antd--layout-padding-horizontal);
+  padding: var(--evlta-layout-padding-vertical)
+    var(--evlta-layout-padding-horizontal);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -119,6 +121,6 @@
 
 .footer {
   background: var(--ant-color-bg-container);
-  padding: var(--evlmaistrenko-tools-antd--layout-padding-vertical)
-    var(--evlmaistrenko-tools-antd--layout-padding-horizontal);
+  padding: var(--evlta-layout-padding-vertical)
+    var(--evlta-layout-padding-horizontal);
 }

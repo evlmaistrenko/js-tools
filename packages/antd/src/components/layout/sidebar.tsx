@@ -59,7 +59,7 @@ export const Sidebar: FC<
 		>
 			<aside {...props}>
 				<WithOverlay {...withOverlayProps}>
-					<div>{props.children}</div>
+					<div tabIndex={0}>{props.children}</div>
 				</WithOverlay>
 			</aside>
 		</div>

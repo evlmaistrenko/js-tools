@@ -5,42 +5,43 @@ import { throttle } from "lodash"
 
 import { useApplication } from "../context"
 
-export const LayoutSizeSetter: FC<{
-	setter: (value: Breakpoint) => void
-}> = ({ setter }) => {
+export const CurrentBreakpoint: FC<{
+	set: (value: Breakpoint) => void
+}> = ({ set }) => {
 	const { layout } = useApplication()!
 	const { token } = theme.useToken()
 	const tokenRef = useRef(token)
 
 	useEffect(() => {
-		if (!layout) return
+		if (!layout?.element) return
 		const callback = throttle(() => {
 			requestAnimationFrame(() => {
-				const { width } = layout.getBoundingClientRect()
+				if (!layout?.element) return
+				const { width } = layout.element.getBoundingClientRect()
 				const token = tokenRef.current
 				if (width <= token.screenXSMax) {
-					setter("xs")
+					set("xs")
 				} else if (width <= token.screenSMMax) {
-					setter("sm")
+					set("sm")
 				} else if (width <= token.screenMDMax) {
-					setter("md")
+					set("md")
 				} else if (width <= token.screenLGMax) {
-					setter("lg")
+					set("lg")
 				} else if (width <= token.screenXLMax) {
-					setter("xl")
+					set("xl")
 				} else {
-					setter("xxl")
+					set("xxl")
 				}
 			})
 		}, 100)
 		callback()
 		const observer = new ResizeObserver(callback)
-		observer.observe(layout)
+		observer.observe(layout.element)
 		return () => {
 			callback.cancel()
 			observer.disconnect()
 		}
-	}, [layout, setter])
+	}, [layout, set])
 
 	return null
 }

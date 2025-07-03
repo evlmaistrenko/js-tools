@@ -1,4 +1,4 @@
-import type { ReactNode } from "react"
+import { type ReactNode, memo } from "react"
 
 import {
 	AreaChartOutlined,
@@ -13,11 +13,11 @@ import { loremIpsum } from "lorem-ipsum"
 import { TelegramOutlined } from "../../../../icons"
 
 const icons = [
-	<AreaChartOutlined />,
-	<PieChartOutlined />,
-	<BarChartOutlined />,
-	<TelegramOutlined />,
-	<RadarChartOutlined />,
+	memo(() => <AreaChartOutlined />),
+	memo(() => <PieChartOutlined />),
+	memo(() => <BarChartOutlined />),
+	memo(() => <TelegramOutlined />),
+	memo(() => <RadarChartOutlined />),
 ]
 
 function getRandomInt(max: number): number {
@@ -25,7 +25,8 @@ function getRandomInt(max: number): number {
 }
 
 function getRandomIcon(): ReactNode {
-	return icons[getRandomInt(icons.length)]
+	const Icon = icons[getRandomInt(icons.length)]
+	return <Icon />
 }
 
 function getMenuItems(count = 100, prefix = ""): MenuItemType[] {
@@ -33,7 +34,7 @@ function getMenuItems(count = 100, prefix = ""): MenuItemType[] {
 		.map((_, key) => ({
 			key: prefix + key,
 			icon: getRandomIcon(),
-			label: loremIpsum({ units: "words", count: getRandomInt(15) }),
+			label: loremIpsum({ units: "words", count: getRandomInt(8) }),
 			children:
 				prefix === "" && key % 5 === 0 ? getMenuItems(3, key + "_") : undefined,
 		}))
@@ -50,10 +51,11 @@ export const primarySidebar = {
 			<Typography.Title
 				level={5}
 				style={{
-					padding:
-						"0 var(--evlmaistrenko-tools-antd--layout-padding-horizontal)",
+					padding: "0 var(--evlta-layout-padding-horizontal)",
 					textAlign: "center",
 				}}
+				title="Primary sidebar"
+				ellipsis
 			>
 				Primary sidebar
 			</Typography.Title>
@@ -71,8 +73,7 @@ export const primarySidebarCompact = {
 			<Typography.Title
 				level={5}
 				style={{
-					padding:
-						"0 var(--evlmaistrenko-tools-antd--layout-padding-horizontal)",
+					padding: "0 var(--evlta-layout-padding-horizontal)",
 					textAlign: "center",
 				}}
 				title="Primary sidebar"

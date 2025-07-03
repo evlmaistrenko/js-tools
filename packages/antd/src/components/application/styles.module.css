@@ -1,44 +1,45 @@
+.layout.xs {
+  --evlta-layout-padding-horizontal: var(--ant-padding-xs);
+  --evlta-layout-padding-vertical: var(--ant-padding-xs);
+}
+.layout.sm,
+.layout.md,
+.layout.lg,
+.layout.xl,
+.layout.xxl {
+  --evlta-layout-padding-horizontal: var(--ant-padding-sm);
+  --evlta-layout-padding-vertical: var(--ant-padding-sm);
+}
+
 .primarySidebar.xs,
 .primarySidebar.sm {
-  max-width: calc(
-    var(--evlmaistrenko-tools-antd--application-screen-xs-min, 300px) * 0.2
-  );
+  max-width: calc(var(--evlta-application-screen-xs-min, 300px) * 0.2);
 }
 .primarySidebar.xs.collapsed > aside,
 .primarySidebar.sm.collapsed > aside {
-  width: calc(
-    var(--evlmaistrenko-tools-antd--application-screen-xs-min, 300px) * 0.2
-  );
+  width: calc(var(--evlta-application-screen-xs-min, 300px) * 0.2);
 }
 .primarySidebar.xs.expanded > aside,
 .primarySidebar.sm.expanded > aside {
-  width: calc(
-    var(--evlmaistrenko-tools-antd--application-screen-xs-min, 300px) * 0.8
-  );
+  width: calc(var(--evlta-application-screen-xs-min, 300px) * 0.8);
 }
 .primarySidebar.md,
 .primarySidebar.lg,
 .primarySidebar.xl,
 .primarySidebar.xxl {
-  max-width: calc(
-    var(--evlmaistrenko-tools-antd--application-screen-md-min, 768px) * 0.3
-  );
+  max-width: calc(var(--evlta-application-screen-md-min, 768px) * 0.3);
 }
 .primarySidebar.md.collapsed > aside,
 .primarySidebar.lg.collapsed > aside,
 .primarySidebar.xl.collapsed > aside,
 .primarySidebar.xxl.collapsed > aside {
-  width: calc(
-    var(--evlmaistrenko-tools-antd--application-screen-md-min, 768px) * 0.09
-  );
+  width: calc(var(--evlta-application-screen-md-min, 768px) * 0.09);
 }
 .primarySidebar.md.expanded > aside,
 .primarySidebar.lg.expanded > aside,
 .primarySidebar.xl.expanded > aside,
 .primarySidebar.xxl.expanded > aside {
-  width: calc(
-    var(--evlmaistrenko-tools-antd--application-screen-md-min, 768px) * 0.3
-  );
+  width: calc(var(--evlta-application-screen-md-min, 768px) * 0.3);
 }
 
 .secondarySidebar.xs,
@@ -49,19 +50,21 @@
 .secondarySidebar.sm.collapsed > aside {
   width: 0;
 }
-.secondarySidebar.xs.expanded > aside,
-.secondarySidebar.sm.expanded > aside {
-  width: calc(
-    var(--evlmaistrenko-tools-antd--application-screen-xs-min, 300px) * 0.8
-  );
+.secondarySidebar.xs.expanded > aside {
+  width: calc(var(--evlta-application-screen-xs-min, 300px) * 0.9);
 }
-.secondarySidebar.md,
-.secondarySidebar.lg,
+.secondarySidebar.sm.expanded > aside {
+  width: calc(var(--evlta-application-screen-sm-min, 576px) * 0.6);
+}
+.secondarySidebar.md {
+  max-width: calc(var(--evlta-application-screen-md-min, 768px) * 0.4);
+}
+.secondarySidebar.lg {
+  max-width: calc(var(--evlta-application-screen-lg-min, 992px) * 0.4);
+}
 .secondarySidebar.xl,
 .secondarySidebar.xxl {
-  max-width: calc(
-    var(--evlmaistrenko-tools-antd--application-screen-md-min, 768px) * 0.4
-  );
+  max-width: calc(var(--evlta-application-screen-xl-min, 1200px) * 0.4);
 }
 .secondarySidebar.md.collapsed > aside,
 .secondarySidebar.lg.collapsed > aside,
@@ -69,13 +72,15 @@
 .secondarySidebar.xxl.collapsed > aside {
   width: 0;
 }
-.secondarySidebar.md.expanded > aside,
-.secondarySidebar.lg.expanded > aside,
+.secondarySidebar.md.expanded > aside {
+  width: calc(var(--evlta-application-screen-md-min, 768px) * 0.4);
+}
+.secondarySidebar.lg.expanded > aside {
+  width: calc(var(--evlta-application-screen-lg-min, 992px) * 0.4);
+}
 .secondarySidebar.xl.expanded > aside,
 .secondarySidebar.xxl.expanded > aside {
-  width: calc(
-    var(--evlmaistrenko-tools-antd--application-screen-md-min, 768px) * 0.4
-  );
+  width: calc(var(--evlta-application-screen-xl-min, 1200px) * 0.4);
 }
 
 .header {
@@ -97,4 +102,17 @@
   display: flex;
   align-items: center;
   gap: var(--ant-padding-xs, 8px);
+}
+
+.flag {
+  width: 1.2em;
+}
+
+/* .layout :global(.ant-drawer) {
+  overflow: hidden;
+  
+} */
+
+.select {
+  max-width: 15em;
 }

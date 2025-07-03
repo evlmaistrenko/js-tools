@@ -9,6 +9,7 @@ declare const styles: {
 	readonly mainLayoutInner: string
 	readonly overlaid: string
 	readonly rtl: string
+	readonly scrollParent: string
 	readonly sidebar: string
 	readonly sidebarPrimary: string
 	readonly sidebarSecondary: string

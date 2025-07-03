@@ -1,11 +1,11 @@
-import { type FC, useEffect } from "react"
+import { type Dispatch, type FC, type SetStateAction, useEffect } from "react"
 
 import { theme } from "antd"
 import { kebabCase, mapKeys, mapValues } from "lodash"
 
-export const CssVariablesSetter: FC<{
-	setter: (value: Record<string, string>) => void
-}> = ({ setter }) => {
+export const CssVariables: FC<{
+	set: Dispatch<SetStateAction<Record<string, string>>>
+}> = ({ set }) => {
 	const {
 		token: {
 			screenXSMax,
@@ -23,7 +23,7 @@ export const CssVariablesSetter: FC<{
 	const screenXSMin = 300
 
 	useEffect(() => {
-		setter(
+		set(
 			mapValues(
 				mapKeys(
 					{
@@ -39,14 +39,13 @@ export const CssVariablesSetter: FC<{
 						screenXLMax,
 						screenXXLMin,
 					},
-					(_, key) =>
-						`--evlmaistrenko-tools-antd--application-${kebabCase(key)}`,
+					(_, key) => `--evlta-application-${kebabCase(key)}`,
 				),
 				(val) => `${val}px`,
 			),
 		)
 	}, [
-		setter,
+		set,
 		screenXSMin,
 		screenXSMax,
 		screenSMMin,

@@ -1,237 +1,417 @@
-import { type FC, useCallback, useMemo, useRef, useState } from "react"
+import { usePrefersColorScheme } from "@evlmaistrenko/tools-react"
+import {
+	type FC,
+	type ReactElement,
+	type RefAttributes,
+	forwardRef,
+	useCallback,
+	useEffect,
+	useMemo,
+	useRef,
+	useState,
+} from "react"
+import { I18nextProvider } from "react-i18next"
 
 import {
 	App,
-	type Breakpoint,
+	type AppProps,
 	ConfigProvider,
 	type ConfigProviderProps,
+	theme,
 } from "antd"
 import { SiderContext, type SiderContextProps } from "antd/es/layout/Sider"
+import enUS from "antd/es/locale/en_US"
+import kkKZ from "antd/es/locale/kk_KZ"
+import ruRU from "antd/es/locale/ru_RU"
 import classNames from "classnames"
+import { omit, pick } from "lodash"
 
-import { Layout, type LayoutProps } from "../layout"
-import { ApplicationContext, type ApplicationContextValue } from "./context"
-import { CssVariablesSetter } from "./helpers/css-variables-setter"
-import { getConfig as defaultGetConfig } from "./helpers/get-config"
-import { LayoutSizeSetter } from "./helpers/layout-size-setter"
+import { i18n } from "../../i18n"
+import { Layout, type LayoutProps, type LayoutRef } from "../layout"
+import type { PageProps } from "../page"
 import {
+	type ApplicationConfig,
+	type ApplicationConfigBase,
+	ApplicationContext,
+	type ApplicationContextValue,
+	type ApplicationSidebar,
 	type ApplicationState,
-	initialState as defaultInitialState,
-} from "./state"
+} from "./context"
+import { ConfigPage } from "./fragments/config-page"
+import { CssVariables } from "./fragments/css-variables"
+import { CurrentBreakpoint } from "./fragments/current-breakpoint"
+import { type ApplicationHeaderProps, Header } from "./fragments/header"
 import classes from "./styles.module.css"
 
-export interface ApplicationProps
-	extends Omit<LayoutProps, "onSidebarsOverlayClick" | "direction"> {
-	initialLayoutSize?: Breakpoint
+export interface ApplicationProps<
+	Config extends ApplicationConfigBase = ApplicationConfig,
+> extends Omit<LayoutProps, "header" | "onSidebarsOverlayClick" | "direction"> {
+	header?: LayoutProps["header"] & ApplicationHeaderProps
 	initialState?: ApplicationState
-	getConfig?: (
-		context: Omit<ApplicationContextValue, "config">,
+	getConfigProviderProps?: (
+		context: Omit<ApplicationContextValue<Config>, "configProviderProps">,
 	) => ConfigProviderProps
+	antdAppProps?: Omit<AppProps, "children">
 }
 
-export const Application: FC<ApplicationProps> = ({
-	initialLayoutSize = "xs",
-	initialState: initialStateRaw = defaultInitialState,
-	getConfig: getConfigRaw = defaultGetConfig,
-	...props
-}) => {
-	const [layout, setLayout] = useState<HTMLDivElement | null>(null)
-	const [layoutSize, setLayoutSize] = useState<Breakpoint>(initialLayoutSize)
-	const hasHeader = !!props.header
-	const hasPrimarySidebar = !!props.primarySidebar
-	const hasMain = !!props.main
-	const hasSecondarySidebar = !!props.secondarySidebar
-	const hasFooter = !!props.footer
-	const [initialState] = useState(initialStateRaw)
-	const [state, setState] = useState<ApplicationState>(initialState)
-	const primarySidebarCollapsed = state[layoutSize].primarySidebarCollapsed
-	const secondarySidebarCollapsed = state[layoutSize].secondarySidebarCollapsed
+export type ApplicationComponent = (<
+	Config extends ApplicationConfigBase = ApplicationConfig,
+>(
+	props: ApplicationProps<Config> &
+		RefAttributes<ApplicationContextValue<Config>>,
+) => ReactElement) & {
+	displayName?: FC["displayName"]
+	ConfigPage: FC<PageProps>
+	defaultProps: {
+		initialState: ApplicationState
+		getConfigProviderProps: Required<ApplicationProps>["getConfigProviderProps"]
+	}
+}
 
-	const collapsePrimarySidebar = useCallback(() => {
-		setState((current) => ({
-			...current,
-			[layoutSize]: { ...current[layoutSize], primarySidebarCollapsed: true },
-		}))
-	}, [layoutSize])
-	const expandPrimarySidebar = useCallback(() => {
-		setState((current) => ({
-			...current,
-			[layoutSize]: { ...current[layoutSize], primarySidebarCollapsed: false },
-		}))
-	}, [layoutSize])
-	const togglePrimarySidebar = useCallback(() => {
-		if (primarySidebarCollapsed) {
-			expandPrimarySidebar()
-		} else {
-			collapsePrimarySidebar()
-		}
-	}, [primarySidebarCollapsed, collapsePrimarySidebar, expandPrimarySidebar])
-	const collapseSecondarySidebar = useCallback(() => {
-		setState((current) => ({
-			...current,
-			[layoutSize]: { ...current[layoutSize], secondarySidebarCollapsed: true },
-		}))
-	}, [layoutSize])
-	const expandSecondarySidebar = useCallback(() => {
-		setState((current) => ({
-			...current,
-			[layoutSize]: {
-				...current[layoutSize],
-				secondarySidebarCollapsed: false,
-			},
-		}))
-	}, [layoutSize])
-	const toggleSecondarySidebar = useCallback(() => {
-		if (secondarySidebarCollapsed) {
-			expandSecondarySidebar()
-		} else {
-			collapseSecondarySidebar()
-		}
-	}, [
-		secondarySidebarCollapsed,
-		collapseSecondarySidebar,
-		expandSecondarySidebar,
-	])
-
-	const getConfigRef = useRef(getConfigRaw)
-	getConfigRef.current = getConfigRaw
-	const contextValue: ApplicationContextValue = useMemo(() => {
-		const value: ApplicationContextValue = {
-			layout,
-			hasHeader,
-			hasPrimarySidebar,
-			hasMain,
-			hasSecondarySidebar,
-			hasFooter,
-			layoutSize,
-			config: {},
-			primarySidebarCollapsed,
-			secondarySidebarCollapsed,
-			collapsePrimarySidebar,
-			expandPrimarySidebar,
-			togglePrimarySidebar,
-			collapseSecondarySidebar,
-			expandSecondarySidebar,
-			toggleSecondarySidebar,
-			...state,
-		}
-		value.config = getConfigRef.current(value)
-		return value
-	}, [
-		layout,
-		hasHeader,
-		hasPrimarySidebar,
-		hasMain,
-		hasSecondarySidebar,
-		hasFooter,
-		layoutSize,
-		state,
-		primarySidebarCollapsed,
-		secondarySidebarCollapsed,
-		collapsePrimarySidebar,
-		expandPrimarySidebar,
-		togglePrimarySidebar,
-		collapseSecondarySidebar,
-		expandSecondarySidebar,
-		toggleSecondarySidebar,
-	])
-
-	const [cssVariables, setCssVariables] = useState<Record<string, string>>({})
-
-	const primarySidebarContextValue: SiderContextProps = useMemo(
-		() => ({
-			siderCollapsed: primarySidebarCollapsed,
-		}),
-		[primarySidebarCollapsed],
-	)
-	const secondarySidebarContextValue: SiderContextProps = useMemo(
-		() => ({
-			siderCollapsed: secondarySidebarCollapsed,
-		}),
-		[secondarySidebarCollapsed],
-	)
-
-	const onSidebarsOverlayClick: LayoutProps["onSidebarsOverlayClick"] =
-		useCallback(() => {
-			if (!primarySidebarCollapsed) {
-				collapsePrimarySidebar()
+export const Application: ApplicationComponent = forwardRef<
+	ApplicationContextValue,
+	ApplicationProps
+>(
+	(
+		{
+			initialState: initialStateRaw = Application.defaultProps.initialState,
+			getConfigProviderProps: getConfigProviderPropsRaw = Application
+				.defaultProps.getConfigProviderProps,
+			antdAppProps,
+			...props
+		},
+		forwardedRef,
+	) => {
+		const [layout, setLayout] = useState<LayoutRef | null>(null)
+		const [initialState] = useState(initialStateRaw)
+		const [breakpoint, setBreakpoint] = useState(initialState.breakpoint)
+		const deviceColorScheme = usePrefersColorScheme(
+			initialState.deviceColorScheme,
+		)
+		const hasPrimarySidebar = !!props.primarySidebar
+		const hasSecondarySidebar = !!props.secondarySidebar
+		const [primarySidebarCollapsed, setPrimarySidebarCollapsed] = useState(
+			initialState.primarySidebarCollapsed,
+		)
+		const [secondarySidebarCollapsed, setSecondarySidebarCollapsed] = useState(
+			initialState.secondarySidebarCollapsed,
+		)
+		const primarySidebar = useMemo<ApplicationSidebar | null>(() => {
+			if (!hasPrimarySidebar) {
+				return null
 			}
-			if (!secondarySidebarCollapsed) {
-				collapseSecondarySidebar()
+			const result: ApplicationSidebar = {
+				collapsed: primarySidebarCollapsed,
+				collapse() {
+					setPrimarySidebarCollapsed((value) => ({
+						...value,
+						[breakpoint]: true,
+					}))
+				},
+				expand() {
+					if (layout?.secondarySidebar.overflowed) {
+						setSecondarySidebarCollapsed((value) => ({
+							...value,
+							[breakpoint]: true,
+						}))
+					}
+					setPrimarySidebarCollapsed((value) => ({
+						...value,
+						[breakpoint]: false,
+					}))
+				},
+				toggle() {
+					if (primarySidebarCollapsed[breakpoint]) {
+						this.expand()
+					} else {
+						this.collapse()
+					}
+				},
+			}
+			result.toggle = result.toggle.bind(result)
+			return result
+		}, [layout, breakpoint, hasPrimarySidebar, primarySidebarCollapsed])
+		const secondarySidebar = useMemo<ApplicationSidebar | null>(() => {
+			if (!hasSecondarySidebar) {
+				return null
+			}
+			const result: ApplicationSidebar = {
+				collapsed: secondarySidebarCollapsed,
+				collapse() {
+					setSecondarySidebarCollapsed((value) => ({
+						...value,
+						[breakpoint]: true,
+					}))
+				},
+				expand() {
+					if (layout?.primarySidebar.overflowed) {
+						setPrimarySidebarCollapsed((value) => ({
+							...value,
+							[breakpoint]: true,
+						}))
+					}
+					setSecondarySidebarCollapsed((value) => ({
+						...value,
+						[breakpoint]: false,
+					}))
+				},
+				toggle() {
+					if (secondarySidebarCollapsed[breakpoint]) {
+						this.expand()
+					} else {
+						this.collapse()
+					}
+				},
+			}
+			result.toggle = result.toggle.bind(result)
+			return result
+		}, [layout, breakpoint, hasSecondarySidebar, secondarySidebarCollapsed])
+		const [config, setConfig] = useState(initialState.config)
+
+		const getConfigProviderProps = useRef(getConfigProviderPropsRaw)
+		getConfigProviderProps.current = getConfigProviderPropsRaw
+		const contextValue = useMemo<ApplicationContextValue>(() => {
+			const value: Omit<ApplicationContextValue, "configProviderProps"> = {
+				layout,
+				breakpoint,
+				deviceColorScheme,
+				initialState,
+				primarySidebar,
+				secondarySidebar,
+				config: {
+					values: config,
+					setValues: setConfig,
+				},
+			}
+			const configProviderProps = getConfigProviderProps.current(value)
+			return {
+				...value,
+				configProviderProps: {
+					...configProviderProps,
+					direction: configProviderProps.direction ?? "ltr",
+					theme: {
+						...configProviderProps.theme,
+						cssVar: true,
+					},
+				},
 			}
 		}, [
-			collapsePrimarySidebar,
-			collapseSecondarySidebar,
-			primarySidebarCollapsed,
-			secondarySidebarCollapsed,
+			layout,
+			breakpoint,
+			deviceColorScheme,
+			initialState,
+			primarySidebar,
+			secondarySidebar,
+			config,
 		])
 
-	return (
-		<ConfigProvider>
-			<ApplicationContext.Provider value={contextValue}>
-				<App>
-					<Layout
-						ref={setLayout}
-						{...props}
-						className={classNames(props.className)}
-						style={{ ...cssVariables, ...props.style }}
-						primarySidebar={
-							hasPrimarySidebar
-								? {
-										...props.primarySidebar,
-										containerProps: {
-											...props.primarySidebar?.containerProps,
-											className: classNames(
-												classes.primarySidebar,
-												classes[layoutSize],
-												{
-													[classes.collapsed]: primarySidebarCollapsed,
-													[classes.expanded]: !primarySidebarCollapsed,
-												},
-												props.primarySidebar?.containerProps?.className,
-											),
-										},
-										children: (
-											<SiderContext.Provider value={primarySidebarContextValue}>
-												{props.primarySidebar?.children}
-											</SiderContext.Provider>
-										),
+		{
+			const wrappedForwardedRef = useRef(forwardedRef)
+			wrappedForwardedRef.current = forwardedRef
+			useEffect(() => {
+				const forwardedRef = wrappedForwardedRef.current
+				if (typeof forwardedRef === "function") {
+					forwardedRef(contextValue)
+				} else if (forwardedRef) {
+					forwardedRef.current = contextValue
+				}
+			}, [contextValue])
+
+			useEffect(() => {
+				if (i18n.language !== contextValue.config.values.locale) {
+					i18n.changeLanguage(contextValue.config.values.locale)
+				}
+			})
+
+			const primarySidebarCollapsed =
+				contextValue.primarySidebar?.collapsed[breakpoint]
+			const secondarySidebarCollapsed =
+				contextValue.secondarySidebar?.collapsed[breakpoint]
+			const primarySidebarContextValue = useMemo<SiderContextProps>(
+				() => ({
+					siderCollapsed: primarySidebarCollapsed,
+				}),
+				[primarySidebarCollapsed],
+			)
+			const secondarySidebarContextValue = useMemo<SiderContextProps>(
+				() => ({
+					siderCollapsed: secondarySidebarCollapsed,
+				}),
+				[secondarySidebarCollapsed],
+			)
+
+			const collapsePrimarySidebar = contextValue.primarySidebar?.collapse
+			const collapseSecondarySidebar = contextValue.secondarySidebar?.collapse
+			const onSidebarsOverlayClick = useCallback<
+				Required<LayoutProps>["onSidebarsOverlayClick"]
+			>(() => {
+				if (layout?.primarySidebar.overflowed) {
+					collapsePrimarySidebar?.()
+				}
+				if (layout?.secondarySidebar.overflowed) {
+					collapseSecondarySidebar?.()
+				}
+			}, [layout, collapsePrimarySidebar, collapseSecondarySidebar])
+			const [cssVariables, setCssVariables] = useState<Record<string, string>>(
+				{},
+			)
+
+			return (
+				<ConfigProvider {...contextValue.configProviderProps}>
+					<ApplicationContext.Provider value={contextValue}>
+						<App {...antdAppProps}>
+							<I18nextProvider i18n={i18n}>
+								<Layout
+									ref={setLayout}
+									{...props}
+									style={{ ...cssVariables, ...props.style }}
+									className={classNames(
+										classes.layout,
+										classes[breakpoint],
+										props.className,
+									)}
+									header={
+										props.header
+											? {
+													...omit(props.header, [
+														"primarySidebarToggler",
+														"secondarySidebarToggler",
+														"config",
+													]),
+													children: (
+														<Header
+															{...pick(props.header, [
+																"primarySidebarToggler",
+																"secondarySidebarToggler",
+																"config",
+															])}
+														>
+															{props.header.children}
+														</Header>
+													),
+												}
+											: undefined
 									}
-								: undefined
-						}
-						secondarySidebar={
-							hasSecondarySidebar
-								? {
-										...props.secondarySidebar,
-										containerProps: {
-											...props.secondarySidebar?.containerProps,
-											className: classNames(
-												classes.secondarySidebar,
-												classes[layoutSize],
-												{
-													[classes.collapsed]: secondarySidebarCollapsed,
-													[classes.expanded]: !secondarySidebarCollapsed,
-												},
-												props.secondarySidebar?.containerProps?.className,
-											),
-										},
-										children: (
-											<SiderContext.Provider
-												value={secondarySidebarContextValue}
-											>
-												{props.secondarySidebar?.children}
-											</SiderContext.Provider>
-										),
+									primarySidebar={
+										contextValue.primarySidebar
+											? {
+													...props.primarySidebar,
+													containerProps: {
+														...props.primarySidebar?.containerProps,
+														className: classNames(
+															classes.primarySidebar,
+															classes[breakpoint],
+															{
+																[classes.collapsed]: primarySidebarCollapsed,
+																[classes.expanded]: !primarySidebarCollapsed,
+															},
+															props.primarySidebar?.containerProps?.className,
+														),
+													},
+													children: (
+														<SiderContext.Provider
+															value={primarySidebarContextValue}
+														>
+															{props.primarySidebar?.children}
+														</SiderContext.Provider>
+													),
+												}
+											: undefined
 									}
-								: undefined
-						}
-						onSidebarsOverlayClick={onSidebarsOverlayClick}
-						direction={contextValue.config.direction}
-					/>
-					<LayoutSizeSetter setter={setLayoutSize} />
-					<CssVariablesSetter setter={setCssVariables} />
-				</App>
-			</ApplicationContext.Provider>
-		</ConfigProvider>
-	)
+									secondarySidebar={
+										contextValue.secondarySidebar
+											? {
+													...props.secondarySidebar,
+													containerProps: {
+														...props.secondarySidebar?.containerProps,
+														className: classNames(
+															classes.secondarySidebar,
+															classes[breakpoint],
+															{
+																[classes.collapsed]: secondarySidebarCollapsed,
+																[classes.expanded]: !secondarySidebarCollapsed,
+															},
+															props.secondarySidebar?.containerProps?.className,
+														),
+													},
+													children: (
+														<SiderContext.Provider
+															value={secondarySidebarContextValue}
+														>
+															{props.secondarySidebar?.children}
+														</SiderContext.Provider>
+													),
+												}
+											: undefined
+									}
+									onSidebarsOverlayClick={onSidebarsOverlayClick}
+									direction={contextValue.configProviderProps.direction}
+								/>
+							</I18nextProvider>
+							<CurrentBreakpoint set={setBreakpoint} />
+							<CssVariables set={setCssVariables} />
+						</App>
+					</ApplicationContext.Provider>
+				</ConfigProvider>
+			)
+		}
+	},
+) as unknown as ApplicationComponent
+
+Application.ConfigPage = ConfigPage
+Application.defaultProps = {
+	initialState: {
+		breakpoint: "xs",
+		deviceColorScheme: "light",
+		primarySidebarCollapsed: {
+			xs: true,
+			sm: true,
+			md: true,
+			lg: false,
+			xl: false,
+			xxl: false,
+		},
+		secondarySidebarCollapsed: {
+			xs: true,
+			sm: true,
+			md: true,
+			lg: false,
+			xl: false,
+			xxl: false,
+		},
+		config: {
+			locale: "en-US",
+			colorScheme: "device",
+			compactTheme: {
+				xs: false,
+				sm: true,
+				md: false,
+				lg: false,
+				xl: false,
+				xxl: false,
+			},
+		},
+	},
+	getConfigProviderProps(context) {
+		let themeAlgorithm = [theme.defaultAlgorithm]
+		const colorScheme =
+			context.config.values.colorScheme === "device"
+				? context.deviceColorScheme
+				: context.config.values.colorScheme
+		if (colorScheme === "dark") {
+			themeAlgorithm = [theme.darkAlgorithm]
+		}
+		if (context.config.values.compactTheme[context.breakpoint]) {
+			themeAlgorithm.push(theme.compactAlgorithm)
+		}
+		return {
+			theme: { algorithm: themeAlgorithm },
+			locale:
+				{
+					"en-US": enUS,
+					"kk-KZ": kkKZ,
+					"ru-RU": ruRU,
+				}[context.config.values.locale] ?? enUS,
+		}
+	},
 }

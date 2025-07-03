@@ -1,4 +1,4 @@
 .overlay {
   background: var(--ant-color-bg-mask);
-  transition: all 100ms ease-in-out;
+  transition: all var(--ant-motion-duration-slow);
 }

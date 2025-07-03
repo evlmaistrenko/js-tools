@@ -24,16 +24,9 @@ export default defineConfig({
 			formats: ["es"],
 		},
 		rollupOptions: {
-			external: [
-				"react",
-				"react-dom",
-				"react/jsx-runtime",
-				"classnames",
-				"antd",
-				"@ant-design/icons",
-				"@ant-design/icons/lib/components/Icon",
-				"lodash",
-			],
+			external: (id) => {
+				return !id.startsWith(".") && !path.isAbsolute(id)
+			},
 		},
 	},
 })
