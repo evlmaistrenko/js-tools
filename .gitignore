@@ -3,3 +3,4 @@ packages/*/.npmignore
 dist/
 docs/
 .env
+*.module.css.d.ts
