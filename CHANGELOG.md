@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.12.0](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.11.1...tools-v1.12.0) (2025-07-04)
+
+
+### Features
+
+* add Layout, Page, Application, WithOverlay, IconSelect components to antd package and usePrefersColorScheme, useScrollParent hooks to react package. ([4718708](https://github.com/evlmaistrenko/js-tools/commit/4718708903b46e975b0ff596663219143d9ad33c))
+
+
+### Bug Fixes
+
+* build error of packages/antd ([43bf2c2](https://github.com/evlmaistrenko/js-tools/commit/43bf2c2bec502d34230c981f307716e1e6c5cdc0))
+* fixed error in CI ([c63e5fb](https://github.com/evlmaistrenko/js-tools/commit/c63e5fb7de696f8c83c0bfd9f823d33ac8280b5a))
+* update Playwright container image version to v1.53.2 ([5576654](https://github.com/evlmaistrenko/js-tools/commit/5576654d546c6a119026c2a398e5d0a0b466ffb8))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @evlmaistrenko/tools-antd bumped from 1.0.1 to 1.1.0
+    * @evlmaistrenko/tools-react bumped from 1.1.1 to 1.2.0
+
 ## [1.11.1](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.11.0...tools-v1.11.1) (2025-06-11)
 
 

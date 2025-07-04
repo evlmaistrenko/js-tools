@@ -1,7 +1,7 @@
 {
 	"name": "@evlmaistrenko/tools-antd",
 	"type": "module",
-	"version": "1.0.1",
+	"version": "1.1.0",
 	"description": "React-components based on Ant Design.",
 	"main": "dist/index.js",
 	"scripts": {
@@ -21,7 +21,10 @@
 		"url": "git+https://github.com/evlmaistrenko/js-tools.git",
 		"directory": "./packages/antd/"
 	},
-	"keywords": ["antd", "react-components"],
+	"keywords": [
+		"antd",
+		"react-components"
+	],
 	"author": "evlmaistrenko <evlmaistrenko@gmail.com>",
 	"license": "MIT",
 	"bugs": {
@@ -29,7 +32,7 @@
 	},
 	"homepage": "https://github.com/evlmaistrenko/js-tools/blob/master/packages/antd/README.md",
 	"dependencies": {
-		"@evlmaistrenko/tools-react": "^1.1.1",
+		"@evlmaistrenko/tools-react": "^1.2.0",
 		"classnames": "^2.5.1",
 		"i18next": "^25.2.1",
 		"lodash": "^4.17.21",
@@ -43,7 +46,9 @@
 		"react-dom": "^19.1.0"
 	},
 	"eslintConfig": {
-		"extends": ["plugin:storybook/recommended"]
+		"extends": [
+			"plugin:storybook/recommended"
+		]
 	},
 	"devDependencies": {
 		"@ant-design/v5-patch-for-react-19": "^1.0.3",
