@@ -44,17 +44,6 @@ import { CurrentBreakpoint } from "./fragments/current-breakpoint"
 import { type ApplicationHeaderProps, Header } from "./fragments/header"
 import classes from "./styles.module.css"
 
-export { type ApplicationHeaderProps } from "./fragments/header"
-export {
-	type ApplicationConfig,
-	type ApplicationConfigBase,
-	type ApplicationConfigProviderProps,
-	ApplicationContext,
-	type ApplicationContextValue,
-	type ApplicationSidebar,
-	type ApplicationState,
-} from "./context"
-
 export interface ApplicationProps<
 	Config extends ApplicationConfigBase = ApplicationConfig,
 > extends Omit<LayoutProps, "header" | "onSidebarsOverlayClick" | "direction"> {

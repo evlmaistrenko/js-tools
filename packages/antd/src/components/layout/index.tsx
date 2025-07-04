@@ -24,8 +24,6 @@ import type { LayoutSidebarProps } from "./sidebar"
 import { Sidebar } from "./sidebar"
 import classes from "./styles.module.css"
 
-export { type LayoutSidebarProps } from "./sidebar"
-
 export interface LayoutProps
 	extends Omit<HTMLAttributes<HTMLElement>, "children"> {
 	header?: HTMLAttributes<HTMLElement> & {
