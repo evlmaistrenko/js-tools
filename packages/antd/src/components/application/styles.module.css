@@ -108,11 +108,6 @@
   width: 1.2em;
 }
 
-/* .layout :global(.ant-drawer) {
-  overflow: hidden;
-  
-} */
-
 .select {
   max-width: 15em;
 }

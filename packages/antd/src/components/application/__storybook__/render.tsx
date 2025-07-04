@@ -1,69 +1,58 @@
-import type { ReactNode } from "react"
-
 import { Application, type ApplicationProps } from ".."
-import { footer } from "../../layout/__storybook__/args/footer"
-import { header } from "../../layout/__storybook__/args/header"
-import { main, mainCompact } from "../../layout/__storybook__/args/main"
-import {
-	primarySidebar,
-	primarySidebarCompact,
-} from "../../layout/__storybook__/args/primary-sidebar"
-import {
-	secondarySidebar,
-	secondarySidebarCompact,
-} from "../../layout/__storybook__/args/secondary-sidebar"
+import { footerDefault } from "../../layout/__storybook__/args/footer"
+import { primarySidebarCompact } from "../../layout/__storybook__/args/primary-sidebar"
+import { secondarySidebarCompact } from "../../layout/__storybook__/args/secondary-sidebar"
+import { headerDefault } from "./args/header"
+import { feedbackMain } from "./args/main"
+
+interface RenderArgs
+	extends Omit<
+		ApplicationProps,
+		"header" | "primarySidebar" | "main" | "secondarySidebar" | "footer"
+	> {
+	header?: ApplicationProps["header"] | false
+	primarySidebar?: ApplicationProps["primarySidebar"] | false
+	main?: ApplicationProps["main"] | false
+	secondarySidebar?: ApplicationProps["secondarySidebar"] | false
+	footer?: ApplicationProps["footer"] | false
+}
 
 export const render =
 	({
-		withHeader = true,
-		withPrimarySidebar = true,
-		withSecondarySidebar = true,
-		withMain = true,
-		withFooter = true,
-		compact = true,
-		compactMain = compact,
-		mainChildren,
-	}: {
-		withHeader?: boolean
-		withPrimarySidebar?: boolean
-		withSecondarySidebar?: boolean
-		withMain?: boolean
-		withFooter?: boolean
-		compact?: boolean
-		compactMain?: boolean
-		mainChildren?: ReactNode
-	} = {}) =>
-	(args: ApplicationProps) => {
-		let mainProps: ApplicationProps["main"] = withMain
-			? { ...(compactMain ? mainCompact : main), ...args.main }
-			: undefined
-
-		if (mainChildren && mainProps) {
-			mainProps = { ...mainProps, children: mainChildren }
-		}
-
+		header = headerDefault,
+		primarySidebar = primarySidebarCompact,
+		main = feedbackMain,
+		secondarySidebar = secondarySidebarCompact,
+		footer = footerDefault,
+		...renderArgs
+	}: RenderArgs = {}) =>
+	(
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		args: ApplicationProps<any>,
+	) => {
 		return (
 			<Application
+				{...renderArgs}
 				{...args}
-				header={withHeader ? { ...header, ...args.header } : undefined}
+				header={header !== false ? { ...header, ...args.header } : undefined}
 				primarySidebar={
-					withPrimarySidebar
+					primarySidebar !== false
 						? {
-								...(compact ? primarySidebarCompact : primarySidebar),
+								...primarySidebar,
 								...args.primarySidebar,
 							}
 						: undefined
 				}
+				main={main !== false ? { ...main, ...args.main } : undefined}
 				secondarySidebar={
-					withSecondarySidebar
+					secondarySidebar !== false
 						? {
-								...(compact ? secondarySidebarCompact : secondarySidebar),
+								...secondarySidebar,
 								...args.secondarySidebar,
 							}
 						: undefined
 				}
-				main={mainProps}
-				footer={withFooter ? { ...footer, ...args.footer } : undefined}
+				footer={footer !== false ? { ...footer, ...args.footer } : undefined}
 			/>
 		)
 	}

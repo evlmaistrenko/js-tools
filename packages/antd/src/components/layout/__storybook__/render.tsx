@@ -1,66 +1,55 @@
-import type { ReactNode } from "react"
-
 import { Layout, type LayoutProps } from ".."
-import { footer } from "./args/footer"
-import { header } from "./args/header"
-import { main, mainCompact } from "./args/main"
-import { primarySidebar, primarySidebarCompact } from "./args/primary-sidebar"
-import {
-	secondarySidebar,
-	secondarySidebarCompact,
-} from "./args/secondary-sidebar"
+import { footerDefault } from "../../layout/__storybook__/args/footer"
+import { headerDefault } from "./args/header"
+import { mainDefault } from "./args/main"
+import { primarySidebarDefault } from "./args/primary-sidebar"
+import { secondarySidebarDefault } from "./args/secondary-sidebar"
+
+interface RenderArgs
+	extends Omit<
+		LayoutProps,
+		"header" | "primarySidebar" | "main" | "secondarySidebar" | "footer"
+	> {
+	header?: LayoutProps["header"] | false
+	primarySidebar?: LayoutProps["primarySidebar"] | false
+	main?: LayoutProps["main"] | false
+	secondarySidebar?: LayoutProps["secondarySidebar"] | false
+	footer?: LayoutProps["footer"] | false
+}
 
 export const render =
 	({
-		withHeader = true,
-		withPrimarySidebar = true,
-		withSecondarySidebar = true,
-		withMain = true,
-		withFooter = true,
-		compact = true,
-		compactMain = compact,
-		mainChildren,
-	}: {
-		withHeader?: boolean
-		withPrimarySidebar?: boolean
-		withSecondarySidebar?: boolean
-		withMain?: boolean
-		withFooter?: boolean
-		compact?: boolean
-		compactMain?: boolean
-		mainChildren?: ReactNode
-	} = {}) =>
+		header = headerDefault,
+		primarySidebar = primarySidebarDefault,
+		main = mainDefault,
+		secondarySidebar = secondarySidebarDefault,
+		footer = footerDefault,
+		...renderArgs
+	}: RenderArgs = {}) =>
 	(args: LayoutProps) => {
-		let mainProps: LayoutProps["main"] = withMain
-			? { ...(compactMain ? mainCompact : main), ...args.main }
-			: undefined
-
-		if (mainChildren && mainProps) {
-			mainProps = { ...mainProps, children: mainChildren }
-		}
-
 		return (
 			<Layout
+				{...renderArgs}
 				{...args}
-				header={withHeader ? { ...header, ...args.header } : undefined}
+				header={header !== false ? { ...header, ...args.header } : undefined}
 				primarySidebar={
-					withPrimarySidebar
+					primarySidebar !== false
 						? {
-								...(compact ? primarySidebarCompact : primarySidebar),
+								...primarySidebar,
 								...args.primarySidebar,
 							}
 						: undefined
 				}
+				main={main !== false ? { ...main, ...args.main } : undefined}
 				secondarySidebar={
-					withSecondarySidebar
+					secondarySidebar !== false
 						? {
-								...(compact ? secondarySidebarCompact : secondarySidebar),
+								...secondarySidebar,
 								...args.secondarySidebar,
 							}
 						: undefined
 				}
-				main={mainProps}
-				footer={withFooter ? { ...footer, ...args.footer } : undefined}
+				footer={footer !== false ? { ...footer, ...args.footer } : undefined}
 			/>
 		)
 	}

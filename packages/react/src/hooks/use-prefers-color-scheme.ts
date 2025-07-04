@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react"
 
-/** Returns preferred color scheme. */
+/**
+ * Returns preferred color scheme.
+ *
+ * @since 1.2.0
+ */
 export function usePrefersColorScheme(
 	initialState: "dark" | "light" | null = null,
 ): "dark" | "light" | null {

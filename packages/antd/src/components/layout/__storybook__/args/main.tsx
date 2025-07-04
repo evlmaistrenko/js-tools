@@ -1,25 +1,34 @@
-import { Card, Typography } from "antd"
-
 import { loremIpsumParagraphs } from "../../../../utils/lorem-ipsum-paragraphs"
 
 const component = "div" as const
 
-export const main = {
+export const mainDefault = {
 	component,
 	children: (
-		<Card style={{ width: "100%" }}>
-			<Typography.Title level={5}>Main</Typography.Title>
+		<div style={{ textAlign: "center", width: "100%", padding: "1em" }}>
+			<b>Main</b>
+		</div>
+	),
+}
+
+export const mainLong = {
+	component,
+	children: (
+		<div
+			style={{ padding: "1em", background: "var(--ant-color-bg-container)" }}
+		>
 			{loremIpsumParagraphs(30)}
-		</Card>
+		</div>
 	),
 }
 
 export const mainCompact = {
 	component,
 	children: (
-		<Card style={{ width: "100%" }}>
-			<Typography.Title level={5}>Main</Typography.Title>
+		<div
+			style={{ padding: "1em", background: "var(--ant-color-bg-container)" }}
+		>
 			{loremIpsumParagraphs(3)}
-		</Card>
+		</div>
 	),
 }

@@ -24,6 +24,8 @@ import type { LayoutSidebarProps } from "./sidebar"
 import { Sidebar } from "./sidebar"
 import classes from "./styles.module.css"
 
+export { type LayoutSidebarProps } from "./sidebar"
+
 export interface LayoutProps
 	extends Omit<HTMLAttributes<HTMLElement>, "children"> {
 	header?: HTMLAttributes<HTMLElement> & {
@@ -55,6 +57,8 @@ export type LayoutComponent = ForwardRefExoticComponent<
  * Application layout based on Ant Design's `Layout`.
  *
  * ⚠️ To properly work must be in `ConfigProvider` context with `theme.cssVar: true`.
+ *
+ * @since 1.1.0
  */
 export const Layout: LayoutComponent = forwardRef<LayoutRef, LayoutProps>(
 	(

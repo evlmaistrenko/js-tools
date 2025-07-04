@@ -59,6 +59,7 @@ export interface ApplicationContextValue<
 	}
 }
 
+/** @since 1.1.0 */
 export const ApplicationContext = createContext<ApplicationContextValue | null>(
 	null,
 )

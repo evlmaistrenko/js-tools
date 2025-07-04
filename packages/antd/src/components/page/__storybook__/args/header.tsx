@@ -1,7 +1,7 @@
-import { Breadcrumb, Typography } from "antd"
+import { Breadcrumb } from "antd"
 
 export const header = {
-	title: <Typography.Title>Page title</Typography.Title>,
+	title: <div>Page title</div>,
 	breadcrumbs: (
 		<Breadcrumb
 			items={[

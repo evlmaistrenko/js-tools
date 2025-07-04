@@ -6,7 +6,7 @@ import {
 	PieChartOutlined,
 	RadarChartOutlined,
 } from "@ant-design/icons"
-import { Menu, Typography } from "antd"
+import { Menu } from "antd"
 import type { MenuItemType } from "antd/es/menu/interface"
 import { loremIpsum } from "lorem-ipsum"
 
@@ -45,46 +45,31 @@ function getMenuItems(count = 100, prefix = ""): MenuItemType[] {
 		})
 }
 
-export const primarySidebar = {
-	children: (
-		<>
-			<Typography.Title
-				level={5}
-				style={{
-					padding: "0 var(--evlta-layout-padding-horizontal)",
-					textAlign: "center",
-				}}
-				title="Primary sidebar"
-				ellipsis
-			>
-				Primary sidebar
-			</Typography.Title>
-			<Menu
-				mode="inline"
-				items={getMenuItems(50)}
-			/>
-		</>
+export const primarySidebarDefault = {
+	"aria-label": "menu",
+	"children": (
+		<div style={{ textAlign: "center", padding: "1em" }}>
+			<b>Primary sidebar</b>
+		</div>
+	),
+}
+
+export const primarySidebarLong = {
+	"aria-label": "menu",
+	"children": (
+		<Menu
+			mode="inline"
+			items={getMenuItems(50)}
+		/>
 	),
 }
 
 export const primarySidebarCompact = {
-	children: (
-		<>
-			<Typography.Title
-				level={5}
-				style={{
-					padding: "0 var(--evlta-layout-padding-horizontal)",
-					textAlign: "center",
-				}}
-				title="Primary sidebar"
-				ellipsis
-			>
-				Primary sidebar
-			</Typography.Title>
-			<Menu
-				mode="inline"
-				items={getMenuItems(7)}
-			/>
-		</>
+	"aria-label": "menu",
+	"children": (
+		<Menu
+			mode="inline"
+			items={getMenuItems(7)}
+		/>
 	),
 }

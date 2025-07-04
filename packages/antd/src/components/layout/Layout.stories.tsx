@@ -7,6 +7,9 @@ import { loremIpsumParagraphs } from "../../utils/lorem-ipsum-paragraphs"
 import { Page } from "../page"
 import { header as pageHeader } from "../page/__storybook__/args/header"
 import { argTypes } from "./__storybook__/arg-types"
+import { mainLong } from "./__storybook__/args/main"
+import { primarySidebarLong } from "./__storybook__/args/primary-sidebar"
+import { secondarySidebarLong } from "./__storybook__/args/secondary-sidebar"
 import { render } from "./__storybook__/render"
 import { scrollParentDecorator } from "./__storybook__/scroll-parent-decorator"
 
@@ -34,15 +37,33 @@ export const Default: Story = {
 		main: { component: "div" },
 		direction: "ltr",
 	},
-	render: render({ compactMain: false }),
+	parameters: {
+		docs: {
+			description: {
+				story:
+					"Consists of `header`, `primarySidebar`, `main`, `secondarySidebar` and `footer` parts.",
+			},
+		},
+	},
 }
 
-export const LongContent: Story = {
+export const StickyParts: Story = {
 	args: {},
-	render: render({ compact: false }),
+	parameters: {
+		docs: {
+			description: {
+				story: "Header and sidebars are sticky by default.",
+			},
+		},
+	},
+	render: render({
+		primarySidebar: primarySidebarLong,
+		main: mainLong,
+		secondarySidebar: secondarySidebarLong,
+	}),
 }
 
-export const NotSticky: Story = {
+export const NotStickyParts: Story = {
 	args: {
 		header: { sticky: false },
 		primarySidebar: { sticky: false },
@@ -55,7 +76,11 @@ export const NotSticky: Story = {
 			},
 		},
 	},
-	render: render({ compact: false }),
+	render: render({
+		primarySidebar: primarySidebarLong,
+		main: mainLong,
+		secondarySidebar: secondarySidebarLong,
+	}),
 }
 
 export const OverflowedSidebars: Story = {
@@ -66,11 +91,11 @@ export const OverflowedSidebars: Story = {
 		docs: {
 			description: {
 				story:
-					"Sidebars could be overflowed (i.e. when expanded on small screens).",
+					"Sidebars could be overflowed, i.e. when expanded on small screens. This feature uses [ResizeObserver](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver).",
 			},
 		},
 	},
-	render: render({ compact: false }),
+	render: render({ primarySidebar: primarySidebarLong }),
 }
 
 export const Rtl: Story = {
@@ -103,9 +128,9 @@ export const WithoutSomeParts: Story = {
 		},
 	},
 	render: render({
-		withHeader: false,
-		withSecondarySidebar: false,
-		withFooter: false,
+		header: false,
+		secondarySidebar: false,
+		footer: false,
 	}),
 }
 
@@ -119,7 +144,10 @@ export const WithPage: Story = {
 		},
 	},
 	render: render({
-		mainChildren: <Page header={pageHeader}>{loremIpsumParagraphs(5)}</Page>,
+		main: {
+			component: "div",
+			children: <Page header={pageHeader}>{loremIpsumParagraphs(5)}</Page>,
+		},
 	}),
 }
 
@@ -133,16 +161,18 @@ export const WithOnlyPage: Story = {
 		},
 	},
 	render: render({
-		withFooter: false,
-		withHeader: false,
-		withPrimarySidebar: false,
-		withSecondarySidebar: false,
-		mainChildren: (
-			<Page
-				header={pageHeader}
-				centered="content-only"
-			/>
-		),
+		footer: false,
+		header: false,
+		primarySidebar: false,
+		secondarySidebar: false,
+		main: {
+			children: (
+				<Page
+					header={pageHeader}
+					centered="content-only"
+				/>
+			),
+		},
 	}),
 }
 
@@ -156,14 +186,16 @@ export const WithPageAndSomeParts: Story = {
 		},
 	},
 	render: render({
-		withHeader: false,
-		withPrimarySidebar: false,
-		withSecondarySidebar: false,
-		mainChildren: (
-			<Page
-				header={pageHeader}
-				centered
-			/>
-		),
+		header: false,
+		primarySidebar: false,
+		secondarySidebar: false,
+		main: {
+			children: (
+				<Page
+					header={pageHeader}
+					centered
+				/>
+			),
+		},
 	}),
 }

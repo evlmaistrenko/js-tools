@@ -2,5 +2,8 @@
 
 `Layout` uses Ant Design's css-variables such as theme colors, sizings, etc. and next custom css-variables:
 
-- `--evlta-layout-height` - maximum height of layout, `100vh` by default.
-- `--evlta-layout-padding-horizontal` and `--evlta-layout-padding-vertical` - vertical and horizontal paddings of layout-parts, `var(--ant-padding-xs)` by default.
+| Variable name                       | Description                        | Default value           |
+| ----------------------------------- | ---------------------------------- | ----------------------- |
+| `--evlta-layout-height`             | Minimum layout height              | `100vh`                 |
+| `--evlta-layout-padding-horizontal` | Horizontal padding of layout parts | `var(--ant-padding-xs)` |
+| `--evlta-layout-padding-vertical`   | Vertical padding of layout parts   | `var(--ant-padding-xs)` |

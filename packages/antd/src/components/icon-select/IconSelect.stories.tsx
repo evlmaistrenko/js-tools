@@ -1,11 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
 
 import { AreaChartOutlined, PieChartOutlined } from "@ant-design/icons"
+import { Form } from "antd"
 
 import { IconSelect } from "."
 
 const meta = {
-	title: "Components/IconSelect",
+	title: "Components/DataEntry/IconSelect",
 	component: IconSelect,
 	parameters: {
 		layout: "centered",
@@ -14,8 +15,26 @@ const meta = {
 	argTypes: {
 		options: {
 			control: false,
+			table: {
+				type: {
+					summary: "(BaseOptionType & {icon?: ReactNode})[]",
+				},
+			},
 		},
 	},
+	render: (args) => (
+		<Form layout="vertical">
+			<Form.Item
+				name="icon-select"
+				label="Icon select"
+			>
+				<IconSelect
+					{...args}
+					style={{ ...args.style, width: 150 }}
+				/>
+			</Form.Item>
+		</Form>
+	),
 } satisfies Meta<typeof IconSelect>
 
 export default meta

@@ -57,6 +57,13 @@ export const StructuredHeader: Story = {
 	args: {
 		header,
 	},
+	parameters: {
+		docs: {
+			description: {
+				story: "Using structured header.",
+			},
+		},
+	},
 	render: (args) => {
 		return <Page {...args}>{loremIpsumParagraphs(3)}</Page>
 	},
@@ -66,12 +73,26 @@ export const CustomHeader: Story = {
 	args: {
 		header: <h1>Custom header</h1>,
 	},
+	parameters: {
+		docs: {
+			description: {
+				story: "Using custom header.",
+			},
+		},
+	},
 }
 
 export const Centered: Story = {
 	args: {
 		header,
 		centered: true,
+	},
+	parameters: {
+		docs: {
+			description: {
+				story: "Vertically centered",
+			},
+		},
 	},
 }
 
@@ -80,11 +101,25 @@ export const CenteredContentOnly: Story = {
 		header,
 		centered: "content-only",
 	},
+	parameters: {
+		docs: {
+			description: {
+				story: "Vertically centered content.",
+			},
+		},
+	},
 }
 
 export const ErrorPage: Story = {
 	args: {
 		centered: true,
+	},
+	parameters: {
+		docs: {
+			description: {
+				story: "Usage with Ant Design's `Result` component.",
+			},
+		},
 	},
 	render: (args) => {
 		return (

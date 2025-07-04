@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite"
 import { WithOverlay } from "."
 
 const meta = {
-	title: "Components/WithOverlay",
+	title: "Components/Utilities/WithOverlay",
 	component: WithOverlay,
 	parameters: {
 		layout: "centered",

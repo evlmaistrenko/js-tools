@@ -23,8 +23,9 @@ export interface PageProps extends HTMLAttributes<HTMLElement> {
 }
 
 /**
- * Page container with title, breadcrumbs or custom header. Content could be centered i.e. for page with
- * login form.
+ * Page container with title, breadcrumbs or custom header.
+ *
+ * @since 1.1.0
  */
 export const Page: React.FC<PageProps> = ({
 	header,

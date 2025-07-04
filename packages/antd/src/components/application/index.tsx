@@ -36,12 +36,24 @@ import {
 	type ApplicationContextValue,
 	type ApplicationSidebar,
 	type ApplicationState,
+	useApplication,
 } from "./context"
 import { ConfigPage } from "./fragments/config-page"
 import { CssVariables } from "./fragments/css-variables"
 import { CurrentBreakpoint } from "./fragments/current-breakpoint"
 import { type ApplicationHeaderProps, Header } from "./fragments/header"
 import classes from "./styles.module.css"
+
+export { type ApplicationHeaderProps } from "./fragments/header"
+export {
+	type ApplicationConfig,
+	type ApplicationConfigBase,
+	type ApplicationConfigProviderProps,
+	ApplicationContext,
+	type ApplicationContextValue,
+	type ApplicationSidebar,
+	type ApplicationState,
+} from "./context"
 
 export interface ApplicationProps<
 	Config extends ApplicationConfigBase = ApplicationConfig,
@@ -61,6 +73,9 @@ export type ApplicationComponent = (<
 		RefAttributes<ApplicationContextValue<Config>>,
 ) => ReactElement) & {
 	displayName?: FC["displayName"]
+	useApplication: <
+		Config extends ApplicationConfigBase = ApplicationConfig,
+	>() => ApplicationContextValue<Config> | null
 	ConfigPage: FC<PageProps>
 	defaultProps: {
 		initialState: ApplicationState
@@ -68,6 +83,18 @@ export type ApplicationComponent = (<
 	}
 }
 
+/**
+ * Component that wraps `Layout` by `ConfigProvider`, `App` and `I18nextProvider`. Some features:
+ *
+ * - Reactive theme, language switch
+ * - Collapsible sidebars
+ * - Sticky header and sidebars
+ *
+ * See complete documentation
+ * [here](https://evlmaistrenko.github.io/js-tools/antd/typedoc/variables/Application.html).
+ *
+ * @since 1.1.0
+ */
 export const Application: ApplicationComponent = forwardRef<
 	ApplicationContextValue,
 	ApplicationProps
@@ -252,9 +279,19 @@ export const Application: ApplicationComponent = forwardRef<
 					collapseSecondarySidebar?.()
 				}
 			}, [layout, collapsePrimarySidebar, collapseSecondarySidebar])
-			const [cssVariables, setCssVariables] = useState<Record<string, string>>(
-				{},
-			)
+			const [cssVariables, setCssVariables] = useState<Record<string, string>>({
+				"--evlta-application-screen-xs-min": "300px",
+				"--evlta-application-screen-xs-max": "575px",
+				"--evlta-application-screen-sm-min": "576px",
+				"--evlta-application-screen-sm-max": "767px",
+				"--evlta-application-screen-md-min": "768px",
+				"--evlta-application-screen-md-max": "991px",
+				"--evlta-application-screen-lg-min": "992px",
+				"--evlta-application-screen-lg-max": "1199px",
+				"--evlta-application-screen-xl-min": "1200px",
+				"--evlta-application-screen-xl-max": "1599px",
+				"--evlta-application-screen-xxl-min": "1600px",
+			})
 
 			return (
 				<ConfigProvider {...contextValue.configProviderProps}>
@@ -358,6 +395,7 @@ export const Application: ApplicationComponent = forwardRef<
 	},
 ) as unknown as ApplicationComponent
 
+Application.useApplication = useApplication
 Application.ConfigPage = ConfigPage
 Application.defaultProps = {
 	initialState: {

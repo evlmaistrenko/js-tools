@@ -47,6 +47,7 @@ const TwoTone = () => (
 export const TelegramOutlined: FC<IconProps> = (props) => (
 	<Icon
 		component={Outlined}
+		aria-label="telegram"
 		{...props}
 	/>
 )
@@ -54,6 +55,7 @@ export const TelegramOutlined: FC<IconProps> = (props) => (
 export const TelegramFilled: FC<IconProps> = (props) => (
 	<Icon
 		component={Filled}
+		aria-label="telegram"
 		{...props}
 	/>
 )
@@ -61,6 +63,7 @@ export const TelegramFilled: FC<IconProps> = (props) => (
 export const TelegramTwoTone: FC<IconProps> = (props) => (
 	<Icon
 		component={TwoTone}
+		aria-label="telegram"
 		{...props}
 	/>
 )

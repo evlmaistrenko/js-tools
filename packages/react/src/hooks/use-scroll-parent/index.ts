@@ -19,16 +19,10 @@ function isScrollable(el: Element, axis: ScrollParentAxis): boolean {
 	const overflowX = style.overflowX
 
 	const canScrollY =
-		(overflowY === "auto" ||
-			overflowY === "scroll" ||
-			overflowY === "overlay") &&
-		el.scrollHeight > el.clientHeight
+		overflowY === "auto" || overflowY === "scroll" || overflowY === "overlay"
 
 	const canScrollX =
-		(overflowX === "auto" ||
-			overflowX === "scroll" ||
-			overflowX === "overlay") &&
-		el.scrollWidth > el.clientWidth
+		overflowX === "auto" || overflowX === "scroll" || overflowX === "overlay"
 
 	switch (axis) {
 		case "vertical":
@@ -56,6 +50,7 @@ function findScrollParent(
  * React hook that returns the nearest scrollable parent of a given element along a specified axis, or a
  * fallback element if none is found.
  *
+ * @since 1.2.0
  * @param element The element whose scroll parent to find.
  * @param axis The scroll axis to consider: 'vertical', 'horizontal', or 'both'.
  * @param fallback A function that returns a fallback DOM Element (never `window`).

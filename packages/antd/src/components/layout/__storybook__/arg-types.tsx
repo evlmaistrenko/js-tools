@@ -55,7 +55,19 @@ export const argTypes: Partial<ArgTypes<LayoutProps>> = {
 			},
 		},
 	},
+	direction: {
+		table: {
+			type: {
+				summary: '"ltr" | "rtl"',
+			},
+		},
+	},
 	onSidebarsOverlayClick: {
 		control: false,
+		table: {
+			defaultValue: {
+				summary: "undefined",
+			},
+		},
 	},
 }

@@ -9,6 +9,8 @@ import classes from "./styles.module.css"
 /**
  * [WithOverlay](https://evlmaistrenko.github.io/js-tools/react/storybook/?path=/docs/components-withoverlay--docs)
  * component styled for Ant Design.
+ *
+ * @since 1.1.0
  */
 export const WithOverlay: typeof WithOverlayRaw = (props) => {
 	const {

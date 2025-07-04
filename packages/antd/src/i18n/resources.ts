@@ -1,3 +1,4 @@
+/** @since 1.1.0 */
 export const i18nResources = {
 	"en-US": {
 		application: {
