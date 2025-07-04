@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.13.0](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.12.1...tools-v1.13.0) (2025-07-04)
+
+
+### Features
+
+* add TypeScript declaration files for root package ([3dc2dd9](https://github.com/evlmaistrenko/js-tools/commit/3dc2dd9568ba3ec40201311489a259dc04ecc83b))
+
 ## [1.12.1](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.12.0...tools-v1.12.1) (2025-07-04)
 
 
