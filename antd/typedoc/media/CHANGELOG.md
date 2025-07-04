@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.1.0](https://github.com/evlmaistrenko/js-tools/compare/tools-antd-v1.0.1...tools-antd-v1.1.0) (2025-07-04)
+
+
+### Features
+
+* add Layout, Page, Application, WithOverlay, IconSelect components to antd package and usePrefersColorScheme, useScrollParent hooks to react package. ([4718708](https://github.com/evlmaistrenko/js-tools/commit/4718708903b46e975b0ff596663219143d9ad33c))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @evlmaistrenko/tools-react bumped from ^1.1.1 to ^1.2.0
+
 ## [1.0.1](https://github.com/evlmaistrenko/js-tools/compare/tools-antd-v1.0.0...tools-antd-v1.0.1) (2025-06-11)
 
 
