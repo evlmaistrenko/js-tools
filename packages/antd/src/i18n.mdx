@@ -1,0 +1,23 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="i18n" />
+
+# Internationalization
+
+The package exports an instance of `i18next`, which can be customized using the full `i18next` API. This allows you to configure translations and other internationalization features according to your application's requirements.
+
+## Typescript
+
+Types could be customized by creating file i18n.d.ts in your project:
+
+```typescript
+import "i18next";
+
+import { i18nResources } from "./resources";
+
+declare module "i18next" {
+  interface CustomTypeOptions {
+    resources: (typeof yourCustomResources)["en-US"];
+  }
+}
+```

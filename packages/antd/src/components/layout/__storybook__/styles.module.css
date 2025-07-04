@@ -1,0 +1,5 @@
+.scrollParent {
+  height: 600px;
+  overflow: auto;
+  --evlta-layout-height: 600px;
+}

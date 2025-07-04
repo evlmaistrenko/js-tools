@@ -1,0 +1,42 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 1rem;
+  width: 100%;
+}
+.pageHeader,
+.pageContent {
+  width: 100%;
+}
+.pageCentered {
+  align-items: center;
+  justify-content: center;
+}
+.pageContentContainer {
+  width: 100%;
+}
+.pageCenteredContentOnly .pageContentContainer {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+}
+.pageContent,
+.pageTitle {
+  padding: 1rem;
+  background: var(--ant-color-bg-container);
+  border-radius: var(--ant-border-radius-lg);
+}
+.pageTitle > *,
+.pageTitle h1 {
+  margin: 0;
+  font-size: var(--ant-font-size-heading-2);
+  font-weight: var(--ant-font-weight-strong);
+}
+.pageBreadcrumbs {
+  padding: 0.5rem 1rem 0;
+}
+.pageEmpty {
+  padding: 3rem 0;
+}

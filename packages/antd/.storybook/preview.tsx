@@ -1,6 +1,7 @@
 import "@ant-design/v5-patch-for-react-19"
 import type { Preview } from "@storybook/react-vite"
 
+import { ConfigProvider } from "antd"
 import "antd/dist/reset.css"
 
 const preview: Preview = {
@@ -22,3 +23,13 @@ const preview: Preview = {
 }
 
 export default preview
+
+export const decorators = [
+	(Story: React.FC) => {
+		return (
+			<ConfigProvider theme={{ cssVar: true }}>
+				<Story />
+			</ConfigProvider>
+		)
+	},
+]
