@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.12.1](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.12.0...tools-v1.12.1) (2025-07-04)
+
+
+### Bug Fixes
+
+* release-please creating PR by [@evlmaistrenko](https://github.com/evlmaistrenko) ([df2a622](https://github.com/evlmaistrenko/js-tools/commit/df2a62261fcb8d7e3c2ed50bbc625c1f0a10a503))
+* rollback ([b7ce202](https://github.com/evlmaistrenko/js-tools/commit/b7ce2029c85037c8f611f5bc2ab2d8c534a57211))
+
 ## [1.12.0](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.11.1...tools-v1.12.0) (2025-07-04)
 
 
