@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/evlmaistrenko/js-tools/compare/tools-react-v1.2.0...tools-react-v1.3.0) (2025-07-05)
+
+
+### Features
+
+* add separate exports in antd and react ([74b6b89](https://github.com/evlmaistrenko/js-tools/commit/74b6b891f6a24f35db3b704bd6cffaccb5bce9d2))
+
 ## [1.2.0](https://github.com/evlmaistrenko/js-tools/compare/tools-react-v1.1.1...tools-react-v1.2.0) (2025-07-04)
 
 
