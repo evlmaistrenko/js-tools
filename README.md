@@ -10,7 +10,7 @@ Javascript tools, utilities and react-components library.
 - [@evlmaistrenko/tools-dom](./packages/dom/README.md) - utilities for [DOM](https://developer.mozilla.org/ru/docs/Web/API/Document_Object_Model).
 - [@evlmaistrenko/tools-fetch](./packages/fetch/README.md) - utilities for [FetchAPI](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API).
 - [@evlmaistrenko/tools-mongomq](./packages/mongomq/README.md) - Simple MQ using [MongoDB](https://www.mongodb.com/).
-- [@evlmaistrenko/tools-react](./packages/react/README.md) - useful react-components.
+- [@evlmaistrenko/tools-react](./packages/react/README.md) - useful react-components and hooks.
 - [@evlmaistrenko/tools-steam-api-client](./packages/steam-api-client/README.md) - [Steam API](https://steamcommunity.com/dev) client for Javascript.
 
 ## Usage
@@ -24,7 +24,9 @@ import * as domTools from "@evlmaistrenko/tools/dom";
 import * as fetchTools from "@evlmaistrenko/tools/fetch";
 import * as mongomq from "@evlmaistrenko/tools/mongomq";
 import { SteamApiClient } from "@evlmaistrenko/tools/steam-api-client";
+import "@evlmaistrenko/tools/react/index.css";
 import { WithOverlay } from "@evlmaistrenko/tools/react";
+import "@evlmaistrenko/tools/antd/index.css";
 import { TelegramOutlined } from "@evlmaistrenko/tools/antd";
 
 // Use it

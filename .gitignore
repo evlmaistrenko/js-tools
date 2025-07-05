@@ -4,3 +4,5 @@ dist/
 docs/
 .env
 *.module.css.d.ts
+exports/antd/index.css
+exports/react/index.css

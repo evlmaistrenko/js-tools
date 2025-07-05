@@ -11,6 +11,7 @@ npm i @evlmaistrenko/tools-antd
 ```
 
 ```javascript
+import "@evlmaistrenko/tools-antd/index.css";
 import { TelegramOutlined } from "@evlmaistrenko/tools-antd";
 
 const telegramOutlined = <TelegramOutlined />;
