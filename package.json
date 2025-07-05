@@ -3,11 +3,14 @@
 	"version": "1.13.0",
 	"description": "Javascript tools, utilities and react-components library.",
 	"exports": {
-		"./antd": "./exports/antd.js",
+		"./antd": "./exports/antd/index.js",
+		"./antd/i18n": "./exports/antd/i18n.js",
+		"./antd/index.css": "./exports/antd/index.css",
 		"./dom": "./exports/dom.js",
 		"./fetch": "./exports/fetch.js",
 		"./mongomq": "./exports/mongomq.js",
 		"./react": "./exports/react.js",
+		"./react/index.css": "./exports/react/index.css",
 		"./steam-api-client": "./exports/steam-api-client.js"
 	},
 	"scripts": {
@@ -43,9 +46,7 @@
 	},
 	"homepage": "https://github.com/evlmaistrenko/js-tools#readme",
 	"type": "module",
-	"workspaces": [
-		"packages/*"
-	],
+	"workspaces": ["packages/*"],
 	"dependencies": {
 		"@evlmaistrenko/tools-antd": "1.1.0",
 		"@evlmaistrenko/tools-dom": "1.1.2",
@@ -119,7 +120,6 @@
 		"typescript-eslint": "^8.30.1",
 		"vite": "^7.0.0",
 		"vite-plugin-dts": "^4.5.4",
-		"vite-plugin-lib-inject-css": "^2.2.2",
 		"vitest": "^3.2.4"
 	}
 }

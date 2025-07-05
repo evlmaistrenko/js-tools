@@ -1,3 +1,5 @@
+import "@evlmaistrenko/tools-react/index.css"
+
 export * from "./components/application"
 export { type ApplicationHeaderProps } from "./components/application/fragments/header"
 export {

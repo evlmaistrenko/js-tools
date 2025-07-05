@@ -2,7 +2,7 @@
 
 [![NPM Version](https://img.shields.io/npm/v/%40evlmaistrenko%2Ftools-react)](https://www.npmjs.com/package/@evlmaistrenko/tools-react)
 
-Useful react-components.
+Useful react-components and hooks.
 
 ## Usage
 
@@ -11,6 +11,7 @@ npm i @evlmaistrenko/tools-react
 ```
 
 ```javascript
+import "@evlmaistrenko/tools-react/index.css";
 import { WithOverlay } from "@evlmaistrenko/tools-react";
 
 const withOverlay = <WithOverlay />;

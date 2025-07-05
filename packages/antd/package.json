@@ -3,9 +3,13 @@
 	"type": "module",
 	"version": "1.1.0",
 	"description": "React-components based on Ant Design.",
-	"main": "dist/index.js",
+	"exports": {
+		".": "./dist/index.js",
+		"./i18n": "./dist/i18n.js",
+		"./index.css": "./dist/index.css"
+	},
 	"scripts": {
-		"build": "tsc -b && vite build",
+		"build": "tsc -b && vite build && node ../../utils/cp.js ./dist/index.css ../../exports/antd",
 		"dev:tcm": "tcm -w src",
 		"dev:storybook": "storybook dev -p 6006",
 		"dev": "concurrently npm:dev:*",
@@ -21,10 +25,7 @@
 		"url": "git+https://github.com/evlmaistrenko/js-tools.git",
 		"directory": "./packages/antd/"
 	},
-	"keywords": [
-		"antd",
-		"react-components"
-	],
+	"keywords": ["antd", "react-components"],
 	"author": "evlmaistrenko <evlmaistrenko@gmail.com>",
 	"license": "MIT",
 	"bugs": {
@@ -46,9 +47,7 @@
 		"react-dom": "^19.1.0"
 	},
 	"eslintConfig": {
-		"extends": [
-			"plugin:storybook/recommended"
-		]
+		"extends": ["plugin:storybook/recommended"]
 	},
 	"devDependencies": {
 		"@ant-design/v5-patch-for-react-19": "^1.0.3",
