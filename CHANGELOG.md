@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.14.0](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.13.0...tools-v1.14.0) (2025-07-05)
+
+
+### Features
+
+* add separate exports in antd and react ([74b6b89](https://github.com/evlmaistrenko/js-tools/commit/74b6b891f6a24f35db3b704bd6cffaccb5bce9d2))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @evlmaistrenko/tools-antd bumped from 1.1.0 to 1.2.0
+    * @evlmaistrenko/tools-react bumped from 1.2.0 to 1.3.0
+
 ## [1.13.0](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.12.1...tools-v1.13.0) (2025-07-04)
 
 
