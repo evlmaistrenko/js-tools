@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.15.1](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.15.0...tools-v1.15.1) (2025-07-07)
+
+
+### Bug Fixes
+
+* improve flag rendering logic and error handling in getFlag function ([ccc55e0](https://github.com/evlmaistrenko/js-tools/commit/ccc55e085ad3d027f7d57296135cd1f960ba2db6))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @evlmaistrenko/tools-antd bumped from 1.3.0 to 1.3.1
+
 ## [1.15.0](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.14.0...tools-v1.15.0) (2025-07-07)
 
 
