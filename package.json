@@ -1,6 +1,6 @@
 {
 	"name": "@evlmaistrenko/tools",
-	"version": "1.14.0",
+	"version": "1.15.0",
 	"description": "Javascript tools, utilities and react-components library.",
 	"exports": {
 		"./antd": "./exports/antd/index.js",
@@ -50,7 +50,7 @@
 		"packages/*"
 	],
 	"dependencies": {
-		"@evlmaistrenko/tools-antd": "1.2.0",
+		"@evlmaistrenko/tools-antd": "1.3.0",
 		"@evlmaistrenko/tools-dom": "1.1.2",
 		"@evlmaistrenko/tools-fetch": "1.2.2",
 		"@evlmaistrenko/tools-mongomq": "1.2.2",

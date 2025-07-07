@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.15.0](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.14.0...tools-v1.15.0) (2025-07-07)
+
+
+### Features
+
+* enhance flag rendering and adjust styles for better responsiveness ([9d3f5ec](https://github.com/evlmaistrenko/js-tools/commit/9d3f5ec1d7f98438ee592478bc8614760e547111))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @evlmaistrenko/tools-antd bumped from 1.2.0 to 1.3.0
+
 ## [1.14.0](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.13.0...tools-v1.14.0) (2025-07-05)
 
 
