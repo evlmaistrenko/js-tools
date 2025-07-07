@@ -13,29 +13,29 @@ import { type ApplicationState, useApplication } from "../context"
 import classes from "../styles.module.css"
 
 const getFlag = (src: unknown, alt: string) => {
-	if (typeof src === "string") {
-		if (src.startsWith("data:") || src.endsWith(".svg")) {
-			return (
-				<img
-					className={classes.flag}
-					src={src}
-					alt={alt}
-				/>
-			)
-		}
-		console.error(
-			`Failed to render country flag "${alt}": expected a valid image URL or a React component. Please check your bundler configuration (SVG import handling).`,
+	if (
+		typeof src === "string" &&
+		(src.startsWith("data:") || src.endsWith(".svg"))
+	) {
+		return (
+			<img
+				className={classes.flag}
+				src={src}
+				alt={alt}
+			/>
+		)
+	} else if (src && typeof src === "object" && "src" in src) {
+		return (
+			// @ts-expect-error src is props for img
+			<img
+				{...src}
+				className={classes.flag}
+				alt={alt}
+			/>
 		)
 	}
-
-	const Src = src as FC<Record<string, string>>
-
-	return (
-		<Src
-			role="img"
-			aria-label={alt}
-			className={classes.flag}
-		/>
+	console.error(
+		`Failed to render country flag "${alt}": expected a valid image URL or properties for <img/>. Please check your bundler configuration (SVG import handling).`,
 	)
 }
 
