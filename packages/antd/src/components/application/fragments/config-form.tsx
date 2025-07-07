@@ -12,39 +12,48 @@ import type { IconSelectOption } from "../../icon-select"
 import { type ApplicationState, useApplication } from "../context"
 import classes from "../styles.module.css"
 
+const getFlag = (src: unknown, alt: string) => {
+	if (typeof src === "string") {
+		if (src.startsWith("data:") || src.endsWith(".svg")) {
+			return (
+				<img
+					className={classes.flag}
+					src={src}
+					alt={alt}
+				/>
+			)
+		}
+		console.error(
+			`Failed to render country flag "${alt}": expected a valid image URL or a React component. Please check your bundler configuration (SVG import handling).`,
+		)
+	}
+
+	const Src = src as FC<Record<string, string>>
+
+	return (
+		<Src
+			role="img"
+			aria-label={alt}
+			className={classes.flag}
+		/>
+	)
+}
+
 const languages: IconSelectOption[] = [
 	{
 		label: "English",
 		value: "en-US",
-		icon: (
-			<img
-				className={classes.flag}
-				src={us}
-				alt="US"
-			/>
-		),
+		icon: getFlag(us, "US"),
 	},
 	{
 		label: "Қазақша",
 		value: "kk-KZ",
-		icon: (
-			<img
-				src={kz}
-				className={classes.flag}
-				alt="KZ"
-			/>
-		),
+		icon: getFlag(kz, "KZ"),
 	},
 	{
 		label: "Русский",
 		value: "ru-RU",
-		icon: (
-			<img
-				className={classes.flag}
-				src={ru}
-				alt="RU"
-			/>
-		),
+		icon: getFlag(ru, "RU"),
 	},
 ]
 

@@ -106,6 +106,7 @@
 
 .flag {
   width: 1.2em;
+  height: auto;
 }
 
 .select {
