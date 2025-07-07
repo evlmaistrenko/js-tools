@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/evlmaistrenko/js-tools/compare/tools-antd-v1.2.0...tools-antd-v1.3.0) (2025-07-07)
+
+
+### Features
+
+* enhance flag rendering and adjust styles for better responsiveness ([9d3f5ec](https://github.com/evlmaistrenko/js-tools/commit/9d3f5ec1d7f98438ee592478bc8614760e547111))
+
 ## [1.2.0](https://github.com/evlmaistrenko/js-tools/compare/tools-antd-v1.1.0...tools-antd-v1.2.0) (2025-07-05)
 
 
