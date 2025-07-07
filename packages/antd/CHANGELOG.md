@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.1](https://github.com/evlmaistrenko/js-tools/compare/tools-antd-v1.3.0...tools-antd-v1.3.1) (2025-07-07)
+
+
+### Bug Fixes
+
+* improve flag rendering logic and error handling in getFlag function ([ccc55e0](https://github.com/evlmaistrenko/js-tools/commit/ccc55e085ad3d027f7d57296135cd1f960ba2db6))
+
 ## [1.3.0](https://github.com/evlmaistrenko/js-tools/compare/tools-antd-v1.2.0...tools-antd-v1.3.0) (2025-07-07)
 
 
