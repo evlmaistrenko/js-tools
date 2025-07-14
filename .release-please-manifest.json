@@ -1,5 +1,5 @@
 {
-	".": "1.16.0",
+	".": "1.16.1",
 	"packages/fetch": "1.2.2",
 	"packages/mongomq": "1.2.2",
 	"packages/steam-api-client": "1.5.0",
