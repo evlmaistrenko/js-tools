@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.16.1](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.16.0...tools-v1.16.1) (2025-07-14)
+
+
+### Bug Fixes
+
+* add missing dependency @ast-grep/napi-linux-x64-gnu in publish workflow ([f75c937](https://github.com/evlmaistrenko/js-tools/commit/f75c9370edde5ecceff500d11c5bd94bdc8dc253))
+
 ## [1.16.0](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.15.1...tools-v1.16.0) (2025-07-14)
 
 
