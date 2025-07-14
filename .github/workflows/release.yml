@@ -52,7 +52,7 @@ jobs:
         if: steps.pr.outputs.skip != 'true'
         run: |
           npm ci
-          npm i -D @rollup/rollup-linux-x64-gnu
+          npm i -D @rollup/rollup-linux-x64-gnu @ast-grep/napi-linux-x64-gnu
       - name: Generate test documentation
         if: steps.pr.outputs.skip != 'true'
         run: npm run test:docs
