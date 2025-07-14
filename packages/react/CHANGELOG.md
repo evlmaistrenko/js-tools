@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/evlmaistrenko/js-tools/compare/tools-react-v1.3.0...tools-react-v1.4.0) (2025-07-14)
+
+
+### Features
+
+* refactor i18n integration in antd package ([dfa2948](https://github.com/evlmaistrenko/js-tools/commit/dfa29485c1e06a9408f326624c3a186437c1bfe3))
+
 ## [1.3.0](https://github.com/evlmaistrenko/js-tools/compare/tools-react-v1.2.0...tools-react-v1.3.0) (2025-07-05)
 
 

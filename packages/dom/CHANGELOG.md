@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/evlmaistrenko/js-tools/compare/tools-dom-v1.1.2...tools-dom-v1.2.0) (2025-07-14)
+
+
+### Features
+
+* refactor i18n integration in antd package ([dfa2948](https://github.com/evlmaistrenko/js-tools/commit/dfa29485c1e06a9408f326624c3a186437c1bfe3))
+
 ## [1.1.2](https://github.com/evlmaistrenko/js-tools/compare/tools-dom-v1.1.1...tools-dom-v1.1.2) (2025-06-11)
 
 
