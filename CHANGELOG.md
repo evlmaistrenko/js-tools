@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.16.2](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.16.1...tools-v1.16.2) (2025-07-14)
+
+
+### Bug Fixes
+
+* update dependencies and remove unused post-install script in antd package ([f609acc](https://github.com/evlmaistrenko/js-tools/commit/f609acc7f549d1e3ff9324bfa43af11abf9eb49e))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @evlmaistrenko/tools-antd bumped from 1.4.0 to 1.4.1
+
 ## [1.16.1](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.16.0...tools-v1.16.1) (2025-07-14)
 
 

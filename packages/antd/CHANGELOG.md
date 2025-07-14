@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.1](https://github.com/evlmaistrenko/js-tools/compare/tools-antd-v1.4.0...tools-antd-v1.4.1) (2025-07-14)
+
+
+### Bug Fixes
+
+* update dependencies and remove unused post-install script in antd package ([f609acc](https://github.com/evlmaistrenko/js-tools/commit/f609acc7f549d1e3ff9324bfa43af11abf9eb49e))
+
 ## [1.4.0](https://github.com/evlmaistrenko/js-tools/compare/tools-antd-v1.3.1...tools-antd-v1.4.0) (2025-07-14)
 
 
