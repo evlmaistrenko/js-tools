@@ -1,4 +1,4 @@
-import "@evlmaistrenko/tools-react/index.css"
+import "@ant-design/v5-patch-for-react-19"
 
 export * from "./components/application"
 export { type ApplicationHeaderProps } from "./components/application/fragments/header"
@@ -15,5 +15,5 @@ export * from "./components/layout"
 export { type LayoutSidebarProps } from "./components/layout/sidebar"
 export * from "./components/page"
 export * from "./components/with-overlay"
-export * from "./i18n"
+export * from "./i18next"
 export * from "./icons"

@@ -7,6 +7,7 @@ import react from "@vitejs/plugin-react"
 import { storybookTest } from "@storybook/addon-vitest/vitest-plugin"
 import { defineConfig } from "vite"
 import dts from "vite-plugin-dts"
+import { libInjectCss } from "vite-plugin-lib-inject-css"
 
 const dirname =
 	typeof __dirname !== "undefined"
@@ -21,6 +22,7 @@ export default defineConfig({
 			tsconfigPath: "./tsconfig.app.json",
 			rollupTypes: true,
 		}),
+		libInjectCss(),
 	],
 	build: {
 		lib: {

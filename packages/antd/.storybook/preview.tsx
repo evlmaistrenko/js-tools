@@ -1,5 +1,4 @@
 import "@ant-design/v5-patch-for-react-19"
-import "@evlmaistrenko/tools-react/index.css"
 import type { Preview } from "@storybook/react-vite"
 
 import { ConfigProvider } from "antd"

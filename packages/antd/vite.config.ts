@@ -5,8 +5,10 @@ import { fileURLToPath } from "node:url"
 import react from "@vitejs/plugin-react"
 
 import { storybookTest } from "@storybook/addon-vitest/vitest-plugin"
+import preserveDirectives from "rollup-preserve-directives"
 import { defineConfig } from "vite"
 import dts from "vite-plugin-dts"
+import { libInjectCss } from "vite-plugin-lib-inject-css"
 
 const dirname =
 	typeof __dirname !== "undefined"
@@ -21,18 +23,22 @@ export default defineConfig({
 			tsconfigPath: "./tsconfig.app.json",
 			rollupTypes: true,
 		}),
+		libInjectCss(),
 	],
 	build: {
 		lib: {
 			entry: {
-				index: path.resolve("src/index.ts"),
-				i18n: path.resolve("src/i18n/index.ts"),
+				"index": path.resolve("src/index.ts"),
+				"i18next": path.resolve("src/i18next/index.ts"),
+				"next": path.resolve("src/next/index.tsx"),
+				"next-client": path.resolve("src/next/client.tsx"),
 			},
 			fileName: (_, name) => `${name}.js`,
 			cssFileName: "index",
 			formats: ["es"],
 		},
 		rollupOptions: {
+			plugins: [preserveDirectives()],
 			external: (id) => {
 				return !id.startsWith(".") && !path.isAbsolute(id)
 			},

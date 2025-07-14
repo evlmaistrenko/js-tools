@@ -1,13 +1,10 @@
-import type { WithOverlayProps } from "@evlmaistrenko/tools-react"
-import { useScrollParent } from "@evlmaistrenko/tools-react"
-import type {
-	ElementType,
-	ForwardRefExoticComponent,
-	HTMLAttributes,
-	MouseEventHandler,
-	RefAttributes,
-} from "react"
+import { type WithOverlayProps } from "@evlmaistrenko/tools-react"
 import {
+	type ElementType,
+	type ForwardRefExoticComponent,
+	type HTMLAttributes,
+	type MouseEventHandler,
+	type RefAttributes,
 	forwardRef,
 	useCallback,
 	useEffect,
@@ -16,8 +13,15 @@ import {
 	useState,
 } from "react"
 
-import { Layout as AntdLayout, FloatButton, theme } from "antd"
+import { getScrollParent } from "@evlmaistrenko/tools-dom"
+import {
+	Layout as AntdLayout,
+	type BackTopProps,
+	FloatButton,
+	theme,
+} from "antd"
 import classNames from "classnames"
+import { getTargetScrollBarSize } from "rc-util/es/getScrollBarSize"
 
 import { WithOverlay } from "../with-overlay"
 import type { LayoutSidebarProps } from "./sidebar"
@@ -140,49 +144,91 @@ export const Layout: LayoutComponent = forwardRef<LayoutRef, LayoutProps>(
 			}
 		}, [element, overflowedSidebars])
 
-		const {
-			element: scrollParent,
-			lockScroll,
-			unlockScroll,
-		} = useScrollParent(element, "vertical")
-		const { token } = theme.useToken()
+		const [scrollParent, setScrollParent] = useState<HTMLElement | null>(null)
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 		useEffect(() => {
-			if (!scrollParent) return
-			const element = scrollParent as HTMLElement
-			if (!element.classList.contains(classes.scrollParent))
-				element.classList.add(classes.scrollParent)
-			element.style.setProperty("--ant-layout-body-bg", token.colorBgLayout)
-			element.style.setProperty(
-				"--ant-color-bg-container",
-				token.colorBgContainer,
+			if (!element) return
+			setScrollParent(
+				() => (getScrollParent(element) ?? document.body) as HTMLElement,
 			)
 		})
 
+		const { token } = theme.useToken()
 		useEffect(() => {
-			if (overflowedSidebar === "primary" && !primarySidebarSticky) return
-			if (overflowedSidebar === "secondary" && !secondarySidebarSticky) return
-			if (overflowedSidebars.length > 0) {
-				lockScroll()
-			} else {
-				unlockScroll()
+			if (!scrollParent) return
+			if (!scrollParent.classList.contains(classes.scrollParent))
+				scrollParent.classList.add(classes.scrollParent)
+			scrollParent.style.setProperty(
+				"scrollbar-color",
+				`${token.colorBgLayout} ${token.colorBgContainer}`,
+			)
+			return () => {
+				scrollParent.style.removeProperty("scrollbar-color")
+				scrollParent.classList.remove(classes.scrollParent)
 			}
-			return unlockScroll
+		})
+
+		const [scrollLocked, setScrollLocked] = useState(false)
+		useEffect(() => {
+			let scrollLocked = overflowedSidebars.length > 0
+			if (overflowedSidebar === "primary" && !primarySidebarSticky) {
+				scrollLocked = false
+			}
+			if (overflowedSidebar === "secondary" && !secondarySidebarSticky) {
+				scrollLocked = false
+			}
+			setScrollLocked(scrollLocked)
 		}, [
 			overflowedSidebars,
+			overflowedSidebar,
 			primarySidebarSticky,
 			secondarySidebarSticky,
-			overflowedSidebar,
-			lockScroll,
-			unlockScroll,
 		])
+
+		const [cssVariables, setCssVariables] = useState<Record<string, string>>({
+			"--evlta-layout-scrollbar-width": "0px",
+		})
+		useEffect(() => {
+			if (!scrollParent) return
+			let scrollbarWidth = 0
+			if (
+				(scrollParent === document.body &&
+					window.innerWidth - document.documentElement.clientWidth > 0) ||
+				scrollParent.scrollHeight > scrollParent.clientHeight
+			) {
+				scrollbarWidth = getTargetScrollBarSize(scrollParent).width
+			}
+			setCssVariables((values) => ({
+				...values,
+				"--evlta-layout-scrollbar-width": `${scrollbarWidth}px`,
+			}))
+		}, [scrollParent])
+
+		useEffect(() => {
+			if (!scrollParent) return
+			if (scrollLocked) {
+				scrollParent.style.setProperty("overflow-y", "hidden")
+			} else {
+				scrollParent.style.removeProperty("overflow-y")
+			}
+			return () => {
+				scrollParent.style.removeProperty("overflow-y")
+			}
+		}, [scrollLocked, scrollParent])
+
+		const backTopTarget = useCallback<Required<BackTopProps>["target"]>(() => {
+			return (scrollParent === document.body ? null : scrollParent) ?? window
+		}, [scrollParent])
 
 		return (
 			<AntdLayout
 				ref={setElement}
 				{...props}
+				style={{ ...cssVariables, ...props.style } as LayoutProps["style"]}
 				className={classNames(
 					classes.layout,
 					classes[direction],
+					{ [classes.scrollLocked]: scrollLocked },
 					props.className,
 				)}
 			>
@@ -253,13 +299,7 @@ export const Layout: LayoutComponent = forwardRef<LayoutRef, LayoutProps>(
 					/>
 				)}
 				{!!backTop && !overflowedSidebar && (
-					<FloatButton.BackTop
-						target={() =>
-							(scrollParent !== document.documentElement
-								? (scrollParent as HTMLElement)
-								: null) ?? window
-						}
-					/>
+					<FloatButton.BackTop target={backTopTarget} />
 				)}
 			</AntdLayout>
 		)

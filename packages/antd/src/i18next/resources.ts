@@ -1,5 +1,4 @@
-/** @since 1.1.0 */
-export const i18nResources = {
+export const i18nextResources = {
 	"en-US": {
 		application: {
 			"Expand menu": "Expand menu",
@@ -57,4 +56,4 @@ export const i18nResources = {
 } as const
 
 export const ns = ["application"]
-export type I18nLocales = keyof typeof i18nResources
+export type I18nextLocales = keyof typeof i18nextResources

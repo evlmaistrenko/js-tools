@@ -26,7 +26,7 @@ import ruRU from "antd/es/locale/ru_RU"
 import classNames from "classnames"
 import { omit, pick } from "lodash"
 
-import { i18n } from "../../i18n"
+import { i18next } from "../../i18next"
 import { Layout, type LayoutProps, type LayoutRef } from "../layout"
 import type { PageProps } from "../page"
 import {
@@ -81,8 +81,6 @@ export type ApplicationComponent = (<
  *
  * See complete documentation
  * [here](https://evlmaistrenko.github.io/js-tools/antd/typedoc/variables/Application.html).
- *
- * @since 1.1.0
  */
 export const Application: ApplicationComponent = forwardRef<
 	ApplicationContextValue,
@@ -234,8 +232,8 @@ export const Application: ApplicationComponent = forwardRef<
 			}, [contextValue])
 
 			useEffect(() => {
-				if (i18n.language !== contextValue.config.values.locale) {
-					i18n.changeLanguage(contextValue.config.values.locale)
+				if (i18next.language !== contextValue.config.values.locale) {
+					i18next.changeLanguage(contextValue.config.values.locale)
 				}
 			})
 
@@ -286,7 +284,7 @@ export const Application: ApplicationComponent = forwardRef<
 				<ConfigProvider {...contextValue.configProviderProps}>
 					<ApplicationContext.Provider value={contextValue}>
 						<App {...antdAppProps}>
-							<I18nextProvider i18n={i18n}>
+							<I18nextProvider i18n={i18next}>
 								<Layout
 									ref={setLayout}
 									{...props}

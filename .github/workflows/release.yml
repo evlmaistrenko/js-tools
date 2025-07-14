@@ -55,9 +55,7 @@ jobs:
           npm i -D @rollup/rollup-linux-x64-gnu
       - name: Generate test documentation
         if: steps.pr.outputs.skip != 'true'
-        run: |
-          npm run build
-          npm run test:docs --ws --if-present
+        run: npm run test:docs
       - name: Deploy test documentation to GitHub Pages
         if: steps.pr.outputs.skip != 'true'
         uses: peaceiris/actions-gh-pages@v4

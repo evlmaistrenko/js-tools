@@ -1,6 +1,6 @@
 import { Meta } from "@storybook/addon-docs/blocks";
 
-<Meta title="i18n" />
+<Meta title="i18next" />
 
 # Internationalization
 
@@ -8,12 +8,12 @@ The package exports an instance of `i18next`, which can be customized using the 
 
 ## Typescript
 
-Types could be customized by creating file i18n.d.ts in your project:
+Types could be customized by creating file i18next.d.ts in your project:
 
 ```typescript
 import "i18next";
 
-import { i18nResources } from "./resources";
+import { yourCustomResources } from "./resources";
 
 declare module "i18next" {
   interface CustomTypeOptions {
