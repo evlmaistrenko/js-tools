@@ -5,10 +5,15 @@ import { fileURLToPath } from "node:url"
 import react from "@vitejs/plugin-react"
 
 import { storybookTest } from "@storybook/addon-vitest/vitest-plugin"
+import * as csso from "csso"
+import fs from "fs/promises"
+import { createRequire } from "module"
 import preserveDirectives from "rollup-preserve-directives"
 import { defineConfig } from "vite"
 import dts from "vite-plugin-dts"
 import { libInjectCss } from "vite-plugin-lib-inject-css"
+
+const require = createRequire(import.meta.url)
 
 const dirname =
 	typeof __dirname !== "undefined"
@@ -17,6 +22,15 @@ const dirname =
 
 // https://vite.dev/config/
 export default defineConfig({
+	define: {
+		"process.env.RESET_CSS": JSON.stringify(
+			csso.minify(
+				await fs.readFile(require.resolve("antd/dist/reset.css"), {
+					encoding: "utf-8",
+				}),
+			).css,
+		),
+	},
 	plugins: [
 		react(),
 		dts({
@@ -30,8 +44,8 @@ export default defineConfig({
 			entry: {
 				"index": path.resolve("src/index.ts"),
 				"i18next": path.resolve("src/i18next/index.ts"),
-				"next": path.resolve("src/next/index.tsx"),
-				"next-client": path.resolve("src/next/client.tsx"),
+				"next": path.resolve("src/next/index.ts"),
+				"next-registry": path.resolve("src/next/registry.tsx"),
 			},
 			fileName: (_, name) => `${name}.js`,
 			cssFileName: "index",

@@ -52,9 +52,7 @@
 	},
 	"homepage": "https://github.com/evlmaistrenko/js-tools#readme",
 	"type": "module",
-	"workspaces": [
-		"packages/*"
-	],
+	"workspaces": ["packages/*"],
 	"dependencies": {
 		"@evlmaistrenko/tools-antd": "1.4.0",
 		"@evlmaistrenko/tools-dom": "1.2.0",
@@ -101,6 +99,7 @@
 		"@storybook/addon-vitest": "^9.0.3",
 		"@storybook/react-vite": "^9.0.3",
 		"@trivago/prettier-plugin-sort-imports": "^4.3.0",
+		"@types/csso": "^5.0.4",
 		"@types/lodash": "^4.17.17",
 		"@types/node": "^22.10.1",
 		"@types/react": "^19.1.2",

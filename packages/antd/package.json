@@ -16,7 +16,6 @@
 		"docs": "concurrently npm:docs:*",
 		"docs:storybook": "storybook build -o ../../docs/antd/storybook",
 		"docs:typedoc": "typedoc",
-		"postinstall": "node ./scripts/post-install.js",
 		"prepack": "node ../../utils/cp.js ../../.npmignore .",
 		"test": "vitest --run",
 		"test:docs": "storybook build -o ../../docs/test/antd/storybook"
@@ -26,10 +25,7 @@
 		"url": "git+https://github.com/evlmaistrenko/js-tools.git",
 		"directory": "./packages/antd/"
 	},
-	"keywords": [
-		"antd",
-		"react-components"
-	],
+	"keywords": ["antd", "react-components"],
 	"author": "evlmaistrenko <evlmaistrenko@gmail.com>",
 	"license": "MIT",
 	"bugs": {
@@ -61,11 +57,10 @@
 		}
 	},
 	"eslintConfig": {
-		"extends": [
-			"plugin:storybook/recommended"
-		]
+		"extends": ["plugin:storybook/recommended"]
 	},
 	"devDependencies": {
+		"csso": "^5.0.5",
 		"rc-select": "^14.16.8"
 	}
 }
