@@ -1,25 +1,41 @@
 # Changelog
 
-## [1.4.1](https://github.com/evlmaistrenko/js-tools/compare/tools-antd-v1.4.0...tools-antd-v1.4.1) (2025-07-14)
-
-
-### Bug Fixes
-
-* update dependencies and remove unused post-install script in antd package ([f609acc](https://github.com/evlmaistrenko/js-tools/commit/f609acc7f549d1e3ff9324bfa43af11abf9eb49e))
-
-## [1.4.0](https://github.com/evlmaistrenko/js-tools/compare/tools-antd-v1.3.1...tools-antd-v1.4.0) (2025-07-14)
+## [1.5.0](https://github.com/evlmaistrenko/js-tools/compare/tools-antd-v1.4.1...tools-antd-v1.5.0) (2025-07-25)
 
 
 ### Features
 
-* refactor i18n integration in antd package ([dfa2948](https://github.com/evlmaistrenko/js-tools/commit/dfa29485c1e06a9408f326624c3a186437c1bfe3))
+* streamline layout component and remove unused CSS variables ([c84abfa](https://github.com/evlmaistrenko/js-tools/commit/c84abfa10985235a20169c527d0048a5e23c770d))
+
+
+### Bug Fixes
+
+* update entry point for next index to use .ts instead of .tsx ([230083a](https://github.com/evlmaistrenko/js-tools/commit/230083ac18aa11079eb5cf478409b8a013176e3f))
 
 
 ### Dependencies
 
 * The following workspace dependencies were updated
   * dependencies
-    * @evlmaistrenko/tools-react bumped from ^1.3.0 to ^1.4.0
+    * @evlmaistrenko/tools-react bumped from ^1.4.0 to ^1.5.0
+
+## [1.4.1](https://github.com/evlmaistrenko/js-tools/compare/tools-antd-v1.4.0...tools-antd-v1.4.1) (2025-07-14)
+
+### Bug Fixes
+
+- update dependencies and remove unused post-install script in antd package ([f609acc](https://github.com/evlmaistrenko/js-tools/commit/f609acc7f549d1e3ff9324bfa43af11abf9eb49e))
+
+## [1.4.0](https://github.com/evlmaistrenko/js-tools/compare/tools-antd-v1.3.1...tools-antd-v1.4.0) (2025-07-14)
+
+### Features
+
+- refactor i18n integration in antd package ([dfa2948](https://github.com/evlmaistrenko/js-tools/commit/dfa29485c1e06a9408f326624c3a186437c1bfe3))
+
+### Dependencies
+
+- The following workspace dependencies were updated
+  - dependencies
+    - @evlmaistrenko/tools-react bumped from ^1.3.0 to ^1.4.0
 
 ## [1.3.1](https://github.com/evlmaistrenko/js-tools/compare/tools-antd-v1.3.0...tools-antd-v1.3.1) (2025-07-07)
 
