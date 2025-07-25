@@ -1,6 +1,6 @@
 {
 	"out": "../../docs/antd/typedoc",
 	"readme": "./README.md",
-	"entryPoints": ["./src/index.ts", "./src/next/index.tsx"],
+	"entryPoints": ["./src/index.ts", "./src/next/index.ts"],
 	"excludeExternals": true
 }

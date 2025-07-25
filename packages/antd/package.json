@@ -35,6 +35,7 @@
 	"homepage": "https://github.com/evlmaistrenko/js-tools/blob/master/packages/antd/README.md",
 	"dependencies": {
 		"@ant-design/nextjs-registry": "^1.0.2",
+		"@ant-design/v5-patch-for-react-19": "^1.0.3",
 		"@evlmaistrenko/tools-react": "^1.4.0",
 		"classnames": "^2.5.1",
 		"i18next": "^25.2.1",
@@ -46,7 +47,6 @@
 	},
 	"peerDependencies": {
 		"@ant-design/icons": "^6.0.0",
-		"@ant-design/v5-patch-for-react-19": "^1.0.3",
 		"antd": "^5.26.0",
 		"next": "^15.3.5",
 		"react": "^19.1.0",
