@@ -1,0 +1,12 @@
+import{j as d}from"./jsx-runtime-D_zvdyIk.js";import{g as f}from"./iframe-BnzI0cGi.js";var c={exports:{}};/*!
+	Copyright (c) 2018 Jed Watson.
+	Licensed under the MIT License (MIT), see
+	http://jedwatson.github.io/classnames
+*/var u;function y(){return u||(u=1,function(n){(function(){var a={}.hasOwnProperty;function r(){for(var e="",t=0;t<arguments.length;t++){var s=arguments[t];s&&(e=m(e,o(s)))}return e}function o(e){if(typeof e=="string"||typeof e=="number")return e;if(typeof e!="object")return"";if(Array.isArray(e))return r.apply(null,e);if(e.toString!==Object.prototype.toString&&!e.toString.toString().includes("[native code]"))return e.toString();var t="";for(var s in e)a.call(e,s)&&e[s]&&(t=m(t,s));return t}function m(e,t){return t?e?e+" "+t:e+t:e}n.exports?(r.default=r,n.exports=r):window.classNames=r})()}(c)),c.exports}var h=y();const p=f(h),b="_withOverlay_n2jws_1",O="_overlay_n2jws_6",T="_overlaid_n2jws_15",_="_clickable_n2jws_20",i={withOverlay:b,overlay:O,overlaid:T,clickable:_},v=({overlaid:n=!1,overlayProps:a,children:r,...o})=>d.jsxs("div",{...o,className:p(i.withOverlay,{[i.overlaid]:n},o.className),children:[r,d.jsx("div",{...a,className:p(i.overlay,{[i.clickable]:!!a?.onClick},a?.className)})]});v.__docgenInfo={description:"Wrapper component that adds an overlay to its children.",methods:[],displayName:"WithOverlay",props:{overlaid:{required:!1,tsType:{name:"boolean"},description:"Whether or not the overlay is visible.",defaultValue:{value:"false",computed:!1}},overlayProps:{required:!1,tsType:{name:"Omit",elements:[{name:"HTMLAttributes",elements:[{name:"HTMLDivElement"}],raw:"HTMLAttributes<HTMLDivElement>"},{name:"literal",value:'"children"'}],raw:'Omit<HTMLAttributes<HTMLDivElement>, "children">'},description:"Properties of overlay-node."}},composes:["HTMLAttributes"]};const w={title:"Components/WithOverlay",component:v,parameters:{layout:"centered"},tags:["autodocs"],argTypes:{children:{table:{disable:!0}},overlayProps:{control:!1,table:{type:{summary:'Omit<HTMLAttributes<HTMLDivElement>, "children">'}}}}},l={args:{children:d.jsx("div",{style:{background:"#ececec",padding:32},children:"CONTENT"})}};l.parameters={...l.parameters,docs:{...l.parameters?.docs,source:{originalSource:`{
+  args: {
+    children: <div style={{
+      background: "#ececec",
+      padding: 32
+    }}>CONTENT</div>
+  }
+}`,...l.parameters?.docs?.source}}};const N=["Default"];export{l as Default,N as __namedExportsOrder,w as default};
