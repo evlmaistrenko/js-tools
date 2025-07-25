@@ -1,32 +1,40 @@
 # Changelog
 
-## [1.16.1](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.16.0...tools-v1.16.1) (2025-07-14)
-
-
-### Bug Fixes
-
-* add missing dependency @ast-grep/napi-linux-x64-gnu in publish workflow ([f75c937](https://github.com/evlmaistrenko/js-tools/commit/f75c9370edde5ecceff500d11c5bd94bdc8dc253))
-
-## [1.16.0](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.15.1...tools-v1.16.0) (2025-07-14)
-
-
-### Features
-
-* refactor i18n integration in antd package ([dfa2948](https://github.com/evlmaistrenko/js-tools/commit/dfa29485c1e06a9408f326624c3a186437c1bfe3))
-
+## [1.16.2](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.16.1...tools-v1.16.2) (2025-07-14)
 
 ### Bug Fixes
 
-* add missing dependency @ast-grep/napi-linux-x64-gnu in release workflow ([be38d10](https://github.com/evlmaistrenko/js-tools/commit/be38d10ac8097732d3986688668eef8c6a7d9a88))
-
+- update dependencies and remove unused post-install script in antd package ([f609acc](https://github.com/evlmaistrenko/js-tools/commit/f609acc7f549d1e3ff9324bfa43af11abf9eb49e))
 
 ### Dependencies
 
-* The following workspace dependencies were updated
-  * dependencies
-    * @evlmaistrenko/tools-antd bumped from 1.3.1 to 1.4.0
-    * @evlmaistrenko/tools-dom bumped from 1.1.2 to 1.2.0
-    * @evlmaistrenko/tools-react bumped from 1.3.0 to 1.4.0
+- The following workspace dependencies were updated
+  - dependencies
+    - @evlmaistrenko/tools-antd bumped from 1.4.0 to 1.4.1
+
+## [1.16.1](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.16.0...tools-v1.16.1) (2025-07-14)
+
+### Bug Fixes
+
+- add missing dependency @ast-grep/napi-linux-x64-gnu in publish workflow ([f75c937](https://github.com/evlmaistrenko/js-tools/commit/f75c9370edde5ecceff500d11c5bd94bdc8dc253))
+
+## [1.16.0](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.15.1...tools-v1.16.0) (2025-07-14)
+
+### Features
+
+- refactor i18n integration in antd package ([dfa2948](https://github.com/evlmaistrenko/js-tools/commit/dfa29485c1e06a9408f326624c3a186437c1bfe3))
+
+### Bug Fixes
+
+- add missing dependency @ast-grep/napi-linux-x64-gnu in release workflow ([be38d10](https://github.com/evlmaistrenko/js-tools/commit/be38d10ac8097732d3986688668eef8c6a7d9a88))
+
+### Dependencies
+
+- The following workspace dependencies were updated
+  - dependencies
+    - @evlmaistrenko/tools-antd bumped from 1.3.1 to 1.4.0
+    - @evlmaistrenko/tools-dom bumped from 1.1.2 to 1.2.0
+    - @evlmaistrenko/tools-react bumped from 1.3.0 to 1.4.0
 
 ## [1.15.1](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.15.0...tools-v1.15.1) (2025-07-07)
 
