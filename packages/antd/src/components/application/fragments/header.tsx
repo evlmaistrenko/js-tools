@@ -1,19 +1,11 @@
-import {
-	type FC,
-	type HTMLAttributes,
-	type ReactNode,
-	useCallback,
-	useState,
-} from "react"
-import { useTranslation } from "react-i18next"
+import { type FC, type HTMLAttributes, type ReactNode } from "react"
 
-import { SettingOutlined } from "@ant-design/icons"
-import { Button, Drawer, Tooltip } from "antd"
 import classNames from "classnames"
 
+import { I18nextProvider } from "../../../i18next/provider"
 import { useApplication } from "../context"
 import classes from "../styles.module.css"
-import { ConfigForm } from "./config-form"
+import { HeaderConfig } from "./header-config"
 import { PrimarySidebarToggler } from "./primary-sidebar-toggler"
 import { SecondarySidebarToggler } from "./secondary-sidebar-toggler"
 
@@ -32,14 +24,6 @@ export const Header: FC<ApplicationHeaderProps> = ({
 	const {
 		configProviderProps: { direction },
 	} = useApplication()!
-	const [configOpen, setConfigOpen] = useState(false)
-	const openConfig = useCallback(() => {
-		setConfigOpen(true)
-	}, [])
-	const closeConfig = useCallback(() => {
-		setConfigOpen(false)
-	}, [])
-	const { t } = useTranslation("application")
 
 	return (
 		<div
@@ -50,32 +34,14 @@ export const Header: FC<ApplicationHeaderProps> = ({
 				props.className,
 			)}
 		>
-			{primarySidebarToggler !== false && <PrimarySidebarToggler />}
+			<I18nextProvider>
+				{primarySidebarToggler !== false && <PrimarySidebarToggler />}
+			</I18nextProvider>
 			<div className={classes.headerChildren}>{props.children}</div>
-			{config !== false && (
-				<>
-					<Tooltip
-						trigger={"contextMenu"}
-						title={t("Open settings")}
-					>
-						<Button
-							icon={<SettingOutlined />}
-							type="text"
-							onClick={openConfig}
-							title={t("Open settings")}
-						/>
-					</Tooltip>
-					<Drawer
-						open={configOpen}
-						onClose={closeConfig}
-						title={t("Settings")}
-						placement={direction === "rtl" ? "left" : "right"}
-					>
-						<ConfigForm>{config}</ConfigForm>
-					</Drawer>
-				</>
-			)}
-			{secondarySidebarToggler !== false && <SecondarySidebarToggler />}
+			<I18nextProvider>
+				{config !== false && <HeaderConfig>{config}</HeaderConfig>}
+				{secondarySidebarToggler !== false && <SecondarySidebarToggler />}
+			</I18nextProvider>
 		</div>
 	)
 }

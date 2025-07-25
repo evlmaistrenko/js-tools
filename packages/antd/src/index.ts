@@ -5,7 +5,6 @@ export { type ApplicationHeaderProps } from "./components/application/fragments/
 export {
 	type ApplicationConfig,
 	type ApplicationConfigBase,
-	type ApplicationConfigProviderProps,
 	type ApplicationContextValue,
 	type ApplicationSidebar,
 	type ApplicationState,

@@ -42,10 +42,9 @@ export default defineConfig({
 	build: {
 		lib: {
 			entry: {
-				"index": path.resolve("src/index.ts"),
-				"i18next": path.resolve("src/i18next/index.ts"),
-				"next": path.resolve("src/next/index.ts"),
-				"next-registry": path.resolve("src/next/registry.tsx"),
+				index: path.resolve("src/index.ts"),
+				i18next: path.resolve("src/i18next/index.ts"),
+				next: path.resolve("src/next/index.ts"),
 			},
 			fileName: (_, name) => `${name}.js`,
 			cssFileName: "index",

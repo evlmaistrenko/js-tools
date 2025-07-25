@@ -1,5 +1,5 @@
 import { type FC, type ReactNode, useCallback, useEffect, useRef } from "react"
-import { Translation } from "react-i18next"
+import { Translation, useTranslation } from "react-i18next"
 
 import { MobileTwoTone, MoonFilled, SunOutlined } from "@ant-design/icons"
 import { Divider, Form, type FormProps, Switch } from "antd"
@@ -97,6 +97,7 @@ export const ConfigForm: FC<{ children?: ReactNode }> = (props) => {
 	useEffect(() => {
 		formRef.current.setFieldsValue(values)
 	}, [values])
+	const { t } = useTranslation("application")
 
 	return (
 		<Form<ApplicationState["config"]>
@@ -104,30 +105,20 @@ export const ConfigForm: FC<{ children?: ReactNode }> = (props) => {
 			initialValues={initialState.config}
 			onValuesChange={onValuesChange}
 		>
-			<Divider orientation={orientation}>
-				<Translation ns={"application"}>{(t) => t("Common")}</Translation>
-			</Divider>
+			<Divider orientation={orientation}>{t("Common")}</Divider>
 			<Form.Item
 				name={"locale"}
-				label={
-					<Translation ns={"application"}>{(t) => t("Language")}</Translation>
-				}
+				label={t("Language")}
 			>
 				<IconSelect
 					options={languages}
 					className={classes.select}
 				/>
 			</Form.Item>
-			<Divider orientation={orientation}>
-				<Translation ns={"application"}>{(t) => t("Theme")}</Translation>
-			</Divider>
+			<Divider orientation={orientation}>{t("Theme")}</Divider>
 			<Form.Item
 				name={"colorScheme"}
-				label={
-					<Translation ns={"application"}>
-						{(t) => t("Color scheme")}
-					</Translation>
-				}
+				label={t("Color scheme")}
 			>
 				<IconSelect
 					options={colorSchemes}
@@ -136,9 +127,7 @@ export const ConfigForm: FC<{ children?: ReactNode }> = (props) => {
 			</Form.Item>
 			<Form.Item
 				name={["compactTheme", "xs"]}
-				label={
-					<Translation ns={"application"}>{(t) => t("Compact")}</Translation>
-				}
+				label={t("Compact")}
 				valuePropName="checked"
 				hidden={breakpoint !== "xs"}
 			>
@@ -146,9 +135,7 @@ export const ConfigForm: FC<{ children?: ReactNode }> = (props) => {
 			</Form.Item>
 			<Form.Item
 				name={["compactTheme", "sm"]}
-				label={
-					<Translation ns={"application"}>{(t) => t("Compact")}</Translation>
-				}
+				label={t("Compact")}
 				valuePropName="checked"
 				hidden={breakpoint !== "sm"}
 			>
@@ -156,9 +143,7 @@ export const ConfigForm: FC<{ children?: ReactNode }> = (props) => {
 			</Form.Item>
 			<Form.Item
 				name={["compactTheme", "md"]}
-				label={
-					<Translation ns={"application"}>{(t) => t("Compact")}</Translation>
-				}
+				label={t("Compact")}
 				valuePropName="checked"
 				hidden={breakpoint !== "md"}
 			>
@@ -166,9 +151,7 @@ export const ConfigForm: FC<{ children?: ReactNode }> = (props) => {
 			</Form.Item>
 			<Form.Item
 				name={["compactTheme", "lg"]}
-				label={
-					<Translation ns={"application"}>{(t) => t("Compact")}</Translation>
-				}
+				label={t("Compact")}
 				valuePropName="checked"
 				hidden={breakpoint !== "lg"}
 			>
@@ -176,9 +159,7 @@ export const ConfigForm: FC<{ children?: ReactNode }> = (props) => {
 			</Form.Item>
 			<Form.Item
 				name={["compactTheme", "xl"]}
-				label={
-					<Translation ns={"application"}>{(t) => t("Compact")}</Translation>
-				}
+				label={t("Compact")}
 				valuePropName="checked"
 				hidden={breakpoint !== "xl"}
 			>
@@ -186,9 +167,7 @@ export const ConfigForm: FC<{ children?: ReactNode }> = (props) => {
 			</Form.Item>
 			<Form.Item
 				name={["compactTheme", "xxl"]}
-				label={
-					<Translation ns={"application"}>{(t) => t("Compact")}</Translation>
-				}
+				label={t("Compact")}
 				valuePropName="checked"
 				hidden={breakpoint !== "xxl"}
 			>

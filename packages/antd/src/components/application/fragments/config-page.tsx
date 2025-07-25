@@ -1,23 +1,14 @@
 import { type FC } from "react"
-import { useTranslation } from "react-i18next"
 
-import { Typography } from "antd"
+import { I18nextProvider } from "../../../i18next/provider"
+import { type PageProps } from "../../page"
+import { ConfigPageInner } from "./config-page-inner"
 
-import { Page, type PageProps } from "../../page"
-import { ConfigForm } from "./config-form"
-
-export const ConfigPage: FC<PageProps> = ({ children, ...props }) => {
-	const { t } = useTranslation("application")
-
+export const ConfigPage: FC<PageProps> = (props) => {
 	return (
-		<Page
-			header={{
-				title: <Typography.Title>{t("Settings")}</Typography.Title>,
-			}}
-			{...props}
-		>
-			<ConfigForm>{children}</ConfigForm>
-		</Page>
+		<I18nextProvider>
+			<ConfigPageInner {...props} />
+		</I18nextProvider>
 	)
 }
 

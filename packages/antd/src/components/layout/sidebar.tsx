@@ -1,7 +1,8 @@
 import type { WithOverlayProps } from "@evlmaistrenko/tools-react"
 import type { ComponentProps, FC } from "react"
-import { useEffect, useRef } from "react"
+import { useContext, useEffect, useRef } from "react"
 
+import { ConfigContext } from "antd/es/config-provider"
 import classNames from "classnames"
 
 import { WithOverlay } from "../with-overlay"
@@ -23,7 +24,7 @@ export const Sidebar: FC<
 	useEffect(() => {
 		const container = ref.current
 		if (!container || !setOverflowed) return
-		const element = container.children[0] as HTMLElement
+		const element = container.children[1] as HTMLElement
 		let applicable = true
 		let prev: boolean | null = null
 		const callback = () =>
@@ -44,6 +45,8 @@ export const Sidebar: FC<
 		}
 	}, [setOverflowed])
 
+	const { getPrefixCls } = useContext(ConfigContext)
+
 	return (
 		<div
 			{...containerProps}
@@ -57,6 +60,12 @@ export const Sidebar: FC<
 				containerProps?.className,
 			)}
 		>
+			<style
+				scoped
+				dangerouslySetInnerHTML={{
+					__html: `.${classes.sidebar} .${getPrefixCls("menu")}.${getPrefixCls("menu-root")} { width: auto; border-inline-end: none; }`,
+				}}
+			/>
 			<aside {...props}>
 				<WithOverlay {...withOverlayProps}>
 					<div tabIndex={0}>{props.children}</div>

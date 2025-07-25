@@ -1,45 +1,32 @@
-.layout.xs {
-  --evlta-layout-padding-horizontal: var(--ant-padding-xs);
-  --evlta-layout-padding-vertical: var(--ant-padding-xs);
-}
-.layout.sm,
-.layout.md,
-.layout.lg,
-.layout.xl,
-.layout.xxl {
-  --evlta-layout-padding-horizontal: var(--ant-padding-sm);
-  --evlta-layout-padding-vertical: var(--ant-padding-sm);
-}
-
 .primarySidebar.xs,
 .primarySidebar.sm {
-  max-width: calc(var(--evlta-application-screen-xs-min, 300px) * 0.2);
+  max-width: calc(var(--evlta-screen-xs) * 0.2);
 }
 .primarySidebar.xs.collapsed > aside,
 .primarySidebar.sm.collapsed > aside {
-  width: calc(var(--evlta-application-screen-xs-min, 300px) * 0.2);
+  width: calc(var(--evlta-screen-xs) * 0.2);
 }
 .primarySidebar.xs.expanded > aside,
 .primarySidebar.sm.expanded > aside {
-  width: calc(var(--evlta-application-screen-xs-min, 300px) * 0.8);
+  width: calc(var(--evlta-screen-xs) * 0.8);
 }
 .primarySidebar.md,
 .primarySidebar.lg,
 .primarySidebar.xl,
 .primarySidebar.xxl {
-  max-width: calc(var(--evlta-application-screen-md-min, 768px) * 0.3);
+  max-width: calc(var(--evlta-screen-md-min) * 0.3);
 }
 .primarySidebar.md.collapsed > aside,
 .primarySidebar.lg.collapsed > aside,
 .primarySidebar.xl.collapsed > aside,
 .primarySidebar.xxl.collapsed > aside {
-  width: calc(var(--evlta-application-screen-md-min, 768px) * 0.09);
+  width: calc(var(--evlta-screen-md-min) * 0.09);
 }
 .primarySidebar.md.expanded > aside,
 .primarySidebar.lg.expanded > aside,
 .primarySidebar.xl.expanded > aside,
 .primarySidebar.xxl.expanded > aside {
-  width: calc(var(--evlta-application-screen-md-min, 768px) * 0.3);
+  width: calc(var(--evlta-screen-md-min) * 0.3);
 }
 
 .secondarySidebar.xs,
@@ -51,20 +38,22 @@
   width: 0;
 }
 .secondarySidebar.xs.expanded > aside {
-  width: calc(var(--evlta-application-screen-xs-min, 300px) * 0.9);
+  width: calc(var(--evlta-screen-xs) * 0.9);
 }
 .secondarySidebar.sm.expanded > aside {
-  width: calc(var(--evlta-application-screen-sm-min, 576px) * 0.6);
+  width: calc(var(--evlta-screen-sm-min) * 0.6);
 }
 .secondarySidebar.md {
-  max-width: calc(var(--evlta-application-screen-md-min, 768px) * 0.4);
+  max-width: calc(var(--evlta-screen-md-min) * 0.3);
 }
 .secondarySidebar.lg {
-  max-width: calc(var(--evlta-application-screen-lg-min, 992px) * 0.4);
+  max-width: calc(var(--evlta-screen-lg-min) * 0.3);
 }
-.secondarySidebar.xl,
+.secondarySidebar.xl {
+  max-width: calc(var(--evlta-screen-xl-min) * 0.3);
+}
 .secondarySidebar.xxl {
-  max-width: calc(var(--evlta-application-screen-xl-min, 1200px) * 0.4);
+  max-width: calc(var(--evlta-screen-xl-min) * 0.4);
 }
 .secondarySidebar.md.collapsed > aside,
 .secondarySidebar.lg.collapsed > aside,
@@ -73,14 +62,16 @@
   width: 0;
 }
 .secondarySidebar.md.expanded > aside {
-  width: calc(var(--evlta-application-screen-md-min, 768px) * 0.4);
+  width: calc(var(--evlta-screen-md-min) * 0.3);
 }
 .secondarySidebar.lg.expanded > aside {
-  width: calc(var(--evlta-application-screen-lg-min, 992px) * 0.4);
+  width: calc(var(--evlta-screen-lg-min) * 0.3);
 }
-.secondarySidebar.xl.expanded > aside,
+.secondarySidebar.xl.expanded > aside {
+  width: calc(var(--evlta-screen-xl-min) * 0.3);
+}
 .secondarySidebar.xxl.expanded > aside {
-  width: calc(var(--evlta-application-screen-xl-min, 1200px) * 0.4);
+  width: calc(var(--evlta-screen-xl-min) * 0.4);
 }
 
 .header {
@@ -89,7 +80,7 @@
   flex: 1;
   justify-content: space-between;
   align-items: center;
-  gap: var(--ant-padding-xs, 8px);
+  gap: var(--evlta-gap);
 }
 .header.ltr {
   direction: ltr;
@@ -101,7 +92,7 @@
   flex-grow: 1;
   display: flex;
   align-items: center;
-  gap: var(--ant-padding-xs, 8px);
+  gap: var(--evlta-gap);
 }
 
 .flag {

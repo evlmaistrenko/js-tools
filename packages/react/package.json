@@ -3,11 +3,10 @@
 	"type": "module",
 	"version": "1.4.0",
 	"description": "Useful react-components and hooks.",
-	"exports": {
-		".": "./dist/index.js"
-	},
+	"main": "./dist/index.js",
+	"sideEffects": ["./dist/index.css"],
 	"scripts": {
-		"build": "tsc -b && vite build && node ../../utils/cp.js ./dist/index.css ../../exports/react",
+		"build": "tsc -b && vite build",
 		"dev:tcm": "tcm -w src",
 		"dev:storybook": "storybook dev -p 6007",
 		"dev": "concurrently npm:dev:*",
@@ -23,10 +22,7 @@
 		"url": "git+https://github.com/evlmaistrenko/js-tools.git",
 		"directory": "./packages/react/"
 	},
-	"keywords": [
-		"react",
-		"react-components"
-	],
+	"keywords": ["react", "react-components"],
 	"author": "evlmaistrenko <evlmaistrenko@gmail.com>",
 	"license": "MIT",
 	"bugs": {
@@ -41,8 +37,6 @@
 		"react-dom": "^19.1.0"
 	},
 	"eslintConfig": {
-		"extends": [
-			"plugin:storybook/recommended"
-		]
+		"extends": ["plugin:storybook/recommended"]
 	}
 }

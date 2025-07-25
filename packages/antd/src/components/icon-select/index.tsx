@@ -37,11 +37,7 @@ export type IconSelectComponent = (<
 	displayName?: string
 }
 
-/**
- * Select based on Ant Design's `Select` component and supports icons in options.
- *
- * @since 1.1.0
- */
+/** Select based on Ant Design's `Select` component and supports icons in options. */
 export const IconSelect: IconSelectComponent = forwardRef<
 	BaseSelectRef,
 	SelectProps

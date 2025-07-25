@@ -1,3 +1,5 @@
+import type { StoryContext } from "@storybook/react-vite"
+
 import { Application, type ApplicationProps } from ".."
 import { footerDefault } from "../../layout/__storybook__/args/footer"
 import { primarySidebarCompact } from "../../layout/__storybook__/args/primary-sidebar"
@@ -29,6 +31,8 @@ export const render =
 	(
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		args: ApplicationProps<any>,
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		context: StoryContext<any>,
 	) => {
 		return (
 			<Application
@@ -53,6 +57,14 @@ export const render =
 						: undefined
 				}
 				footer={footer !== false ? { ...footer, ...args.footer } : undefined}
+				style={
+					context.viewMode === "docs"
+						? ({
+								"--evlta-layout-height": "600px",
+								...args.style,
+							} as typeof args.style)
+						: undefined
+				}
 			/>
 		)
 	}

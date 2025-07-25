@@ -8,8 +8,9 @@
 		"./i18next": "./dist/i18next.js",
 		"./next": "./dist/next.js"
 	},
+	"sideEffects": ["./dist/index.css"],
 	"scripts": {
-		"build": "tsc -b && vite build && node ../../utils/cp.js ./dist/index.css ../../exports/antd",
+		"build": "tsc -b && vite build",
 		"dev:tcm": "tcm -w src",
 		"dev:storybook": "storybook dev -p 6006",
 		"dev": "concurrently npm:dev:*",

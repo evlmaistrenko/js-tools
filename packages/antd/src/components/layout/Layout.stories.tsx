@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
 
-import { ConfigProvider } from "antd"
-
+// import { ConfigProvider } from "antd"
 import { Layout } from "."
 import { loremIpsumParagraphs } from "../../utils/lorem-ipsum-paragraphs"
 import { Page } from "../page"
@@ -11,7 +10,8 @@ import { mainLong } from "./__storybook__/args/main"
 import { primarySidebarLong } from "./__storybook__/args/primary-sidebar"
 import { secondarySidebarLong } from "./__storybook__/args/secondary-sidebar"
 import { render } from "./__storybook__/render"
-import { scrollParentDecorator } from "./__storybook__/scroll-parent-decorator"
+
+// import { scrollParentDecorator } from "./__storybook__/scroll-parent-decorator"
 
 const meta = {
 	title: "Components/Layout",
@@ -22,7 +22,7 @@ const meta = {
 	tags: ["autodocs"],
 	argTypes,
 	render: render(),
-	decorators: [scrollParentDecorator],
+	// decorators: [scrollParentDecorator],
 } satisfies Meta<typeof Layout>
 
 export default meta
@@ -109,13 +109,18 @@ export const Rtl: Story = {
 			},
 		},
 	},
-	decorators: [
-		(Story) => (
-			<ConfigProvider direction="rtl">
-				<Story />
-			</ConfigProvider>
-		),
-	],
+	// render: render({
+	// 	primarySidebar: primarySidebarLong,
+	// 	main: mainLong,
+	// 	secondarySidebar: secondarySidebarLong,
+	// }),
+	// decorators: [
+	// 	(Story) => (
+	// 		<ConfigProvider direction="rtl">
+	// 			<Story />
+	// 		</ConfigProvider>
+	// 	),
+	// ],
 }
 
 export const WithoutSomeParts: Story = {

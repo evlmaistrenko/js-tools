@@ -37,10 +37,11 @@ export const Main: React.FC<{ paragraphs?: number }> = ({
 					</Button>
 					<Button
 						onClick={() => {
-							modal.confirm({
+							modal.info({
 								title: "This is a modal",
 								content: <>{loremIpsumParagraphs(10)}</>,
 								width: 600,
+								maskClosable: true,
 							})
 						}}
 						type={"primary"}

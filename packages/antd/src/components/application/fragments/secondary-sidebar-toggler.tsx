@@ -2,7 +2,7 @@ import { type FC, useMemo } from "react"
 import { useTranslation } from "react-i18next"
 
 import { LeftOutlined, RightOutlined } from "@ant-design/icons"
-import { Button, Tooltip } from "antd"
+import { Button } from "antd"
 
 import { useApplication } from "../context"
 
@@ -40,17 +40,11 @@ export const SecondarySidebarToggler: FC = () => {
 	}
 
 	return (
-		<Tooltip
-			trigger={"contextMenu"}
+		<Button
+			icon={icon}
+			onClick={secondarySidebar.toggle}
+			type="text"
 			title={hint}
-			placement={direction === "rtl" ? "right" : "left"}
-		>
-			<Button
-				icon={icon}
-				onClick={secondarySidebar.toggle}
-				type="text"
-				title={hint}
-			/>
-		</Tooltip>
+		/>
 	)
 }

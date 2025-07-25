@@ -4,6 +4,8 @@ import type { Preview } from "@storybook/react-vite"
 import { ConfigProvider } from "antd"
 import "antd/dist/reset.css"
 
+import { CssVariables } from "../src/utils/css-variables"
+
 const preview: Preview = {
 	parameters: {
 		controls: {
@@ -28,7 +30,9 @@ export const decorators = [
 	(Story: React.FC) => {
 		return (
 			<ConfigProvider theme={{ cssVar: true }}>
-				<Story />
+				<CssVariables theme={{ cssVar: true }}>
+					<Story />
+				</CssVariables>
 			</ConfigProvider>
 		)
 	},

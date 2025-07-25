@@ -10,7 +10,6 @@ import {
 	useRef,
 	useState,
 } from "react"
-import { I18nextProvider } from "react-i18next"
 
 import {
 	App,
@@ -27,6 +26,8 @@ import classNames from "classnames"
 import { omit, pick } from "lodash"
 
 import { i18next } from "../../i18next"
+import { I18nextProvider } from "../../i18next/provider"
+import { CssVariables } from "../../utils/css-variables"
 import { Layout, type LayoutProps, type LayoutRef } from "../layout"
 import type { PageProps } from "../page"
 import {
@@ -39,7 +40,6 @@ import {
 	useApplication,
 } from "./context"
 import { ConfigPage } from "./fragments/config-page"
-import { CssVariables } from "./fragments/css-variables"
 import { CurrentBreakpoint } from "./fragments/current-breakpoint"
 import { type ApplicationHeaderProps, Header } from "./fragments/header"
 import classes from "./styles.module.css"
@@ -201,11 +201,14 @@ export const Application: ApplicationComponent = forwardRef<
 			return {
 				...value,
 				configProviderProps: {
+					getPopupContainer() {
+						return layout?.popupContainer ?? document.body
+					},
+					direction: "ltr",
 					...configProviderProps,
-					direction: configProviderProps.direction ?? "ltr",
 					theme: {
-						...configProviderProps.theme,
 						cssVar: true,
+						...configProviderProps.theme,
 					},
 				},
 			}
@@ -230,12 +233,6 @@ export const Application: ApplicationComponent = forwardRef<
 					forwardedRef.current = contextValue
 				}
 			}, [contextValue])
-
-			useEffect(() => {
-				if (i18next.language !== contextValue.config.values.locale) {
-					i18next.changeLanguage(contextValue.config.values.locale)
-				}
-			})
 
 			const primarySidebarCollapsed =
 				contextValue.primarySidebar?.collapsed[breakpoint]
@@ -266,116 +263,120 @@ export const Application: ApplicationComponent = forwardRef<
 					collapseSecondarySidebar?.()
 				}
 			}, [layout, collapsePrimarySidebar, collapseSecondarySidebar])
-			const [cssVariables, setCssVariables] = useState<Record<string, string>>({
-				"--evlta-application-screen-xs-min": "300px",
-				"--evlta-application-screen-xs-max": "575px",
-				"--evlta-application-screen-sm-min": "576px",
-				"--evlta-application-screen-sm-max": "767px",
-				"--evlta-application-screen-md-min": "768px",
-				"--evlta-application-screen-md-max": "991px",
-				"--evlta-application-screen-lg-min": "992px",
-				"--evlta-application-screen-lg-max": "1199px",
-				"--evlta-application-screen-xl-min": "1200px",
-				"--evlta-application-screen-xl-max": "1599px",
-				"--evlta-application-screen-xxl-min": "1600px",
-			})
+
+			const locale = contextValue.config.values.locale
+			const i18nextInstance = useMemo(
+				() =>
+					i18next.cloneInstance({
+						lng: locale,
+					}),
+				[locale],
+			)
 
 			return (
 				<ConfigProvider {...contextValue.configProviderProps}>
-					<ApplicationContext.Provider value={contextValue}>
-						<App {...antdAppProps}>
-							<I18nextProvider i18n={i18next}>
-								<Layout
-									ref={setLayout}
-									{...props}
-									style={{ ...cssVariables, ...props.style }}
-									className={classNames(
-										classes.layout,
-										classes[breakpoint],
-										props.className,
-									)}
-									header={
-										props.header
-											? {
-													...omit(props.header, [
-														"primarySidebarToggler",
-														"secondarySidebarToggler",
-														"config",
-													]),
-													children: (
-														<Header
-															{...pick(props.header, [
-																"primarySidebarToggler",
-																"secondarySidebarToggler",
-																"config",
-															])}
-														>
-															{props.header.children}
-														</Header>
-													),
-												}
-											: undefined
-									}
-									primarySidebar={
-										contextValue.primarySidebar
-											? {
-													...props.primarySidebar,
-													containerProps: {
-														...props.primarySidebar?.containerProps,
-														className: classNames(
-															classes.primarySidebar,
-															classes[breakpoint],
-															{
-																[classes.collapsed]: primarySidebarCollapsed,
-																[classes.expanded]: !primarySidebarCollapsed,
-															},
-															props.primarySidebar?.containerProps?.className,
+					<CssVariables
+						{...contextValue.configProviderProps}
+						overrides
+					>
+						<ApplicationContext.Provider value={contextValue}>
+							<App {...antdAppProps}>
+								<I18nextProvider instance={i18nextInstance}>
+									<Layout
+										ref={setLayout}
+										{...props}
+										className={classNames(
+											// classes.layout,
+											classes[breakpoint],
+											props.className,
+										)}
+										header={
+											props.header
+												? {
+														...omit(props.header, [
+															"primarySidebarToggler",
+															"secondarySidebarToggler",
+															"config",
+														]),
+														children: (
+															<Header
+																{...pick(props.header, [
+																	"primarySidebarToggler",
+																	"secondarySidebarToggler",
+																	"config",
+																])}
+															>
+																{props.header.children}
+															</Header>
 														),
-													},
-													children: (
-														<SiderContext.Provider
-															value={primarySidebarContextValue}
-														>
-															{props.primarySidebar?.children}
-														</SiderContext.Provider>
-													),
-												}
-											: undefined
-									}
-									secondarySidebar={
-										contextValue.secondarySidebar
-											? {
-													...props.secondarySidebar,
-													containerProps: {
-														...props.secondarySidebar?.containerProps,
-														className: classNames(
-															classes.secondarySidebar,
-															classes[breakpoint],
-															{
-																[classes.collapsed]: secondarySidebarCollapsed,
-																[classes.expanded]: !secondarySidebarCollapsed,
-															},
-															props.secondarySidebar?.containerProps?.className,
+													}
+												: undefined
+										}
+										primarySidebar={
+											contextValue.primarySidebar
+												? {
+														...props.primarySidebar,
+														containerProps: {
+															...props.primarySidebar?.containerProps,
+															className: classNames(
+																classes.primarySidebar,
+																classes[breakpoint],
+																{
+																	[classes.collapsed]: primarySidebarCollapsed,
+																	[classes.expanded]: !primarySidebarCollapsed,
+																},
+																props.primarySidebar?.containerProps?.className,
+															),
+														},
+														children: (
+															<SiderContext.Provider
+																value={primarySidebarContextValue}
+															>
+																{props.primarySidebar?.children}
+															</SiderContext.Provider>
 														),
-													},
-													children: (
-														<SiderContext.Provider
-															value={secondarySidebarContextValue}
-														>
-															{props.secondarySidebar?.children}
-														</SiderContext.Provider>
-													),
-												}
-											: undefined
-									}
-									onSidebarsOverlayClick={onSidebarsOverlayClick}
-									direction={contextValue.configProviderProps.direction}
-								/>
-							</I18nextProvider>
-							<CurrentBreakpoint set={setBreakpoint} />
-							<CssVariables set={setCssVariables} />
-						</App>
-					</ApplicationContext.Provider>
+													}
+												: undefined
+										}
+										secondarySidebar={
+											contextValue.secondarySidebar
+												? {
+														...props.secondarySidebar,
+														containerProps: {
+															...props.secondarySidebar?.containerProps,
+															className: classNames(
+																classes.secondarySidebar,
+																classes[breakpoint],
+																{
+																	[classes.collapsed]:
+																		secondarySidebarCollapsed,
+																	[classes.expanded]:
+																		!secondarySidebarCollapsed,
+																},
+																props.secondarySidebar?.containerProps
+																	?.className,
+															),
+														},
+														children: (
+															<SiderContext.Provider
+																value={secondarySidebarContextValue}
+															>
+																{props.secondarySidebar?.children}
+															</SiderContext.Provider>
+														),
+													}
+												: undefined
+										}
+										onSidebarsOverlayClick={onSidebarsOverlayClick}
+										direction={
+											contextValue.configProviderProps.direction ?? "ltr"
+										}
+									/>
+									<CurrentBreakpoint set={setBreakpoint} />
+								</I18nextProvider>
+							</App>
+						</ApplicationContext.Provider>
+					</CssVariables>
 				</ConfigProvider>
 			)
 		}

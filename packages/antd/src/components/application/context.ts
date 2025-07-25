@@ -10,11 +10,6 @@ import { type Breakpoint, type ConfigProviderProps } from "antd"
 import type { I18nextLocales } from "../../i18next"
 import type { LayoutRef } from "../layout"
 
-export interface ApplicationConfigProviderProps extends ConfigProviderProps {
-	theme: ConfigProviderProps["theme"] & { cssVar: true }
-	direction: Required<ConfigProviderProps["direction"]>
-}
-
 export interface ApplicationSidebar {
 	collapsed: Record<Breakpoint, boolean>
 	collapse: () => void
@@ -50,7 +45,7 @@ export interface ApplicationContextValue<
 	initialState: ApplicationState<Config>
 	breakpoint: Breakpoint
 	deviceColorScheme: "dark" | "light" | null
-	configProviderProps: ApplicationConfigProviderProps
+	configProviderProps: ConfigProviderProps
 	primarySidebar: ApplicationSidebar | null
 	secondarySidebar: ApplicationSidebar | null
 	config: {

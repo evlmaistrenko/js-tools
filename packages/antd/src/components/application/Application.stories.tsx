@@ -5,7 +5,7 @@ import { Form, Switch } from "antd"
 
 import { Application } from "."
 import { argTypes as layoutArgTypes } from "../layout/__storybook__/arg-types"
-import { scrollParentDecorator } from "../layout/__storybook__/scroll-parent-decorator"
+// import { scrollParentDecorator } from "../layout/__storybook__/scroll-parent-decorator"
 import { headerDefault } from "./__storybook__/args/header"
 import { render } from "./__storybook__/render"
 
@@ -48,7 +48,7 @@ const meta = {
 		},
 	},
 	subcomponents: { "Application.ConfigPage": Application.ConfigPage },
-	decorators: [scrollParentDecorator],
+	// decorators: [scrollParentDecorator],
 	render: render(),
 } satisfies Meta<typeof Application>
 

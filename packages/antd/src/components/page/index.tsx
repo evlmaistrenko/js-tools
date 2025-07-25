@@ -22,11 +22,7 @@ export interface PageProps extends HTMLAttributes<HTMLElement> {
 	component?: ElementType
 }
 
-/**
- * Page container with title, breadcrumbs or custom header.
- *
- * @since 1.1.0
- */
+/** Page container with title, breadcrumbs or custom header. */
 export const Page: React.FC<PageProps> = ({
 	header,
 	centered,
