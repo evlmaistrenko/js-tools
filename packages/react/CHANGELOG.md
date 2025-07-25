@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://github.com/evlmaistrenko/js-tools/compare/tools-react-v1.4.0...tools-react-v1.5.0) (2025-07-25)
+
+
+### Features
+
+* streamline layout component and remove unused CSS variables ([c84abfa](https://github.com/evlmaistrenko/js-tools/commit/c84abfa10985235a20169c527d0048a5e23c770d))
+
 ## [1.4.0](https://github.com/evlmaistrenko/js-tools/compare/tools-react-v1.3.0...tools-react-v1.4.0) (2025-07-14)
 
 

@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.5.0](https://github.com/evlmaistrenko/js-tools/compare/tools-antd-v1.4.1...tools-antd-v1.5.0) (2025-07-25)
+
+
+### Features
+
+* streamline layout component and remove unused CSS variables ([c84abfa](https://github.com/evlmaistrenko/js-tools/commit/c84abfa10985235a20169c527d0048a5e23c770d))
+
+
+### Bug Fixes
+
+* update entry point for next index to use .ts instead of .tsx ([230083a](https://github.com/evlmaistrenko/js-tools/commit/230083ac18aa11079eb5cf478409b8a013176e3f))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @evlmaistrenko/tools-react bumped from ^1.4.0 to ^1.5.0
+
 ## [1.4.1](https://github.com/evlmaistrenko/js-tools/compare/tools-antd-v1.4.0...tools-antd-v1.4.1) (2025-07-14)
 
 ### Bug Fixes

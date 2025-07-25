@@ -1,10 +1,12 @@
 {
 	"name": "@evlmaistrenko/tools-react",
 	"type": "module",
-	"version": "1.4.0",
+	"version": "1.5.0",
 	"description": "Useful react-components and hooks.",
 	"main": "./dist/index.js",
-	"sideEffects": ["./dist/index.css"],
+	"sideEffects": [
+		"./dist/index.css"
+	],
 	"scripts": {
 		"build": "tsc -b && vite build",
 		"dev:tcm": "tcm -w src",
@@ -22,7 +24,10 @@
 		"url": "git+https://github.com/evlmaistrenko/js-tools.git",
 		"directory": "./packages/react/"
 	},
-	"keywords": ["react", "react-components"],
+	"keywords": [
+		"react",
+		"react-components"
+	],
 	"author": "evlmaistrenko <evlmaistrenko@gmail.com>",
 	"license": "MIT",
 	"bugs": {
@@ -37,6 +42,8 @@
 		"react-dom": "^19.1.0"
 	},
 	"eslintConfig": {
-		"extends": ["plugin:storybook/recommended"]
+		"extends": [
+			"plugin:storybook/recommended"
+		]
 	}
 }
