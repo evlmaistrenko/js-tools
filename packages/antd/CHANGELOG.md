@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.0](https://github.com/evlmaistrenko/js-tools/compare/tools-antd-v1.6.0...tools-antd-v1.7.0) (2025-07-31)
+
+
+### Features
+
+* add export for defaultApplicationProps in next index ([0d50613](https://github.com/evlmaistrenko/js-tools/commit/0d5061322ecb747e632f35c2ee31c38708b296ce))
+
 ## [1.6.0](https://github.com/evlmaistrenko/js-tools/compare/tools-antd-v1.5.0...tools-antd-v1.6.0) (2025-07-31)
 
 
