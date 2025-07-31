@@ -2,4 +2,4 @@
 
 import "../dist/index.css"
 
-export * from "../dist/index.js"
+export { WithOverlay, usePrefersColorScheme } from "../dist/index.js"
