@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.21.1](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.21.0...tools-v1.21.1) (2025-07-31)
+
+
+### Bug Fixes
+
+* update locale handling logic in Application component ([99ea6d3](https://github.com/evlmaistrenko/js-tools/commit/99ea6d3fab51dc75f0bba5bcb46601adb3b31c13))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @evlmaistrenko/tools-antd bumped from 1.9.0 to 1.9.1
+
 ## [1.21.0](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.20.0...tools-v1.21.0) (2025-07-31)
 
 
