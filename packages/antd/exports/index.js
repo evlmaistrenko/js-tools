@@ -4,4 +4,18 @@ import "@ant-design/v5-patch-for-react-19"
 
 import "../dist/index.css"
 
-export * from "../dist/index.js"
+export {
+	Application,
+	ApplicationConfigPage,
+	ApplicationContext,
+	IconSelect,
+	Layout,
+	Page,
+	TelegramFilled,
+	TelegramOutlined,
+	TelegramTwoTone,
+	WithOverlay,
+	i18next,
+	i18nextResources,
+	useApplication,
+} from "../dist/index.js"

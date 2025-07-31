@@ -4,4 +4,4 @@ import "@ant-design/v5-patch-for-react-19"
 
 import "../../dist/index.css"
 
-export * from "../../dist/next-client.js"
+export { Application, Registry } from "../../dist/next-client.js"
