@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.19.0](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.18.0...tools-v1.19.0) (2025-07-31)
+
+
+### Features
+
+* add export for defaultApplicationProps in next index ([0d50613](https://github.com/evlmaistrenko/js-tools/commit/0d5061322ecb747e632f35c2ee31c38708b296ce))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @evlmaistrenko/tools-antd bumped from 1.6.0 to 1.7.0
+
 ## [1.18.0](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.17.0...tools-v1.18.0) (2025-07-31)
 
 
