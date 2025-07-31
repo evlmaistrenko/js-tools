@@ -30,12 +30,13 @@ export const Application: FC<ApplicationProps<ApplicationConfigBase>> = (
 			.filter(Boolean)[0]
 		if (!["en-US", "kk-KZ", "ru-RU"].includes(currentLocale)) return
 		if (locale !== currentLocale) {
-			url.pathname = url.pathname.replace(
-				new RegExp(`/${currentLocale}(/|$)`),
-				`/${locale}$1`,
-			)
 			document.documentElement.lang = locale
-			router.replace(`${url.pathname}${url.search}${url.hash}`)
+			router.replace(
+				`${pathname.replace(
+					new RegExp(`/${currentLocale}(/|$)`),
+					`/${locale}$1`,
+				)}${url.search}${url.hash}`,
+			)
 		}
 	}, [locale, router, pathname])
 
