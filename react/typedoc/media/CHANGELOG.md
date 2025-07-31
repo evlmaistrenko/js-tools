@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.0](https://github.com/evlmaistrenko/js-tools/compare/tools-react-v1.6.0...tools-react-v1.7.0) (2025-07-31)
+
+
+### Features
+
+* refine exports in index.js to include specific components ([3ff3eaf](https://github.com/evlmaistrenko/js-tools/commit/3ff3eaf0d7d4f913dc558e10c7409a6f65847053))
+
 ## [1.6.0](https://github.com/evlmaistrenko/js-tools/compare/tools-react-v1.5.0...tools-react-v1.6.0) (2025-07-31)
 
 
