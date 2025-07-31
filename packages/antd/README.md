@@ -2,6 +2,10 @@
 
 [![NPM Version](https://img.shields.io/npm/v/%40evlmaistrenko%2Ftools-antd)](https://www.npmjs.com/package/@evlmaistrenko/tools-antd)
 
+<div align="center">
+  <img src="./logo.svg" alt="Логотип" width="460" />
+</div>
+
 React-components based on Ant Design.
 
 ## Usage

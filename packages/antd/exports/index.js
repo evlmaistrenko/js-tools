@@ -18,4 +18,5 @@ export {
 	i18next,
 	i18nextResources,
 	useApplication,
+	ApplicationHelloPage,
 } from "../dist/index.js"

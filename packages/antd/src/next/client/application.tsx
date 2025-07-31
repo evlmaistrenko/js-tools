@@ -10,12 +10,16 @@ import type {
 	ApplicationConfigBase,
 	ApplicationContextValue,
 } from "../../components/application/context"
+import { i18next } from "../../i18next"
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? ""
 
-export const Application: FC<ApplicationProps<ApplicationConfigBase>> = (
-	props,
-) => {
+export const Application: FC<
+	ApplicationProps<ApplicationConfigBase> & { locales?: string[] }
+> = ({
+	locales = Object.keys(i18next.services.resourceStore.data),
+	...props
+}) => {
 	const [ref, setRef] =
 		useState<ApplicationContextValue<ApplicationConfigBase> | null>()
 	const locale = ref?.config.values.locale
@@ -28,7 +32,7 @@ export const Application: FC<ApplicationProps<ApplicationConfigBase>> = (
 			.replace(basePath, "")
 			.split("/")
 			.filter(Boolean)[0]
-		if (!["en-US", "kk-KZ", "ru-RU"].includes(currentLocale)) return
+		if (!locales.includes(currentLocale)) return
 		if (locale !== currentLocale) {
 			document.documentElement.lang = locale
 			router.replace(
@@ -38,7 +42,7 @@ export const Application: FC<ApplicationProps<ApplicationConfigBase>> = (
 				)}${url.search}${url.hash}`,
 			)
 		}
-	}, [locale, router, pathname])
+	}, [locale, router, pathname, locales])
 
 	return (
 		<Base

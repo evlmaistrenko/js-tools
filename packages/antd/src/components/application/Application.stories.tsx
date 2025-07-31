@@ -9,6 +9,7 @@ import { headerDefault } from "./__storybook__/args/header"
 import { render } from "./__storybook__/render"
 import { ApplicationConfigPage } from "./config-page"
 import { defaultApplicationProps } from "./default-props"
+import { ApplicationHelloPage } from "./hello-page"
 
 const meta = {
 	title: "Components/Application",
@@ -48,7 +49,10 @@ const meta = {
 			},
 		},
 	},
-	subcomponents: { ApplicationConfigPage: ApplicationConfigPage },
+	subcomponents: {
+		ApplicationConfigPage: ApplicationConfigPage,
+		ApplicationHelloPage: ApplicationHelloPage,
+	},
 	// decorators: [scrollParentDecorator],
 	render: render(),
 } satisfies Meta<typeof Application>
@@ -80,7 +84,7 @@ export const ConfigPage: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: "There is a component `Application.ConfigPage`.",
+				story: "There is a component `ApplicationConfigPage`.",
 			},
 		},
 	},
@@ -99,6 +103,30 @@ export const ConfigPage: Story = {
 					}}
 				/>
 			),
+		},
+	}),
+}
+
+export const HelloPage: Story = {
+	args: {
+		header: {
+			sticky: true,
+		},
+
+		main: { component: "div" },
+	},
+	parameters: {
+		docs: {
+			description: {
+				story: "There is a component `ApplicationHelloPage`.",
+			},
+		},
+	},
+	render: render({
+		primarySidebar: false,
+		secondarySidebar: false,
+		main: {
+			children: <ApplicationHelloPage />,
 		},
 	}),
 }

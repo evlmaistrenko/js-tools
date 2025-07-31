@@ -2,6 +2,10 @@
 
 [![NPM Version](https://img.shields.io/npm/v/%40evlmaistrenko%2Ftools)](https://www.npmjs.com/package/@evlmaistrenko/tools)
 
+<div align="center">
+  <img src="./logo.svg" alt="Логотип" width="280" />
+</div>
+
 Javascript tools, utilities and react-components library.
 
 ## Packages

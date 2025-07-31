@@ -1,0 +1,21 @@
+.helloPage {
+  max-width: 600px;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.card {
+  padding: 5%;
+}
+
+.title {
+  font-size: 1.3em;
+}
+
+.dropdown {
+  width: 100%;
+  justify-content: center;
+}
