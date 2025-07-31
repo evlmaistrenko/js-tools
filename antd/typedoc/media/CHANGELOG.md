@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.6.0](https://github.com/evlmaistrenko/js-tools/compare/tools-antd-v1.5.0...tools-antd-v1.6.0) (2025-07-31)
+
+
+### Features
+
+* streamline package.json workspaces and dependencies ([09ff298](https://github.com/evlmaistrenko/js-tools/commit/09ff298d163e811f90d3a501b34ec7ddda487639))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @evlmaistrenko/tools-react bumped from ^1.5.0 to ^1.6.0
+
 ## [1.5.0](https://github.com/evlmaistrenko/js-tools/compare/tools-antd-v1.4.1...tools-antd-v1.5.0) (2025-07-25)
 
 
