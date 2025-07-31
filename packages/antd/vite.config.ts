@@ -8,10 +8,8 @@ import { storybookTest } from "@storybook/addon-vitest/vitest-plugin"
 import * as csso from "csso"
 import fs from "fs/promises"
 import { createRequire } from "module"
-import preserveDirectives from "rollup-preserve-directives"
 import { defineConfig } from "vite"
 import dts from "vite-plugin-dts"
-import { libInjectCss } from "vite-plugin-lib-inject-css"
 
 const require = createRequire(import.meta.url)
 
@@ -37,21 +35,22 @@ export default defineConfig({
 			tsconfigPath: "./tsconfig.app.json",
 			rollupTypes: true,
 		}),
-		libInjectCss(),
 	],
 	build: {
 		lib: {
 			entry: {
-				index: path.resolve("src/index.ts"),
-				i18next: path.resolve("src/i18next/index.ts"),
-				next: path.resolve("src/next/index.ts"),
+				"default-application-props": path.resolve(
+					"src/components/application/default-props.ts",
+				),
+				"index": path.resolve("src/index.ts"),
+				"i18next": path.resolve("src/i18next/index.ts"),
+				"next-client": path.resolve("src/next/client/index.ts"),
 			},
 			fileName: (_, name) => `${name}.js`,
 			cssFileName: "index",
 			formats: ["es"],
 		},
 		rollupOptions: {
-			plugins: [preserveDirectives()],
 			external: (id) => {
 				return !id.startsWith(".") && !path.isAbsolute(id)
 			},

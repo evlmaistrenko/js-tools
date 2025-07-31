@@ -16,12 +16,8 @@ import {
 	type AppProps,
 	ConfigProvider,
 	type ConfigProviderProps,
-	theme,
 } from "antd"
 import { SiderContext, type SiderContextProps } from "antd/es/layout/Sider"
-import enUS from "antd/es/locale/en_US"
-import kkKZ from "antd/es/locale/kk_KZ"
-import ruRU from "antd/es/locale/ru_RU"
 import classNames from "classnames"
 import { omit, pick } from "lodash"
 
@@ -29,7 +25,6 @@ import { i18next } from "../../i18next"
 import { I18nextProvider } from "../../i18next/provider"
 import { CssVariables } from "../../utils/css-variables"
 import { Layout, type LayoutProps, type LayoutRef } from "../layout"
-import type { PageProps } from "../page"
 import {
 	type ApplicationConfig,
 	type ApplicationConfigBase,
@@ -37,9 +32,8 @@ import {
 	type ApplicationContextValue,
 	type ApplicationSidebar,
 	type ApplicationState,
-	useApplication,
 } from "./context"
-import { ConfigPage } from "./fragments/config-page"
+import { defaultApplicationProps } from "./default-props"
 import { CurrentBreakpoint } from "./fragments/current-breakpoint"
 import { type ApplicationHeaderProps, Header } from "./fragments/header"
 import classes from "./styles.module.css"
@@ -62,14 +56,6 @@ export type ApplicationComponent = (<
 		RefAttributes<ApplicationContextValue<Config>>,
 ) => ReactElement) & {
 	displayName?: FC["displayName"]
-	useApplication: <
-		Config extends ApplicationConfigBase = ApplicationConfig,
-	>() => ApplicationContextValue<Config> | null
-	ConfigPage: FC<PageProps>
-	defaultProps: {
-		initialState: ApplicationState
-		getConfigProviderProps: Required<ApplicationProps>["getConfigProviderProps"]
-	}
 }
 
 /**
@@ -88,9 +74,9 @@ export const Application: ApplicationComponent = forwardRef<
 >(
 	(
 		{
-			initialState: initialStateRaw = Application.defaultProps.initialState,
-			getConfigProviderProps: getConfigProviderPropsRaw = Application
-				.defaultProps.getConfigProviderProps,
+			initialState: initialStateRaw = defaultApplicationProps.initialState,
+			getConfigProviderProps:
+				getConfigProviderPropsRaw = defaultApplicationProps.getConfigProviderProps,
 			antdAppProps,
 			...props
 		},
@@ -381,63 +367,4 @@ export const Application: ApplicationComponent = forwardRef<
 			)
 		}
 	},
-) as unknown as ApplicationComponent
-
-Application.useApplication = useApplication
-Application.ConfigPage = ConfigPage
-Application.defaultProps = {
-	initialState: {
-		breakpoint: "xs",
-		deviceColorScheme: "light",
-		primarySidebarCollapsed: {
-			xs: true,
-			sm: true,
-			md: true,
-			lg: false,
-			xl: false,
-			xxl: false,
-		},
-		secondarySidebarCollapsed: {
-			xs: true,
-			sm: true,
-			md: true,
-			lg: false,
-			xl: false,
-			xxl: false,
-		},
-		config: {
-			locale: "en-US",
-			colorScheme: "device",
-			compactTheme: {
-				xs: false,
-				sm: true,
-				md: false,
-				lg: false,
-				xl: false,
-				xxl: false,
-			},
-		},
-	},
-	getConfigProviderProps(context) {
-		let themeAlgorithm = [theme.defaultAlgorithm]
-		const colorScheme =
-			context.config.values.colorScheme === "device"
-				? context.deviceColorScheme
-				: context.config.values.colorScheme
-		if (colorScheme === "dark") {
-			themeAlgorithm = [theme.darkAlgorithm]
-		}
-		if (context.config.values.compactTheme[context.breakpoint]) {
-			themeAlgorithm.push(theme.compactAlgorithm)
-		}
-		return {
-			theme: { algorithm: themeAlgorithm },
-			locale:
-				{
-					"en-US": enUS,
-					"kk-KZ": kkKZ,
-					"ru-RU": ruRU,
-				}[context.config.values.locale] ?? enUS,
-		}
-	},
-}
+) as ApplicationComponent

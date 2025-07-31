@@ -5,9 +5,10 @@ import { Form, Switch } from "antd"
 
 import { Application } from "."
 import { argTypes as layoutArgTypes } from "../layout/__storybook__/arg-types"
-// import { scrollParentDecorator } from "../layout/__storybook__/scroll-parent-decorator"
 import { headerDefault } from "./__storybook__/args/header"
 import { render } from "./__storybook__/render"
+import { ApplicationConfigPage } from "./config-page"
+import { defaultApplicationProps } from "./default-props"
 
 const meta = {
 	title: "Components/Application",
@@ -47,7 +48,7 @@ const meta = {
 			},
 		},
 	},
-	subcomponents: { "Application.ConfigPage": Application.ConfigPage },
+	subcomponents: { ApplicationConfigPage: ApplicationConfigPage },
 	// decorators: [scrollParentDecorator],
 	render: render(),
 } satisfies Meta<typeof Application>
@@ -86,7 +87,7 @@ export const ConfigPage: Story = {
 	render: render({
 		main: {
 			children: (
-				<Application.ConfigPage
+				<ApplicationConfigPage
 					header={{
 						title: (
 							<div>
@@ -133,7 +134,7 @@ export const CustomConfig: Story = {
 		},
 		main: {
 			children: (
-				<Application.ConfigPage
+				<ApplicationConfigPage
 					header={{
 						title: (
 							<div>
@@ -150,7 +151,7 @@ export const CustomConfig: Story = {
 					>
 						<Switch />
 					</Form.Item>
-				</Application.ConfigPage>
+				</ApplicationConfigPage>
 			),
 		},
 	}),
@@ -174,7 +175,7 @@ export const Rtl: Story = {
 	},
 	render: render({
 		getConfigProviderProps: (context) => ({
-			...Application.defaultProps.getConfigProviderProps(context),
+			...defaultApplicationProps.getConfigProviderProps(context),
 			direction: "rtl",
 		}),
 	}),

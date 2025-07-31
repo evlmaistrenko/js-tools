@@ -24,9 +24,7 @@ import * as domTools from "@evlmaistrenko/tools/dom";
 import * as fetchTools from "@evlmaistrenko/tools/fetch";
 import * as mongomq from "@evlmaistrenko/tools/mongomq";
 import { SteamApiClient } from "@evlmaistrenko/tools/steam-api-client";
-import "@evlmaistrenko/tools/react/index.css";
 import { WithOverlay } from "@evlmaistrenko/tools/react";
-import "@evlmaistrenko/tools/antd/index.css";
 import { TelegramOutlined } from "@evlmaistrenko/tools/antd";
 
 // Use it

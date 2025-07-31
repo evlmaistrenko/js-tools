@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next"
 import { Typography } from "antd"
 
 import { Page, type PageProps } from "../../page"
-import { ConfigForm } from "./config-form"
+import { ConfigForm } from "../fragments/config-form"
 
 export const ConfigPageInner: FC<PageProps> = ({ children, ...props }) => {
 	const { t } = useTranslation("application")

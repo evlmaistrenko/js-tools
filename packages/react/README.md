@@ -11,7 +11,6 @@ npm i @evlmaistrenko/tools-react
 ```
 
 ```javascript
-import "@evlmaistrenko/tools-react/index.css";
 import { WithOverlay } from "@evlmaistrenko/tools-react";
 
 const withOverlay = <WithOverlay />;
