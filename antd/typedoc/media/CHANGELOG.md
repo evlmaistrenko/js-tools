@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.10.0](https://github.com/evlmaistrenko/js-tools/compare/tools-antd-v1.9.1...tools-antd-v1.10.0) (2025-08-01)
+
+
+### Features
+
+* add ApplicationHelloPage component with locale selection and integrate into the application ([09bc742](https://github.com/evlmaistrenko/js-tools/commit/09bc74221eb32d7227d0b426ed14e58926ad8550))
+* refactor ApplicationHelloPage and update exports for consistency ([8c927d6](https://github.com/evlmaistrenko/js-tools/commit/8c927d607944f8b47864fcc265fc4e07d437dbb0))
+
 ## [1.9.1](https://github.com/evlmaistrenko/js-tools/compare/tools-antd-v1.9.0...tools-antd-v1.9.1) (2025-07-31)
 
 

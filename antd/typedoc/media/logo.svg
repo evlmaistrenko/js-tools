@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 100">
+  <g>
+    <rect x="12" y="12" width="20" height="20" fill="#F7DF1E"></rect>
+    <text
+      x="22"
+      y="25"
+      text-anchor="middle"
+      fill="#000"
+      font-family="monospace"
+      font-size="10"
+      font-weight="bold"
+    >
+      JS
+    </text>
+    <g opacity="0.16">
+      <rect x="40" y="12" width="20" height="20" fill="#00D8A4"></rect>
+      <rect x="68" y="12" width="20" height="20" fill="#61DAFB"></rect>
+      <rect x="12" y="40" width="20" height="20" fill="#00D8A4"></rect>
+      <rect x="40" y="40" width="20" height="20" fill="#61DAFB"></rect>
+      <rect x="68" y="40" width="20" height="20" fill="#00D8A4"></rect>
+      <rect x="12" y="68" width="20" height="20" fill="#61DAFB"></rect>
+      <rect x="40" y="68" width="20" height="20" fill="#00D8A4"></rect>
+      <rect x="68" y="68" width="20" height="20" fill="#61DAFB"></rect>
+    </g>
+    <text
+      x="14"
+      y="74"
+      font-family="monospace"
+      font-size="20"
+      font-weight="bold"
+      fill="#FFFFFF"
+      stroke="#DDD"
+      stroke-width="0.9"
+      paint-order="stroke"
+    >
+      evlm
+    </text>
+    <text
+      x="14"
+      y="90"
+      font-family="monospace"
+      font-size="15"
+      fill="#FFFFFF"
+      stroke="#DDD"
+      stroke-width="0.6"
+      paint-order="stroke"
+    >
+      ❯ kit
+    </text>
+  </g>
+  <text
+    x="98"
+    y="56"
+    font-family="monospace"
+    font-size="15"
+    fill="#FFFFFF"
+    stroke="#DDD"
+    stroke-width="0.6"
+    paint-order="stroke"
+  >
+    /antd
+  </text>
+</svg>
