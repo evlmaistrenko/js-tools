@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.12.0](https://github.com/evlmaistrenko/js-tools/compare/tools-antd-v1.11.0...tools-antd-v1.12.0) (2025-08-01)
+
+
+### Features
+
+* update overlay component to use CSS variables for background and transition styles ([877ac50](https://github.com/evlmaistrenko/js-tools/commit/877ac50ea6453e18c9b48e4e543ec687b17608d2))
+
 ## [1.11.0](https://github.com/evlmaistrenko/js-tools/compare/tools-antd-v1.10.1...tools-antd-v1.11.0) (2025-08-01)
 
 
