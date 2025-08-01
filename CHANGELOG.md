@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.22.1](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.22.0...tools-v1.22.1) (2025-08-01)
+
+
+### Bug Fixes
+
+* update locale preference logic to use component locales instead of i18next languages ([9fd91ab](https://github.com/evlmaistrenko/js-tools/commit/9fd91abce6d8f34d20285859aaafaeacbfea4974))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @evlmaistrenko/tools-antd bumped from 1.10.0 to 1.10.1
+
 ## [1.22.0](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.21.1...tools-v1.22.0) (2025-08-01)
 
 

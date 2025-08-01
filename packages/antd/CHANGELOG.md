@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.1](https://github.com/evlmaistrenko/js-tools/compare/tools-antd-v1.10.0...tools-antd-v1.10.1) (2025-08-01)
+
+
+### Bug Fixes
+
+* update locale preference logic to use component locales instead of i18next languages ([9fd91ab](https://github.com/evlmaistrenko/js-tools/commit/9fd91abce6d8f34d20285859aaafaeacbfea4974))
+
 ## [1.10.0](https://github.com/evlmaistrenko/js-tools/compare/tools-antd-v1.9.1...tools-antd-v1.10.0) (2025-08-01)
 
 
