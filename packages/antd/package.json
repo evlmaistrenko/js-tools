@@ -1,14 +1,17 @@
 {
 	"name": "@evlmaistrenko/tools-antd",
 	"type": "module",
-	"version": "1.10.1",
+	"version": "1.11.0",
 	"description": "React-components based on Ant Design.",
 	"exports": {
 		".": "./exports/index.js",
 		"./i18next": "./exports/i18next.js",
 		"./next": "./exports/next/index.js"
 	},
-	"sideEffects": ["./dist/index.css", "@ant-design/v5-patch-for-react-19"],
+	"sideEffects": [
+		"./dist/index.css",
+		"@ant-design/v5-patch-for-react-19"
+	],
 	"scripts": {
 		"build": "tsc -b && vite build",
 		"dev:tcm": "tcm -w src",
@@ -26,7 +29,10 @@
 		"url": "git+https://github.com/evlmaistrenko/js-tools.git",
 		"directory": "./packages/antd/"
 	},
-	"keywords": ["antd", "react-components"],
+	"keywords": [
+		"antd",
+		"react-components"
+	],
 	"author": "evlmaistrenko <evlmaistrenko@gmail.com>",
 	"license": "MIT",
 	"bugs": {
@@ -56,7 +62,9 @@
 		}
 	},
 	"eslintConfig": {
-		"extends": ["plugin:storybook/recommended"]
+		"extends": [
+			"plugin:storybook/recommended"
+		]
 	},
 	"devDependencies": {
 		"csso": "^5.0.5",
