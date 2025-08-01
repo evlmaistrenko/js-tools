@@ -14,10 +14,7 @@ import { i18next } from "../../i18next"
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? ""
 
-export const Application: FC<
-	ApplicationProps<ApplicationConfigBase> & { locales?: string[] }
-> = ({
-	locales = Object.keys(i18next.services.resourceStore.data),
+export const Application: FC<ApplicationProps<ApplicationConfigBase>> = ({
 	...props
 }) => {
 	const [ref, setRef] =
@@ -32,6 +29,7 @@ export const Application: FC<
 			.replace(basePath, "")
 			.split("/")
 			.filter(Boolean)[0]
+		const locales = Object.keys(i18next.services.resourceStore.data)
 		if (!locales.includes(currentLocale)) return
 		if (locale !== currentLocale) {
 			document.documentElement.lang = locale
@@ -42,7 +40,7 @@ export const Application: FC<
 				)}${url.search}${url.hash}`,
 			)
 		}
-	}, [locale, router, pathname, locales])
+	}, [locale, router, pathname])
 
 	return (
 		<Base

@@ -5,7 +5,6 @@ import { type PageProps } from "../../page"
 import { ApplicationHelloPageInner } from "./inner"
 
 export interface ApplicationHelloPageProps extends Omit<PageProps, "children"> {
-	locales?: string[]
 	onLocaleChange?: (locale: string) => void
 }
 

@@ -11,7 +11,6 @@ import { type ApplicationConfigBase, useApplication } from "../context"
 import classes from "./styles.module.css"
 
 export const ApplicationHelloPageInner: typeof ApplicationHelloPage = ({
-	locales = Object.keys(i18next.services.resourceStore.data),
 	onLocaleChange,
 	...props
 }) => {
@@ -34,15 +33,17 @@ export const ApplicationHelloPageInner: typeof ApplicationHelloPage = ({
 	)
 
 	useEffect(() => {
+		const locales = Object.keys(i18next.services.resourceStore.data)
 		const preferred = navigator.languages.find((lang) => locales.includes(lang))
 		const fallback = navigator.languages.find((lang) =>
 			locales.some((locale) => locale.startsWith(lang.split("-")[0])),
 		)
 		const locale = preferred ?? fallback
 		if (locale) setValues((current) => ({ ...current, locale }))
-	}, [setValues, locales])
+	}, [setValues])
 
 	const { t } = useTranslation("application-hello")
+	const locales = Object.keys(i18next.services.resourceStore.data)
 
 	return (
 		<Page
