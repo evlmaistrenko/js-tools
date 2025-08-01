@@ -1,4 +1,4 @@
 .overlay {
-  background: var(--ant-color-bg-mask);
-  transition: all var(--ant-motion-duration-slow);
+  background: var(--evlta-color-bg-mask);
+  transition: all var(--evlta-motion-duration-slow);
 }

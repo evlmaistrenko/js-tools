@@ -1,3 +1,5 @@
+import "../../react/dist/index.css"
+
 export * from "./components/application"
 export { type ApplicationHeaderProps } from "./components/application/fragments/header"
 export * from "./components/application/context"

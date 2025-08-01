@@ -42,6 +42,7 @@ export const Inner: FC<CssVariablesProps> = ({
 				{
 					"--evlta-color-bg-layout": token.colorBgLayout,
 					"--evlta-color-bg-container": token.colorBgContainer,
+					"--evlta-color-bg-mask": token.colorBgMask,
 					"--evlta-layout-height": "100vh",
 					"--evlta-layout-padding-horizontal": layoutPaddingHorizontal,
 					"--evlta-layout-padding-vertical": layoutPaddingVertical,

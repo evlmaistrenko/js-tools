@@ -68,7 +68,7 @@ export const ApplicationHelloPageInner: typeof ApplicationHelloPage = ({
 					}}
 					className={classes.dropdown}
 				>
-					{i18nextLocales.find(({ value }) => value === locale)?.label}
+					{i18nextLocales.find(({ value }) => value === locale)?.continueLabel}
 				</Dropdown.Button>
 			</div>
 		</Page>

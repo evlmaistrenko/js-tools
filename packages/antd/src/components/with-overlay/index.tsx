@@ -1,9 +1,8 @@
 import { WithOverlay as WithOverlayRaw } from "@evlmaistrenko/tools-react"
-import type { HTMLAttributes } from "react"
 
-import { theme } from "antd"
 import classNames from "classnames"
 
+import { CssVariables } from "../../utils/css-variables"
 import classes from "./styles.module.css"
 
 /**
@@ -11,23 +10,15 @@ import classes from "./styles.module.css"
  * component styled for Ant Design.
  */
 export const WithOverlay: typeof WithOverlayRaw = (props) => {
-	const {
-		token: { colorBgMask },
-	} = theme.useToken()
-
 	return (
-		<WithOverlayRaw
-			{...props}
-			style={
-				{
-					...props.overlayProps?.style,
-					"--ant-color-bg-mask": colorBgMask,
-				} as HTMLAttributes<HTMLDivElement>["style"]
-			}
-			overlayProps={{
-				...props.overlayProps,
-				className: classNames(classes.overlay, props.overlayProps?.className),
-			}}
-		/>
+		<CssVariables>
+			<WithOverlayRaw
+				{...props}
+				overlayProps={{
+					...props.overlayProps,
+					className: classNames(classes.overlay, props.overlayProps?.className),
+				}}
+			/>
+		</CssVariables>
 	)
 }
