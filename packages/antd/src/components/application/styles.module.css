@@ -95,11 +95,6 @@
   gap: var(--evlta-gap);
 }
 
-.flag {
-  width: 1.2em;
-  height: auto;
-}
-
 .select {
   max-width: 15em;
 }

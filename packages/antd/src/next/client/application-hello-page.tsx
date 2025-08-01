@@ -7,6 +7,7 @@ import {
 	ApplicationHelloPage as Base,
 } from "../../components/application/hello-page"
 
+/** Hello page wrapped with handling of locale change. */
 export const ApplicationHelloPage: FC<
 	Omit<ApplicationHelloPageProps, "onLocaleChange">
 > = (props) => {

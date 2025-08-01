@@ -3,59 +3,12 @@ import { Translation, useTranslation } from "react-i18next"
 
 import { MobileTwoTone, MoonFilled, SunOutlined } from "@ant-design/icons"
 import { Divider, Form, type FormProps, Switch } from "antd"
-import kz from "svg-country-flags/svg/kz.svg"
-import ru from "svg-country-flags/svg/ru.svg"
-import us from "svg-country-flags/svg/us.svg"
 
+import { i18nextLocales } from "../../../i18next"
 import { IconSelect } from "../../icon-select"
 import type { IconSelectOption } from "../../icon-select"
 import { type ApplicationState, useApplication } from "../context"
 import classes from "../styles.module.css"
-
-const getFlag = (src: unknown, alt: string) => {
-	if (
-		typeof src === "string" &&
-		(src.startsWith("data:") || src.endsWith(".svg"))
-	) {
-		return (
-			<img
-				className={classes.flag}
-				src={src}
-				alt={alt}
-			/>
-		)
-	} else if (src && typeof src === "object" && "src" in src) {
-		return (
-			// @ts-expect-error src is props for img
-			<img
-				{...src}
-				className={classes.flag}
-				alt={alt}
-			/>
-		)
-	}
-	console.error(
-		`Failed to render country flag "${alt}": expected a valid image URL or properties for <img/>. Please check your bundler configuration (SVG import handling).`,
-	)
-}
-
-const languages: IconSelectOption[] = [
-	{
-		label: "English",
-		value: "en-US",
-		icon: getFlag(us, "US"),
-	},
-	{
-		label: "Қазақша",
-		value: "kk-KZ",
-		icon: getFlag(kz, "KZ"),
-	},
-	{
-		label: "Русский",
-		value: "ru-RU",
-		icon: getFlag(ru, "RU"),
-	},
-]
 
 const colorSchemes: IconSelectOption[] = [
 	{
@@ -111,7 +64,11 @@ export const ConfigForm: FC<{ children?: ReactNode }> = (props) => {
 				label={t("Language")}
 			>
 				<IconSelect
-					options={languages}
+					options={i18nextLocales.map((locale) => ({
+						label: locale.label,
+						value: locale.value,
+						icon: locale.icon,
+					}))}
 					className={classes.select}
 				/>
 			</Form.Item>

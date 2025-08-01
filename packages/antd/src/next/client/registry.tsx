@@ -3,6 +3,7 @@ import { type ReactNode, useRef } from "react"
 import { AntdRegistry } from "@ant-design/nextjs-registry"
 import { useServerInsertedHTML } from "next/navigation"
 
+/** Registers CSS-in-JS and meta tags for layout. */
 export function Registry({
 	metaColorScheme = true,
 	children,

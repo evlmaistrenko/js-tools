@@ -52,6 +52,7 @@ export default defineConfig({
 		},
 		rollupOptions: {
 			external: (id) => {
+				if (id.startsWith("svg-country-flags/svg")) return false
 				return !id.startsWith(".") && !path.isAbsolute(id)
 			},
 		},

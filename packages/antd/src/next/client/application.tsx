@@ -10,10 +10,19 @@ import type {
 	ApplicationConfigBase,
 	ApplicationContextValue,
 } from "../../components/application/context"
-import { i18next } from "../../i18next"
+import { i18nextLocales } from "../../i18next"
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? ""
 
+/**
+ * Application component that wraps the base application with additional functionality such as locale
+ * handling.
+ *
+ * @remarks
+ *   This component is used to ensure that the application is rendered with the correct locale based on the
+ *   user's preferences and the available locales. Not intended for nested usage: this component should
+ *   not be nested within another instance of itself.
+ */
 export const Application: FC<ApplicationProps<ApplicationConfigBase>> = ({
 	...props
 }) => {
@@ -29,7 +38,7 @@ export const Application: FC<ApplicationProps<ApplicationConfigBase>> = ({
 			.replace(basePath, "")
 			.split("/")
 			.filter(Boolean)[0]
-		const locales = Object.keys(i18next.services.resourceStore.data)
+		const locales = i18nextLocales.map((locale) => locale.value)
 		if (!locales.includes(currentLocale)) return
 		if (locale !== currentLocale) {
 			document.documentElement.lang = locale

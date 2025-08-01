@@ -19,4 +19,6 @@ export {
 	i18nextResources,
 	useApplication,
 	ApplicationHelloPage,
+	addI18nextLocale,
+	i18nextLocales,
 } from "../dist/index.js"

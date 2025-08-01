@@ -1,6 +1,29 @@
-export const i18nextResources = {
+export type I18nextResources = {
+	application: {
+		"Expand menu": string
+		"Collapse menu": string
+		"Open settings": string
+		"Expand sidebar": string
+		"Collapse sidebar": string
+		"Settings": string
+		"Common": string
+		"Language": string
+		"Theme": string
+		"Color scheme": string
+		"Compact": string
+		"Dark": string
+		"Device": string
+		"Light": string
+	}
+	applicationHelloPage: {
+		"Welcome!": string
+		"Choose your language:": string
+	}
+}
+
+export const i18nextResources: Record<string, I18nextResources> = {
 	"en-US": {
-		"application": {
+		application: {
 			"Expand menu": "Expand menu",
 			"Collapse menu": "Collapse menu",
 			"Open settings": "Open settings",
@@ -16,16 +39,13 @@ export const i18nextResources = {
 			"Device": "Device",
 			"Light": "Light",
 		},
-		"application-hello": {
+		applicationHelloPage: {
 			"Welcome!": "Welcome!",
 			"Choose your language:": "Choose your language:",
-			"en-US": "Continue in English",
-			"kk-KZ": "Қазақ тілінде жалғастыру",
-			"ru-RU": "Продолжить на русском",
 		},
 	},
 	"kk-KZ": {
-		"application": {
+		application: {
 			"Expand menu": "Мәзірді кеңейту",
 			"Collapse menu": "Мәзірді бүктеу",
 			"Open settings": "Баптауларды ашу",
@@ -41,16 +61,13 @@ export const i18nextResources = {
 			"Device": "Құрылғыға сәйкес",
 			"Light": "Жарық",
 		},
-		"application-hello": {
+		applicationHelloPage: {
 			"Welcome!": "Қош келдіңіз!",
 			"Choose your language:": "Тілді таңдаңыз:",
-			"en-US": "Continue in English",
-			"kk-KZ": "Қазақ тілінде жалғастыру",
-			"ru-RU": "Продолжить на русском",
 		},
 	},
 	"ru-RU": {
-		"application": {
+		application: {
 			"Expand menu": "Развернуть меню",
 			"Collapse menu": "Свернуть меню",
 			"Open settings": "Открыть настройки",
@@ -66,15 +83,12 @@ export const i18nextResources = {
 			"Device": "Как на устройстве",
 			"Light": "Светлая",
 		},
-		"application-hello": {
+		applicationHelloPage: {
 			"Welcome!": "Добро пожаловать!",
 			"Choose your language:": "Выберите язык:",
-			"en-US": "Continue in English",
-			"kk-KZ": "Қазақ тілінде жалғастыру",
-			"ru-RU": "Продолжить на русском",
 		},
 	},
 } as const
 
-export const ns = ["application", "application-hello"]
+export const ns = ["application", "applicationHelloPage"]
 export type I18nextLocales = keyof typeof i18nextResources

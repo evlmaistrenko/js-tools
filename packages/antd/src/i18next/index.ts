@@ -2,7 +2,13 @@ import { type i18n as I18n, createInstance } from "i18next"
 
 import { i18nextResources, ns } from "./resources"
 
-export { i18nextResources, type I18nextLocales } from "./resources"
+export {
+	i18nextResources,
+	type I18nextLocales,
+	type I18nextResources,
+} from "./resources"
+
+export * from "./locales"
 
 export const i18next: I18n = createInstance() as I18n
 

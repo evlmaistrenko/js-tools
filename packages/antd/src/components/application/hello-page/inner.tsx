@@ -5,7 +5,7 @@ import { Dropdown, Typography } from "antd"
 import classNames from "classnames"
 
 import type { ApplicationHelloPage } from "."
-import { i18next } from "../../../i18next"
+import { i18next, i18nextLocales } from "../../../i18next"
 import { Page } from "../../page"
 import { type ApplicationConfigBase, useApplication } from "../context"
 import classes from "./styles.module.css"
@@ -42,8 +42,7 @@ export const ApplicationHelloPageInner: typeof ApplicationHelloPage = ({
 		if (locale) setValues((current) => ({ ...current, locale }))
 	}, [setValues])
 
-	const { t } = useTranslation("application-hello")
-	const locales = Object.keys(i18next.services.resourceStore.data)
+	const { t } = useTranslation("applicationHelloPage")
 
 	return (
 		<Page
@@ -59,19 +58,17 @@ export const ApplicationHelloPageInner: typeof ApplicationHelloPage = ({
 					type="primary"
 					onClick={handleClick}
 					menu={{
-						items: locales.map((locale) => ({
-							key: locale,
-							// @ts-expect-error `locale` is a key for `t`
-							label: t(locale),
-						})),
+						items: i18nextLocales.map((locale) => {
+							return {
+								key: locale.value!,
+								label: locale.label,
+							}
+						}),
 						onClick: handleClick,
 					}}
 					className={classes.dropdown}
 				>
-					{
-						// @ts-expect-error `locale` is a key for `t`
-						t(locale)
-					}
+					{i18nextLocales.find(({ value }) => value === locale)?.label}
 				</Dropdown.Button>
 			</div>
 		</Page>
