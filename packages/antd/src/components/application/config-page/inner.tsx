@@ -6,7 +6,10 @@ import { Typography } from "antd"
 import { Page, type PageProps } from "../../page"
 import { ConfigForm } from "../fragments/config-form"
 
-export const ConfigPageInner: FC<PageProps> = ({ children, ...props }) => {
+export const ApplicationConfigPageInner: FC<PageProps> = ({
+	children,
+	...props
+}) => {
 	const { t } = useTranslation("application")
 	return (
 		<Page

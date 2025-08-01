@@ -2,12 +2,12 @@ import { type FC } from "react"
 
 import { I18nextProvider } from "../../../i18next/provider"
 import { type PageProps } from "../../page"
-import { ConfigPageInner } from "./inner"
+import { ApplicationConfigPageInner } from "./inner"
 
 export const ApplicationConfigPage: FC<PageProps> = (props) => {
 	return (
 		<I18nextProvider>
-			<ConfigPageInner {...props} />
+			<ApplicationConfigPageInner {...props} />
 		</I18nextProvider>
 	)
 }

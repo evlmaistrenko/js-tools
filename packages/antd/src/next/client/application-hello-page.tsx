@@ -3,11 +3,11 @@ import { type FC, useCallback } from "react"
 import { useRouter } from "next/navigation"
 
 import {
-	ApplicationHelloPage,
 	type ApplicationHelloPageProps,
+	ApplicationHelloPage as Base,
 } from "../../components/application/hello-page"
 
-export const HelloPage: FC<
+export const ApplicationHelloPage: FC<
 	Omit<ApplicationHelloPageProps, "onLocaleChange">
 > = (props) => {
 	const router = useRouter()
@@ -21,7 +21,7 @@ export const HelloPage: FC<
 	)
 
 	return (
-		<ApplicationHelloPage
+		<Base
 			onLocaleChange={onLocaleChange}
 			{...props}
 		/>
