@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.23.0](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.22.1...tools-v1.23.0) (2025-08-01)
+
+
+### Features
+
+* update i18next integration with locale support and improve language selection ([93a1760](https://github.com/evlmaistrenko/js-tools/commit/93a1760197869e2f7bad49b05ee5c857cc3f18d7))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @evlmaistrenko/tools-antd bumped from 1.10.1 to 1.11.0
+
 ## [1.22.1](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.22.0...tools-v1.22.1) (2025-08-01)
 
 
