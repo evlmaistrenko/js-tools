@@ -34,15 +34,13 @@ export const ApplicationHelloPageInner: typeof ApplicationHelloPage = ({
 	)
 
 	useEffect(() => {
-		const preferred = navigator.languages.find((lang) =>
-			i18next.languages.includes(lang),
-		)
+		const preferred = navigator.languages.find((lang) => locales.includes(lang))
 		const fallback = navigator.languages.find((lang) =>
-			i18next.languages.some((locale) => locale.startsWith(lang.split("-")[0])),
+			locales.some((locale) => locale.startsWith(lang.split("-")[0])),
 		)
 		const locale = preferred ?? fallback
 		if (locale) setValues((current) => ({ ...current, locale }))
-	}, [setValues])
+	}, [setValues, locales])
 
 	const { t } = useTranslation("application-hello")
 
