@@ -1,7 +1,7 @@
 {
 	"name": "@evlmaistrenko/tools-react",
 	"type": "module",
-	"version": "1.7.0",
+	"version": "1.8.0",
 	"description": "Useful react-components and hooks.",
 	"main": "./exports/index.js",
 	"sideEffects": [

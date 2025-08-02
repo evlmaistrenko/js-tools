@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.0](https://github.com/evlmaistrenko/js-tools/compare/tools-react-v1.7.0...tools-react-v1.8.0) (2025-08-02)
+
+
+### Features
+
+* enhance i18next locale support and update CSS variable usage across components ([c91e27f](https://github.com/evlmaistrenko/js-tools/commit/c91e27feccccfa4bdf12c3f63d9c8edf0ff1ced6))
+
 ## [1.7.0](https://github.com/evlmaistrenko/js-tools/compare/tools-react-v1.6.0...tools-react-v1.7.0) (2025-07-31)
 
 

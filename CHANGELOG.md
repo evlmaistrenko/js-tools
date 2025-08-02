@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.25.0](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.24.0...tools-v1.25.0) (2025-08-02)
+
+
+### Features
+
+* enhance i18next locale support and update CSS variable usage across components ([c91e27f](https://github.com/evlmaistrenko/js-tools/commit/c91e27feccccfa4bdf12c3f63d9c8edf0ff1ced6))
+* examples workspace added ([04154eb](https://github.com/evlmaistrenko/js-tools/commit/04154ebb5ff425e7d2091df75e465d289cc8cf0a))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @evlmaistrenko/tools-antd bumped from 1.12.0 to 1.13.0
+    * @evlmaistrenko/tools-react bumped from 1.7.0 to 1.8.0
+
 ## [1.24.0](https://github.com/evlmaistrenko/js-tools/compare/tools-v1.23.0...tools-v1.24.0) (2025-08-01)
 
 
