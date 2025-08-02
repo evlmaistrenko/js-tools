@@ -8,6 +8,7 @@ import {
 import { Empty } from "antd"
 import classNames from "classnames"
 
+import { CssVariables } from "../../utils/css-variables"
 import classes from "./styles.module.css"
 
 export interface PageProps extends HTMLAttributes<HTMLElement> {
@@ -51,23 +52,25 @@ export const Page: React.FC<PageProps> = ({
 	}, [header])
 
 	return (
-		<Component
-			{...props}
-			className={classNames(
-				classes.page,
-				{
-					[classes.pageCentered]: centered === true,
-					[classes.pageCenteredContentOnly]: centered === "content-only",
-				},
-				props.className,
-			)}
-		>
-			{headerNode}
-			<div className={classes.pageContentContainer}>
-				<div className={classes.pageContent}>
-					{props.children ?? <Empty className={classes.pageEmpty} />}
+		<CssVariables>
+			<Component
+				{...props}
+				className={classNames(
+					classes.page,
+					{
+						[classes.pageCentered]: centered === true,
+						[classes.pageCenteredContentOnly]: centered === "content-only",
+					},
+					props.className,
+				)}
+			>
+				{headerNode}
+				<div className={classes.pageContentContainer}>
+					<div className={classes.pageContent}>
+						{props.children ?? <Empty className={classes.pageEmpty} />}
+					</div>
 				</div>
-			</div>
-		</Component>
+			</Component>
+		</CssVariables>
 	)
 }

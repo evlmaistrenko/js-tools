@@ -60,8 +60,9 @@ export const ApplicationHelloPageInner: typeof ApplicationHelloPage = ({
 					menu={{
 						items: i18nextLocales.map((locale) => {
 							return {
-								key: locale.value!,
-								label: locale.label,
+								key: locale.value,
+								label: locale.continueLabel,
+								icon: locale.icon,
 							}
 						}),
 						onClick: handleClick,

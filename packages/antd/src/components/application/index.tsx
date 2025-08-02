@@ -271,11 +271,7 @@ export const Application: ApplicationComponent = forwardRef<
 									<Layout
 										ref={setLayout}
 										{...props}
-										className={classNames(
-											// classes.layout,
-											classes[breakpoint],
-											props.className,
-										)}
+										className={classNames(classes[breakpoint], props.className)}
 										header={
 											props.header
 												? {

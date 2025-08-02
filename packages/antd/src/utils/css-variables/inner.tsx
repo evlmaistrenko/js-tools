@@ -1,6 +1,6 @@
 import { type FC, type HTMLAttributes, useContext } from "react"
 
-import { type Breakpoint, theme } from "antd"
+import { type Breakpoint, Layout, theme } from "antd"
 import {
 	ConfigContext,
 	type ConfigProviderProps,
@@ -37,7 +37,7 @@ export const Inner: FC<CssVariablesProps> = ({
 	}
 
 	return (
-		<div
+		<Layout
 			style={
 				{
 					"--evlta-color-bg-layout": token.colorBgLayout,
@@ -60,11 +60,14 @@ export const Inner: FC<CssVariablesProps> = ({
 					"--evlta-screen-xl-min": `${token.screenXLMin}px`,
 					"--evlta-screen-xl-max": `${token.screenXLMax}px`,
 					"--evlta-screen-xxl-min": `${token.screenXXLMin}px`,
+					"--evlta-border-radius-lg": `${token.borderRadiusLG}px`,
+					"--evlta-font-size-heading-2": `${token.fontSizeHeading2}px`,
+					"--evlta-font-weight-strong": token.fontWeightStrong,
 					"color": token.colorText,
 				} as Required<HTMLAttributes<HTMLDivElement>>["style"]
 			}
 		>
 			{props.children}
-		</div>
+		</Layout>
 	)
 }

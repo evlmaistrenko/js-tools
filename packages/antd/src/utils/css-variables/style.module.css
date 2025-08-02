@@ -1,3 +1,5 @@
-.cssVariables {
-  display: block;
+.cssVariables,
+.cssVariables > div {
+  width: 100%;
+  background: transparent;
 }

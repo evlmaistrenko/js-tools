@@ -1,9 +1,8 @@
 import { theme } from "antd"
 import enUS from "antd/es/locale/en_US"
-import kkKZ from "antd/es/locale/kk_KZ"
-import ruRU from "antd/es/locale/ru_RU"
 
 import { type ApplicationProps } from "."
+import { i18nextLocales } from "../../i18next"
 import { type ApplicationConfig } from "./context"
 
 export const defaultApplicationProps: Pick<
@@ -54,14 +53,13 @@ export const defaultApplicationProps: Pick<
 		if (context.config.values.compactTheme[context.breakpoint]) {
 			themeAlgorithm.push(theme.compactAlgorithm)
 		}
+		const locale = i18nextLocales.find(
+			(l) => l.value === context.config.values.locale,
+		)
 		return {
 			theme: { algorithm: themeAlgorithm },
-			locale:
-				{
-					"en-US": enUS,
-					"kk-KZ": kkKZ,
-					"ru-RU": ruRU,
-				}[context.config.values.locale] ?? enUS,
+			locale: locale?.antdLocale ?? enUS,
+			direction: locale?.direction ?? "ltr",
 		}
 	},
 } as const
