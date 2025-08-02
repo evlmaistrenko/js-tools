@@ -8,6 +8,7 @@ export {
 	Application,
 	ApplicationConfigPage,
 	ApplicationContext,
+	defaultApplicationProps,
 	IconSelect,
 	Layout,
 	Page,

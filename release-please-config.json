@@ -21,6 +21,9 @@
 		},
 		"packages/antd": {
 			"release-type": "node"
+		},
+		"examples/antd-vite": {
+			"release-type": "node"
 		}
 	},
 	"plugins": [

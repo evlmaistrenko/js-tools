@@ -3,6 +3,7 @@ import "../../react/dist/index.css"
 export * from "./components/application"
 export { type ApplicationHeaderProps } from "./components/application/fragments/header"
 export * from "./components/application/context"
+export * from "./components/application/default-props"
 export { ApplicationConfigPage } from "./components/application/config-page"
 export {
 	ApplicationHelloPage,
